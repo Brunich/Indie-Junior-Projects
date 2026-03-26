@@ -57,6 +57,18 @@
   .bond-card.lo .bl{color:var(--danger)}
   .bond-card.hi .bl{color:var(--teal)}
   .bond-card p{font-size:.92rem;margin:0}
+  .atmos-card{background:rgba(45,212,191,.04);border:1px solid rgba(45,212,191,.15);border-left:3px solid var(--teal);border-radius:0 10px 10px 0;padding:1.1rem 1.4rem;margin:.9rem 0}
+  .atmos-card .atm-title{font-family:'Space Mono',monospace;font-size:.73rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.45rem}
+  .atmos-card p{font-size:.94rem;margin:0;line-height:1.65}
+  .prim-card{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--muted);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0}
+  .prim-card .prim-id{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.15rem}
+  .prim-card .prim-name{font-size:1.05rem;font-weight:600;margin-bottom:.55rem}
+  .prim-card p{font-size:.92rem;margin:0}
+  .prim-card .prim-hook{display:block;margin-top:.6rem;font-size:.85rem;color:var(--accent2);font-style:italic}
+  .npc-change{margin:.7rem 0;padding:.9rem 1.1rem;background:var(--card);border:1px solid var(--border);border-radius:8px}
+  .npc-change .npc-who{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+  .act-line{display:flex;gap:.7rem;margin:.28rem 0;font-size:.88rem;align-items:baseline}
+  .act-tag{font-family:'Space Mono',monospace;font-size:.64rem;color:var(--gold);flex-shrink:0;min-width:46px}
   ol.dlist{list-style:none;counter-reset:li;margin:1rem 0}
   ol.dlist li{counter-increment:li;padding:.55rem 0 .55rem 2.5rem;border-bottom:1px solid var(--border);position:relative;font-size:.96rem}
   ol.dlist li::before{content:counter(li);position:absolute;left:0;font-family:'Space Mono',monospace;font-size:.72rem;color:var(--accent);top:.65rem;width:1.5rem;text-align:right}
@@ -79,7 +91,7 @@
 
 <nav>
   <span class="brand">NEXOS: FRACTURA</span>
-  <a href="#promesa">Promesa</a><a href="#mundo">Mundo</a><a href="#personajes">Personajes</a><a href="#gimnasios">Gimnasios</a><a href="#finales">Finales</a><a href="#guion">Guión</a>
+  <a href="#promesa">Promesa</a><a href="#mundo">Mundo</a><a href="#atmosfera">Atmósfera</a><a href="#personajes">Personajes</a><a href="#gimnasios">Gimnasios</a><a href="#finales">Finales</a><a href="#npcs">NPCs</a><a href="#guion">Guión</a>
 </nav>
 
 <header class="hero">
@@ -110,9 +122,38 @@
   </table></div>
   <p>8 gimnasios en total — 2 por cada región fuera del Piélago Central. Cada par representa las dos caras de la misma cultura: su utopía y su conflicto.</p>
 
+  <h2 id="atmosfera" class="sec">Las Regiones — Atmósfera</h2>
+  <p>No son escenarios. Son culturas con contradicciones internas. El jugador las vive a través del mundo, no de tutoriales.</p>
+
+  <div class="atmos-card">
+    <div class="atm-title">Piélago Central</div>
+    <p>Blanco y azul. La Torre del Campeón visible desde cualquier punto de la isla — no como amenaza, como promesa. Un lugar próspero que no sabe que su prosperidad se construyó sobre algo que no quiso saber. Los NPCs son amables y tienen tiempo. Nadie habla de los Primordiales porque nadie siente que tiene que hacerlo.</p>
+  </div>
+
+  <div class="atmos-card">
+    <div class="atm-title">Levante</div>
+    <p>Huele a incienso y tierra húmeda. Las casas tienen altares en las ventanas — no como decoración, como costumbre. Los muertos están presentes en la conversación cotidiana de una forma que al principio parece extraño y después parece lo único sensato. El clima es más frío de lo que debería ser para su latitud. La gente lo da por hecho.</p>
+  </div>
+
+  <div class="atmos-card">
+    <div class="atm-title">Zenera</div>
+    <p>Calor antes de llegar. El volcán activo hace que el aire vibre. Dos ciudades superpuestas: la que construyó la Liga — tuberías, cápsulas, estaciones — y las ruinas de la que existía antes — piedra tallada, canales secos, símbolos que nadie ha podido leer. Los locales no mencionan las ruinas a menos que les preguntes. Si les preguntes, dicen: «Siempre estuvieron ahí.»</p>
+  </div>
+
+  <div class="atmos-card">
+    <div class="atm-title">Coralia</div>
+    <p>Luz refractada en el agua. El mar de Coralia tiene capas visibles: el arrecife colorido arriba, el abismo oscuro abajo. Los entrenadores de aquí nadan. Sus nexos también. Hay nexos que viven solo en las profundidades y nunca han subido. Los pescadores lo mencionan de forma casual — como un hecho, no como algo que debería cambiar cómo piensas sobre los nexos.</p>
+  </div>
+
+  <div class="atmos-card">
+    <div class="atm-title">Nora la Polvosa</div>
+    <p>Polvo y silencio y después, de la nada, corridos desde alguna ventana. El desierto tamaulipeco enseña con lentitud. No hay urgencia visible — hay código. Sobre el respeto, sobre la lealtad, sobre qué haces cuando las reglas de la Liga no llegan. Don Macario dice que este desierto recuerda. Que lo que se entierra eventualmente sale.</p>
+  </div>
+
   <h2 class="sec">Echonis — El Legendario</h2>
   <p>Echonis no ataca. No destruye. Absorbe parte de los recuerdos de los seres vivos y muertos de su alrededor y los redistribuye por un tiempo. Solo lo hace permanente a ciertos individuos o nexos elegidos: los Primordiales. Lo hace con cierta intención de tener compañeros parecidos a él, pero también para que los nexos igualen sus posibilidades ante la ventaja humana.</p>
   <p>En el juego, Echonis no es el jefe final. Aparece en silencio en momentos clave. Su sola presencia hace que los nexos del equipo se comporten diferente según su vínculo con el jugador. Cuando aparece en una región, los nexos salvajes de esa zona suben de nivel sin explicación.</p>
+  <blockquote><strong>Apariencia.</strong> Echonis es grande, pero no de una forma que puedas medir. Aparece completo de golpe — como si siempre hubiera estado ahí y solo ahora lo estás viendo. Su forma varía según quién lo mire: para algunos es un cetáceo que flota sin gravedad. Para otros, un patrón de luz que mantiene silueta. Para algunos, simplemente un reflejo en el agua de algo que no está sobre el agua. No tiene ojos visibles. La gente que lo ha visto dice que los miró de todas formas.</blockquote>
 
   <h2 class="sec">Los Primordiales — El Secreto</h2>
   <p>Los Primordiales son nexos con consciencia equivalente a la humana. No son animales inteligentes. Son otra clase de nexos. La Dra. Nora Vega lo descubrió durante el Evento Echonis. El Campeón Aldric tomó la decisión: enterrar la investigación, declarar a la Dra. Vega «desequilibrada», destruir los archivos, construir la paz sobre el secreto.</p>
@@ -125,6 +166,34 @@
       <tr><td>Los últimos conocidos</td><td>El nexo de Nora Vega (memoria del Evento). Uno en ruinas del Piélago. El nexo que sigue a Nix desde el Acto 1. Un grupo en Levante tratado como espíritus guardianes.</td></tr>
     </tbody>
   </table></div>
+
+  <div class="prim-card">
+    <div class="prim-id">Primordial conocido · I</div>
+    <div class="prim-name">El nexo de la Dra. Vega</div>
+    <p>Grande y lento. Su patrón de escamas tiene la misma forma que los símbolos que Mira (Gym 4) lleva años excavando — ninguno de los dos lo sabe todavía. La gente que no conoce la verdad lo llama «el viejo». Lleva 50 años con Nora Vega, voluntariamente. Tiene memoria completa del Evento Echonis. Cuando Nix lo conoce en el Acto 3, la reconoce de una forma que no puede ser comportamiento animal.</p>
+    <span class="prim-hook">«Está quieto. Siempre está quieto. Pero cuando llegaste, lo primero que hizo fue mirarte.» — Nora Vega</span>
+  </div>
+
+  <div class="prim-card">
+    <div class="prim-id">Primordial conocido · II</div>
+    <div class="prim-name">El guardián del Piélago</div>
+    <p>Vive en las ruinas bajo Piélago Central. Los turistas lo ven a través del cristal del museo y preguntan si es un nexo salvaje territorial. Los arqueólogos dicen que sí. Lleva años sin moverse voluntariamente. Cuando Nix visita las ruinas por primera vez (evento opcional, Acto 1), hace algo pequeño — no dramático — que solo tiene sentido mucho después. No bloquea el camino. Solo observa.</p>
+    <span class="prim-hook">Nadie le ha dado nombre porque nadie ha querido hacerlo. Nombrarlo implicaría preguntarse por qué sigue ahí.</span>
+  </div>
+
+  <div class="prim-card">
+    <div class="prim-id">Primordial conocido · III</div>
+    <div class="prim-name">El que sigue a Nix</div>
+    <p>Un nigromante pequeño. Aparece la primera noche de campamento, Acto 1. Nunca pide nada. Su presencia hace que los nexos de Nix duerman mejor — al amanecer tienen ligeramente más HP máximo si pasó la noche cerca. El jugador puede ignorarlo todo el juego. Si no lo ignora, en el Acto 3 se comunica una vez — no con palabras, pero el gesto es unmistakeable. El jugador que pasó tiempo con él lo entenderá inmediatamente. El que no, tardará un momento más.</p>
+    <span class="prim-hook">El mismo Primordial que faltaba del grupo de Levante. Un niño lo vio irse. Los adultos no lo mencionaron.</span>
+  </div>
+
+  <div class="prim-card">
+    <div class="prim-id">Primordial conocido · IV</div>
+    <div class="prim-name">El grupo de Levante</div>
+    <p>Cuatro o cinco. Viven en la zona alta de Levante, cerca del primer Gym. La comunidad les deja ofrendas y los llama «los guardianes del monte» sin entender del todo por qué. Los mayores saben la verdad — llevan décadas sabiéndola — pero nadie lo dice en voz alta porque no necesita decirse. En el Acto 2, uno falta. Un niño le dice a Nix: «El guardián del norte se fue ayer. Nunca lo había visto moverse.»</p>
+    <span class="prim-hook">En el Acto 4, si el jugador prestó atención, puede deducir adónde fue. No hay recompensa mecánica. Pero lo sabe.</span>
+  </div>
 
   <h2 class="sec">El Pacto de Nora — La Mentira Fundacional</h2>
   <p>La Dra. Nora Vega descubrió que los Primordiales poseían inteligencia equivalente a la humana. Aldric tomó la decisión: enterrar la investigación, declarar a Nora «desequilibrada», destruir los archivos, construir la paz sobre el secreto. Al final la gente no le creyó a Vega. Fue más fácil seguir cómodos. Ambos vienen de Levante. En Levante, enterrar la verdad tiene un nombre: traición a los muertos. Aldric lo sabe. Por eso no duerme.</p>
@@ -165,8 +234,8 @@
 
   <div class="region-block">
     <div class="region-title">Levante</div><div class="region-sub">La muerte como parte del ciclo. Dos formas de entenderla.</div>
-    <div class="gym"><div class="gnum">Gimnasio 1 · Levante</div><div class="gname">El Nigromante del Respeto</div><div class="gtag">«La muerte como acto de amor»</div>
-      <p>En Levante los muertos no desaparecen — permanecen mientras alguien los recuerde. Este líder lleva décadas siendo el puente entre vivos y muertos. Sus nexos fueron de personas que ya no están, y los trata como si esa persona siguiera ahí. La batalla se hace con música de cuerdas y velas encendidas. No es un combate — es una ofrenda.</p>
+    <div class="gym"><div class="gnum">Gimnasio 1 · Levante</div><div class="gname">El Nigromante del Respeto</div><div class="gtag">«La muerte como acto de amor» · Damián</div>
+      <p>En Levante los muertos no desaparecen — permanecen mientras alguien los recuerde. Damián lleva décadas siendo el puente entre vivos y muertos. Sus nexos fueron de personas que ya no están, y los trata como si esa persona siguiera ahí. La batalla se hace con música de cuerdas y velas encendidas. No es un combate — es una ofrenda. Diseño: mayor, ropa de luto con flores amarillas. Habla despacio. Nunca levanta la voz.</p>
       <div class="clash">Choque → ¿Los muertos merecen descanso o presencia? ¿Es el recuerdo un acto de amor o una forma de no dejarlos ir?</div>
     </div>
     <div class="gym"><div class="gnum">Gimnasio 2 · Levante</div><div class="gname">El Nigromante del Control</div><div class="gtag">«La muerte como herramienta»</div>
@@ -201,8 +270,8 @@
 
   <div class="region-block">
     <div class="region-title">Nora «la polvosa»</div><div class="region-sub">El desierto enseña. La pregunta es qué aprendiste.</div>
-    <div class="gym"><div class="gnum">Gimnasio 7 · Nora la Polvosa</div><div class="gname">El Norteño</div><div class="gtag">«El honor que nace de adentro»</div>
-      <p>Un hombre mayor que controla el comercio de nexos en el desierto con un código de honor propio. No roba. No miente. No permite que en su territorio se maltrate a un nexo. Su gym es su casa — la batalla en el patio trasero con toda la familia mirando. Después de perder, ofrece comida.</p>
+    <div class="gym"><div class="gnum">Gimnasio 7 · Nora la Polvosa</div><div class="gname">El Norteño</div><div class="gtag">«El honor que nace de adentro» · Don Macario</div>
+      <p>Controla el comercio de nexos en el desierto con un código de honor propio. No roba. No miente. No permite que en su territorio se maltrate a un nexo. Su gym es su casa — la batalla en el patio trasero con toda la familia mirando. Después de perder, ofrece comida. Diseño: sesenta y tantos, sombrero de palma desgastado, manos de alguien que ha trabajado toda la vida. Habla poco. Cuando habla, nadie interrumpe.</p>
       <div class="clash">Choque → ¿El honor es un valor interno o necesita estructura para existir? ¿Puede haber orden sin institución?</div>
     </div>
     <div class="gym"><div class="gnum">Gimnasio 8 · Nora la Polvosa</div><div class="gname">La Señora Vega</div><div class="gtag">«El orden cuando las reglas fallan»</div>
@@ -228,6 +297,42 @@
   <div class="finale"><div class="fin-id">FIN C</div><div><div class="fin-title">El Secreto</div><div class="fin-req">Requiere: arco de Kai completo</div><p>Kai confronta a su abuelo solo. El jugador lo ve desde una ventana sin audio. Aldric abraza a Kai — primera vez en el juego. Solo dice: «Continuará.» Kai gana. Se convierte en el nuevo Campeón con un power up completo y su mejor equipo posible. Ahora Nix debe enfrentarlo a él como el jefe final secreto de este final — la batalla más difícil del juego.</p></div></div>
   <div class="finale"><div class="fin-id">FIN D</div><div><div class="fin-title">Nigromante Bueno</div><div class="fin-req">Requiere: bond alto en Levante</div><p>Nix revela la verdad a través de la cultura de Levante. Los Primordiales son reconocidos como ancestros del mundo nexo. Levante se convierte en el centro espiritual del Piélago. El único final donde nadie llora en el epílogo.</p></div></div>
   <div class="finale"><div class="fin-id">FIN E</div><div><div class="fin-title">Nigromante Malo</div><div class="fin-req">Requiere: bond bajo constante</div><p>Nix expone la verdad y toma el control — no para liberar a los Primordiales sino para dominarlos. El final más poderoso en términos de juego. El más vacío. El nexo que siguió a Nix desde el Acto 1 no aparece en el epílogo.</p></div></div>
+
+  <h2 id="npcs" class="sec">NPCs Dinámicos — El Mundo Existe Sin Ti</h2>
+  <p>Cinco ejemplos concretos de NPCs que cambian entre actos. No informan al jugador de lo que pasó — muestran que el mundo siguió moviéndose. El jugador que presta atención lo nota. El que no, tiene una experiencia completa de todas formas.</p>
+
+  <div class="npc-change">
+    <div class="npc-who">El barista del Mercado del Piélago</div>
+    <div class="act-line"><span class="act-tag">Acto 1</span>«El archipiélago nunca ha sido tan próspero. La Liga lo garantiza.»</div>
+    <div class="act-line"><span class="act-tag">Acto 4</span>«Antes lo decía porque lo creía. Ahora lo digo por costumbre. No sé si eso es mejor o peor.»</div>
+  </div>
+
+  <div class="npc-change">
+    <div class="npc-who">El funcionario del registro (Escena 1.2)</div>
+    <div class="act-line"><span class="act-tag">Acto 1</span>Pausa al ver el apellido. Cambia de tema. No explica nada.</div>
+    <div class="act-line"><span class="act-tag">Acto 3</span>«Cuando llegues a la Torre... hay algo que deberías saber antes de entrar.» No termina la frase.</div>
+    <div class="act-line"><span class="act-tag">Acto 4</span>Está en la entrada de la Torre. No bloquea el paso. Solo mira.</div>
+  </div>
+
+  <div class="npc-change">
+    <div class="npc-who">Una anciana en Levante</div>
+    <div class="act-line"><span class="act-tag">Acto 2</span>«El Pacto fue una mentira. Los que estábamos aquí lo sabíamos. Nunca nos preguntaron.»</div>
+    <div class="act-line"><span class="act-tag">Fin A</span>«Lo dijiste. Costó. Pero lo dijiste.»</div>
+    <div class="act-line"><span class="act-tag">Fin B</span>«Entiendo por qué lo hiciste así. No estoy de acuerdo. Pero entiendo.»</div>
+  </div>
+
+  <div class="npc-change">
+    <div class="npc-who">El entrenador junior del Gym 1 (Levante)</div>
+    <div class="act-line"><span class="act-tag">Acto 2</span>«Algún día voy a ser tan bueno como Vael.»</div>
+    <div class="act-line"><span class="act-tag">Acto 4</span>«El día que Vael perdió contigo, algo cambió en él. Lleva semanas entrenando diferente.»</div>
+  </div>
+
+  <div class="npc-change">
+    <div class="npc-who">Un niño en Levante (zona alta, cerca de los Primordiales)</div>
+    <div class="act-line"><span class="act-tag">Acto 2</span>«El guardián del norte se fue ayer. Nunca lo había visto moverse.»</div>
+    <div class="act-line"><span class="act-tag">Acto 3</span>[El niño no está. Los adultos no mencionan la ausencia.]</div>
+    <div class="act-line"><span class="act-tag">Acto 4</span>«¡Volvió! No sé por qué, pero volvió.» — El Primordial III regresó al grupo después de seguir a Nix todo el viaje.</div>
+  </div>
 
   <h2 class="sec">Lo Que Este Juego Hace Diferente</h2>
   <ol class="dlist">
