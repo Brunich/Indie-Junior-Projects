@@ -3,508 +3,406 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXOS: FRACTURA — Biblia v1.4</title>
+<title>NEXOS: FRACTURA — Narrativa y Jugabilidad v1.4</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap');
-
-  :root {
-    --bg: #0d0d14;
-    --surface: #13131f;
-    --card: #1a1a2e;
-    --accent: #7c6af7;
-    --accent2: #c084fc;
-    --gold: #f59e0b;
-    --teal: #2dd4bf;
-    --danger: #f87171;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --border: #2d2d45;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Crimson Text', serif;
-    font-size: 18px;
-    line-height: 1.75;
-  }
-
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: rgba(13,13,20,0.94);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    z-index: 100;
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    height: 52px;
-  }
-  nav .brand {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    color: var(--accent);
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-  nav a {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--muted);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: color 0.2s;
-    white-space: nowrap;
-  }
-  nav a:hover { color: var(--accent2); }
-
-  .hero {
-    margin-top: 52px;
-    padding: 5rem 2rem 4rem;
-    text-align: center;
-    background: linear-gradient(160deg, #0d0d14 0%, #1a0d2e 50%, #0d1a2e 100%);
-    border-bottom: 1px solid var(--border);
-  }
-  .hero .tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-  .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--teal) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-  }
-  .hero .sub {
-    color: var(--muted);
-    font-size: 1rem;
-    font-family: 'Space Mono', monospace;
-    letter-spacing: 0.08em;
-    margin-bottom: 2rem;
-  }
-
-  .container { max-width: 860px; margin: 0 auto; padding: 3rem 2rem; }
-
-  .part-header {
-    text-align: center;
-    padding: 4rem 2rem 2rem;
-    border-top: 1px solid var(--border);
-  }
-  .part-header .part-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    color: var(--accent);
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  .part-header h2 { font-size: 2rem; font-weight: 600; }
-
-  h2.sec {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--accent2);
-    margin: 2.5rem 0 1rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  p { margin-bottom: 1rem; }
-
-  blockquote {
-    border-left: 3px solid var(--accent);
-    padding: 0.9rem 1.4rem;
-    margin: 1.5rem 0;
-    background: rgba(124,106,247,0.07);
-    border-radius: 0 8px 8px 0;
-    font-style: italic;
-    color: var(--accent2);
-    font-size: 1.05rem;
-  }
-
-  /* ── TABLE ── */
-  .tbl-wrap { overflow-x: auto; margin: 1.5rem 0; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-  th {
-    background: var(--card);
-    color: var(--accent);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.7rem 1rem;
-    text-align: left;
-    border-bottom: 2px solid var(--accent);
-  }
-  td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
-  tr:hover td { background: rgba(255,255,255,0.02); }
-  td:first-child { color: var(--gold); font-weight: 600; white-space: nowrap; }
-
-  /* ── PERSONAJE CARD ── */
-  .char-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin: 1.25rem 0;
-  }
-  .char-card .char-header {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.25rem;
-  }
-  .char-card .char-role {
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-style: italic;
-    margin-bottom: 1rem;
-    font-family: 'Space Mono', monospace;
-  }
-  .char-card p { font-size: 0.97rem; margin-bottom: 0.75rem; }
-  .char-card blockquote { margin: 0.75rem 0 0; font-size: 0.92rem; }
-
-  /* ── FINALE ── */
-  .finale {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.2rem 1.5rem;
-    margin: 0.9rem 0;
-    display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: 1rem;
-    align-items: start;
-  }
-  .finale .fin-id {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1.4;
-  }
-  .finale .fin-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.35rem; }
-  .finale .fin-req {
-    font-size: 0.75rem;
-    font-family: 'Space Mono', monospace;
-    color: var(--gold);
-    margin-bottom: 0.5rem;
-  }
-  .finale p { font-size: 0.94rem; margin: 0; color: var(--muted); }
-
-  /* ── BOND ── */
-  .bond-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0; }
-  .bond-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.25rem;
-  }
-  .bond-card.lo { border-top: 3px solid var(--danger); }
-  .bond-card.hi { border-top: 3px solid var(--teal); }
-  .bond-card .bl {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-  .bond-card.lo .bl { color: var(--danger); }
-  .bond-card.hi .bl { color: var(--teal); }
-  .bond-card p { font-size: 0.93rem; margin: 0; }
-
-  /* ── LIST ── */
-  .diff-list { list-style: none; margin: 1rem 0; }
-  .diff-list li {
-    padding: 0.6rem 0 0.6rem 2rem;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    font-size: 0.97rem;
-  }
-  .diff-list li::before {
-    content: counter(li);
-    counter-increment: li;
-    position: absolute;
-    left: 0;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--accent);
-    top: 0.65rem;
-  }
-  .diff-list { counter-reset: li; }
-
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 3rem 0; }
-
-  footer {
-    text-align: center;
-    padding: 3rem 2rem;
-    border-top: 1px solid var(--border);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-  }
-
-  @media (max-width: 600px) {
-    .bond-grid { grid-template-columns: 1fr; }
-    .finale { grid-template-columns: 1fr; }
-  }
+  :root{--bg:#0d0d14;--card:#1a1a2e;--accent:#7c6af7;--accent2:#c084fc;--gold:#f59e0b;--teal:#2dd4bf;--danger:#f87171;--text:#e2e8f0;--muted:#94a3b8;--border:#2d2d45}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Crimson Text',serif;font-size:18px;line-height:1.75}
+  nav{position:fixed;top:0;left:0;right:0;background:rgba(13,13,20,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:100;padding:0 2rem;display:flex;align-items:center;gap:1.5rem;height:52px;flex-wrap:wrap}
+  nav .brand{font-family:'Space Mono',monospace;font-size:.73rem;letter-spacing:.15em;color:var(--accent);text-transform:uppercase;white-space:nowrap}
+  nav a{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);text-decoration:none;text-transform:uppercase;letter-spacing:.08em;transition:color .2s;white-space:nowrap}
+  nav a:hover{color:var(--accent2)}
+  .hero{margin-top:52px;padding:5rem 2rem 3.5rem;text-align:center;background:linear-gradient(160deg,#0d0d14 0%,#1a0d2e 50%,#0d1a2e 100%);border-bottom:1px solid var(--border)}
+  .hero .tag{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:600;background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 50%,var(--teal) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin-bottom:.75rem}
+  .hero .sub{color:var(--muted);font-size:.95rem;font-family:'Space Mono',monospace;letter-spacing:.08em}
+  .part-header{text-align:center;padding:4rem 2rem 2rem;border-top:1px solid var(--border)}
+  .part-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.25em;color:var(--accent);text-transform:uppercase;display:block;margin-bottom:.5rem}
+  .part-header h2{font-size:2rem;font-weight:600}
+  .container{max-width:860px;margin:0 auto;padding:3rem 2rem}
+  h2.sec{font-size:1.5rem;font-weight:600;color:var(--accent2);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:1px solid var(--border)}
+  p{margin-bottom:1rem}
+  blockquote{border-left:3px solid var(--accent);padding:.9rem 1.4rem;margin:1.5rem 0;background:rgba(124,106,247,.07);border-radius:0 8px 8px 0;font-style:italic;color:var(--accent2);font-size:1.05rem}
+  .tbl-wrap{overflow-x:auto;margin:1.5rem 0}
+  table{width:100%;border-collapse:collapse;font-size:.93rem}
+  th{background:var(--card);color:var(--accent);font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:.7rem 1rem;text-align:left;border-bottom:2px solid var(--accent)}
+  td{padding:.75rem 1rem;border-bottom:1px solid var(--border);vertical-align:top}
+  tr:hover td{background:rgba(255,255,255,.02)}
+  td:first-child{color:var(--gold);font-weight:600}
+  .char-card{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--accent);border-radius:12px;padding:1.5rem;margin:1.25rem 0}
+  .char-card .ch{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+  .char-card .cr{font-size:.82rem;color:var(--muted);font-style:italic;margin-bottom:.9rem}
+  .char-card p{font-size:.96rem}
+  .char-card blockquote{font-size:.92rem;margin:.75rem 0 0}
+  .region-block{margin:2rem 0}
+  .region-title{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.2rem}
+  .region-sub{font-size:.9rem;color:var(--muted);font-style:italic;margin-bottom:1rem}
+  .gym{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin:1rem 0}
+  .gym .gnum{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
+  .gym .gname{font-size:1.15rem;font-weight:600;color:var(--text);margin-bottom:.15rem}
+  .gym .gtag{font-size:.85rem;color:var(--accent2);font-style:italic;margin-bottom:.75rem}
+  .gym p{font-size:.94rem}
+  .gym .clash{margin-top:.75rem;padding:.7rem 1rem;background:rgba(245,158,11,.07);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;font-size:.88rem;color:var(--gold);font-style:italic}
+  .finale{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.5rem;margin:.9rem 0;display:grid;grid-template-columns:80px 1fr;gap:1rem;align-items:start}
+  .fin-id{font-family:'Space Mono',monospace;font-size:.85rem;font-weight:700;color:var(--accent)}
+  .fin-title{font-size:1.05rem;font-weight:600;margin-bottom:.3rem}
+  .fin-req{font-size:.75rem;font-family:'Space Mono',monospace;color:var(--gold);margin-bottom:.4rem}
+  .finale p{font-size:.93rem;color:var(--muted);margin:0}
+  .bond-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:1.5rem 0}
+  .bond-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.25rem}
+  .bond-card.lo{border-top:3px solid var(--danger)}
+  .bond-card.hi{border-top:3px solid var(--teal)}
+  .bond-card .bl{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
+  .bond-card.lo .bl{color:var(--danger)}
+  .bond-card.hi .bl{color:var(--teal)}
+  .bond-card p{font-size:.92rem;margin:0}
+  ol.dlist{list-style:none;counter-reset:li;margin:1rem 0}
+  ol.dlist li{counter-increment:li;padding:.55rem 0 .55rem 2.5rem;border-bottom:1px solid var(--border);position:relative;font-size:.96rem}
+  ol.dlist li::before{content:counter(li);position:absolute;left:0;font-family:'Space Mono',monospace;font-size:.72rem;color:var(--accent);top:.65rem;width:1.5rem;text-align:right}
+  .act-header{background:linear-gradient(90deg,rgba(124,106,247,.13) 0%,transparent 100%);border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:2.5rem 0 1.5rem;border-radius:0 8px 8px 0}
+  .act-label{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.2rem}
+  .act-header h3{font-size:1.35rem;font-weight:600}
+  .scene{margin:1.5rem 0;padding-left:1.5rem;border-left:2px solid var(--border)}
+  .scene-label{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:.5rem}
+  .speaker{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
+  .dialogue{font-style:italic;color:var(--accent2);margin:.5rem 0;padding:.5rem 1rem;background:rgba(192,132,252,.07);border-radius:6px;font-size:.98rem}
+  .note{font-size:.88rem;color:var(--muted);font-style:italic;margin:.75rem 0;padding:.6rem 1rem;background:rgba(245,158,11,.06);border-left:2px solid var(--gold);border-radius:0 6px 6px 0}
+  .question{font-size:.88rem;color:var(--teal);margin:.5rem 0;padding:.5rem 1rem;background:rgba(45,212,191,.06);border-left:2px solid var(--teal);border-radius:0 6px 6px 0}
+  .question::before{content:"❓ "}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:3rem 0}
+  footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.1em}
+  @media(max-width:600px){.bond-grid{grid-template-columns:1fr}.finale{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <nav>
   <span class="brand">NEXOS: FRACTURA</span>
-  <a href="#promesa">Promesa</a>
-  <a href="#mundo">Mundo</a>
-  <a href="#personajes">Personajes</a>
-  <a href="#estructura">Estructura</a>
-  <a href="#finales">Finales</a>
+  <a href="#promesa">Promesa</a><a href="#mundo">Mundo</a><a href="#personajes">Personajes</a><a href="#gimnasios">Gimnasios</a><a href="#finales">Finales</a><a href="#guion">Guión</a>
 </nav>
 
 <header class="hero">
-  <p class="tag">IndieStudio Brunich · Biblia Resumida · v1.4</p>
+  <p class="tag">IndieStudio Brunich · v1.5</p>
   <h1>NEXOS: FRACTURA</h1>
-  <p class="sub">Continente: Piélago · Legendario: Echonis</p>
+  <p class="sub">Continente: Piélago &nbsp;·&nbsp; Legendario: Echonis</p>
 </header>
 
-<!-- ══════════════════════════════════
-     BIBLIA RESUMIDA
-══════════════════════════════════════ -->
+<div class="part-header"><span class="part-label">Parte I</span><h2>Narrativa y Jugabilidad</h2></div>
+
 <div class="container">
 
-  <!-- LA PROMESA -->
   <h2 id="promesa" class="sec">La Promesa</h2>
   <p>Este juego hace lo que ciertas compañías no quieren hacer.</p>
   <p>Un sistema construido sobre ideas culturales distintas y el choque de estas, y sobre la decisión de Nix, una chica de 17 años que tiene que decidir el rumbo de la región — si destruirlo, preservarlo, cambiarlo, o elegir alguna. Sus decisiones dejarán huella en el mundo y en los NPCs, cambiando su forma de pensar según tus acciones en cada paso por sus regiones.</p>
 
-  <!-- EL MUNDO -->
   <h2 id="mundo" class="sec">El Mundo — Continente Piélago</h2>
   <p>Un continente mediterráneo con un archipiélago central y regiones distintas entre sí. La Liga tiene su sede en el Piélago Central. Islas conectadas por teleférico, mercados ruidosos, volcanes dormidos en el norte.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Región</th><th>Tipo</th><th>Descripción</th></tr></thead>
+    <tbody>
+      <tr><td>Piélago Central</td><td>Capital continental</td><td>Hub principal. Torre del Campeón. Sede de la Liga. Sin gimnasios — es el inicio y el destino final.</td></tr>
+      <tr><td>Levante</td><td>Nigromantes</td><td>Origen de Nix y Nora Vega. Cultura de honra a los muertos. 2 gimnasios.</td></tr>
+      <tr><td>Coralia</td><td>Oceánica</td><td>Mar profundo, arrecifes. Lo que se ve en la superficie y lo que vive en el fondo. 2 gimnasios.</td></tr>
+      <tr><td>Zenera</td><td>Volcánica / Tecnológica</td><td>Corazón tecnológico de la Liga. Ruinas de civilización antigua. Lava y agua como energía. 2 gimnasios.</td></tr>
+      <tr><td>Nora «la polvosa»</td><td>Desierto</td><td>Inspirada en Reynosa y Tamaulipas. HONOR, RESPETO, MORAL. 2 gimnasios.</td></tr>
+    </tbody>
+  </table></div>
+  <p>8 gimnasios en total — 2 por cada región fuera del Piélago Central. Cada par representa las dos caras de la misma cultura: su utopía y su conflicto.</p>
 
-  <div class="tbl-wrap">
-    <table>
-      <thead>
-        <tr><th>Región</th><th>Tipo</th><th>Descripción + Gimnasios</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>El Piélago Central</td><td>Central</td><td>Zona inicial del juego. Cálido, mediterráneo. Sede de la Liga. 2 gimnasios: Tradición y Liga.</td></tr>
-        <tr><td>Levante</td><td>Nigromantes</td><td>Origen de Nix y Nora Vega. 2 gimnasios: Nigromante del Respeto a los muertos y Nigromante del Control.</td></tr>
-        <tr><td>Coralia</td><td>Oceánica</td><td>Mar profundo, arrecifes. 2 gimnasios: El Arrecife y El Abismo.</td></tr>
-        <tr><td>Zenera</td><td>Volcánica</td><td>Tecnología de la Liga. 2 gimnasios: La Forja en el volcán y Las Ruinas de civilización antigua usando lava y agua para energía.</td></tr>
-        <tr><td>Nora «la polvosa»</td><td>Desierto</td><td>Inspirada en Reynosa y Tamaulipas. HONOR, RESPETO, MORAL. 2 gimnasios: Gimnasio Mafioso y Gimnasio Norteño.</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p>Cada región tiene 2 gimnasios que representan las dos caras de su cultura. El jugador entiende la utopía y el conflicto de cada región a través de sus líderes.</p>
-
-  <!-- ECHONIS -->
   <h2 class="sec">Echonis — El Legendario</h2>
-  <p>Echonis no ataca. No destruye. Absorbe parte de los recuerdos de los seres vivos y muertos de su alrededor y los redistribuye por un tiempo. Solo lo hace permanente a ciertos individuos o nexos elegidos: los Primordiales.</p>
-  <p>Echonis lo hace con cierta intención de tener compañeros parecidos a él, pero también para que los nexos igualen sus posibilidades ante la ventaja humana.</p>
-  <p>En el juego, Echonis es un jefe pero no el final. Aparece en silencio, en momentos clave de la historia. Su sola presencia hace que los nexos del equipo se comporten diferente según su vínculo con el jugador.</p>
-  <p><strong>Efecto en el mundo:</strong> cuando Echonis aparece en una región, los nexos salvajes de toda esa zona aumentan su nivel temporalmente. Las rutas se vuelven más peligrosas. El jugador lo nota sin que nadie lo explique.</p>
+  <p>Echonis no ataca. No destruye. Absorbe parte de los recuerdos de los seres vivos y muertos de su alrededor y los redistribuye por un tiempo. Solo lo hace permanente a ciertos individuos o nexos elegidos: los Primordiales. Lo hace con cierta intención de tener compañeros parecidos a él, pero también para que los nexos igualen sus posibilidades ante la ventaja humana.</p>
+  <p>En el juego, Echonis no es el jefe final. Aparece en silencio en momentos clave. Su sola presencia hace que los nexos del equipo se comporten diferente según su vínculo con el jugador. Cuando aparece en una región, los nexos salvajes de esa zona suben de nivel sin explicación.</p>
 
-  <!-- LOS PRIMORDIALES -->
   <h2 class="sec">Los Primordiales — El Secreto</h2>
-  <p>Los Primordiales son nexos con consciencia equivalente a la humana. No son animales inteligentes. Son otra clase de nexos.</p>
-  <p>La Dra. Nora Vega descubrió durante el Evento Echonis que ciertos nexos — los Primordiales — poseían inteligencia equivalente a la humana. No eran animales inteligentes. Eran otra clase de personas.</p>
-  <p>El Campeón Aldric tomó la decisión: enterrar la investigación para evitar que el conflicto destruyera el Archipiélago. Declaró a la Dra. Vega «desequilibrada», destruyó los archivos, y construyó la paz sobre el secreto.</p>
+  <p>Los Primordiales son nexos con consciencia equivalente a la humana. No son animales inteligentes. Son otra clase de nexos. La Dra. Nora Vega lo descubrió durante el Evento Echonis. El Campeón Aldric tomó la decisión: enterrar la investigación, declarar a la Dra. Vega «desequilibrada», destruir los archivos, construir la paz sobre el secreto.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>El Secreto</th><th></th></tr></thead>
+    <tbody>
+      <tr><td>¿Cuántos quedan?</td><td>Muy pocos. Algunos fueron «estudiados» por la Liga y nunca regresaron. Los que quedan viven en zonas alejadas con humanos que saben la verdad.</td></tr>
+      <tr><td>¿Por qué nadie los entiende?</td><td>Se comunican con señas y comportamientos que la gente interpreta como «comportamiento animal avanzado». Solo quien los conoce de verdad entiende que es lenguaje.</td></tr>
+      <tr><td>El secreto real</td><td>La gente no quiere entenderlo. Es más fácil pensar «qué listo está hoy» que aceptar lo que eso implica.</td></tr>
+      <tr><td>Los últimos conocidos</td><td>El nexo de Nora Vega (memoria del Evento). Uno en ruinas del Piélago. El nexo que sigue a Nix desde el Acto 1. Un grupo en Levante tratado como espíritus guardianes.</td></tr>
+    </tbody>
+  </table></div>
 
-  <div class="tbl-wrap">
-    <table>
-      <thead>
-        <tr><th>El Secreto</th><th></th></tr>
-      </thead>
-      <tbody>
-        <tr><td>¿Cuántos quedan?</td><td>Muy pocos. El Evento creó un primer grupo hace 50 años. Algunos fueron «estudiados» por la Liga y nunca regresaron. Los que quedan libres viven en lugares alejados con humanos que saben la verdad.</td></tr>
-        <tr><td>¿Por qué nadie los entiende?</td><td>Los Primordiales no hablan el idioma humano. Se comunican con señas, comportamientos, formas de actuar que la gente interpreta como «comportamiento animal avanzado». Solo quien los conoce de verdad entiende que es lenguaje.</td></tr>
-        <tr><td>El secreto real</td><td>La gente no quiere entenderlo. Es más fácil ver un nexo inteligente y pensar «qué listo está hoy» que aceptar lo que eso implica.</td></tr>
-        <tr><td>Los últimos conocidos</td><td>El nexo de Nora Vega (memoria de todo el Evento). Un nexo primordial en ruinas del Piélago. Un nexo que sigue a Nix desde el Acto 1. Un grupo pequeño en Levante tratado como espíritus guardianes.</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- EL PACTO -->
   <h2 class="sec">El Pacto de Nora — La Mentira Fundacional</h2>
-  <p>La Dra. Nora Vega descubrió durante el Evento que los Primordiales poseían inteligencia equivalente a la humana. El Campeón Aldric tomó la decisión: enterrar la investigación. Declaró a Nora Vega «desequilibrada», destruyó los archivos, construyó la paz sobre el secreto.</p>
-  <p>Al final la gente no le creyó a Vega. Fue más fácil seguir cómodos, y creer que sin pruebas no había nada que hacer.</p>
-  <p>Ambos vienen de Levante. En Levante, enterrar la verdad tiene un nombre: traición a los muertos. Aldric lo sabe. Por eso no duerme.</p>
+  <p>La Dra. Nora Vega descubrió que los Primordiales poseían inteligencia equivalente a la humana. Aldric tomó la decisión: enterrar la investigación, declarar a Nora «desequilibrada», destruir los archivos, construir la paz sobre el secreto. Al final la gente no le creyó a Vega. Fue más fácil seguir cómodos. Ambos vienen de Levante. En Levante, enterrar la verdad tiene un nombre: traición a los muertos. Aldric lo sabe. Por eso no duerme.</p>
   <blockquote>«El villano tiene razón en algo importante. Su método fue terrible. Su motivación era comprensible. Eso es lo que hace difícil derrotarlo.»</blockquote>
 
-  <!-- BOND -->
   <h2 class="sec">Sistema de Vínculo — Bond Score</h2>
-  <p>El vínculo es un extra — no rompe el balance. Afecta el combate de forma real pero no es obligatorio optimizarlo.</p>
-
+  <p>El vínculo es un extra — no rompe el balance. Afecta el combate de forma real pero no es obligatorio optimizarlo. El jugador lo descubre por el comportamiento del nexo, no por tutorial.</p>
   <div class="bond-grid">
-    <div class="bond-card lo">
-      <div class="bl">Bond Bajo (&lt;30) — Fuerza sin control</div>
-      <p>Los ataques hacen más daño. Pero el nexo se daña a sí mismo al final de cada turno. No es incorrecto jugar así. Pero lo notas.</p>
-    </div>
-    <div class="bond-card hi">
-      <div class="bl">Bond Alto (&gt;70) — Confianza y precisión</div>
-      <p>Menos probabilidad de fallar. Velocidad aumentada. HP máximo aumentado ligeramente. Gestos únicos en animaciones. Agregar recompensa si se mantiene así hasta cierto nivel.</p>
-    </div>
+    <div class="bond-card lo"><div class="bl">Bond Bajo (&lt;30) — Fuerza sin control</div><p>Los ataques hacen más daño. Pero el nexo se daña a sí mismo al final de cada turno. No es incorrecto jugar así. Pero lo notas.</p></div>
+    <div class="bond-card hi"><div class="bl">Bond Alto (&gt;70) — Confianza y precisión</div><p>Menos probabilidad de fallar. Velocidad aumentada. HP máximo aumentado ligeramente. Gestos únicos en animaciones. Recompensa si se mantiene alto sostenidamente.</p></div>
   </div>
+  <p><strong>Dificultad:</strong> Hay 2 jefes «imbatibles» en la historia — el curso normal es perder. Si el jugador los derrota, el juego sube la dificultad hasta el siguiente jefe imbatible. Sin menú de dificultad — se construye con las decisiones, perseverancia e inteligencia del jugador.</p>
 
-  <blockquote>El jugador lo descubre por el comportamiento del nexo, no por tutorial.</blockquote>
-
-  <p><strong>Dificultad:</strong> Hay personajes en la historia que son más desarrollados que Nix en 2 puntos de la historia — podrían considerarse jefes imbatibles. El curso normal es perder ante ellos. Si el jugador los derrota, el juego registra que está superando su nivel esperado y ajusta la dificultad hacia arriba en todos los encuentros futuros hasta el siguiente jefe imbatible, para ver si la conservas. Sin menú de dificultad — se construye con las decisiones, perseverancia e inteligencia del jugador.</p>
-
-  <!-- PERSONAJES -->
   <h2 id="personajes" class="sec">Personajes Principales</h2>
-
   <div class="char-card">
-    <div class="char-header">Nix · 17 años · Levante</div>
-    <div class="char-role">Protagonista</div>
-    <p>Inteligente, curiosa, mala con los timings. Su filtro social no funciona — dice lo que piensa y da más detalles de lo necesario, dice exactamente lo que piensa en el peor momento posible, con personajes principales solamente. En batalla cambia, se calla: sabe que es buena y disfruta resolver problemas cuando es a base de peleas, puesto que siempre gana. Orgullo genuino en cómo enfrenta rivales difíciles (habrá un comentario diferente a partir de las especificaciones del equipo del jugador). Sin sueños predefinidos — el jugador los elige sin darse cuenta. Llegó al Piélago Central de niña cuando se firmó el Pacto.</p>
-    <p><em>Mecánica: antes de cada boss, el jugador elige entre varias frases. Todas son imprudentes. Solo cambia ese intercambio, no la historia principal.</em></p>
+    <div class="ch">Nix · 17 años · Levante</div><div class="cr">Protagonista</div>
+    <p>Inteligente, curiosa, mala con los timings. Su filtro social no funciona — dice exactamente lo que piensa en el peor momento posible, con personajes principales solamente. En batalla cambia, se calla: sabe que es buena y disfruta resolver problemas. Orgullo genuino en cómo enfrenta rivales difíciles. Sin sueños predefinidos — el jugador los elige sin darse cuenta. Llegó al Piélago Central de niña cuando se firmó el Pacto.</p>
+    <p><em>Mecánica: antes de cada boss, el jugador elige entre varias frases imprudentes. Solo cambia ese intercambio, no la historia principal.</em></p>
   </div>
-
   <div class="char-card">
-    <div class="char-header">Kai · 18 años · Piélago Central (criado)</div>
-    <div class="char-role">Rival</div>
-    <p>Nieto de Aldric. Se conocen desde la infancia — crecieron en el mismo barrio. No son extraños; son dos personas que se conocen demasiado bien. Entrenado para ser Campeón, aunque nunca lo ha querido. Su nexo compañero es de Levante, con alta sensibilidad a las emociones. El nexo claramente lo conoce y le preocupa más de lo que Kai admite.</p>
-    <p>Lo que Kai no sabe: su nexo es un eco creado con energía de Echonis — el original murió hace 15 años.</p>
+    <div class="ch">Kai · 18 años · Piélago Central (criado)</div><div class="cr">Rival</div>
+    <p>Nieto de Aldric. Se conocen desde la infancia — crecieron en el mismo barrio. Entrenado para ser Campeón, aunque nunca lo ha querido. Su nexo compañero es de Levante, con alta sensibilidad a las emociones. Lo que Kai no sabe: su nexo es un eco creado con energía de Echonis — el original murió hace 15 años.</p>
     <blockquote>«Mi nexo lleva semanas sin dormir bien. No sé qué ve cuando me mira.»</blockquote>
   </div>
-
   <div class="char-card">
-    <div class="char-header">Aldric · 67 años · Levante</div>
-    <div class="char-role">Campeón / Antagonista</div>
-    <p>El hombre más controlado del juego. 50 años como Campeón. Lleva 10 años buscando a alguien a quien pasarle la responsabilidad de decidir qué hacer con la verdad. Diseño: canas plateadas impecables, ropa oscura con detalle dorado, siempre lleva guantes (cicatrices). Su nexo-espada nunca está en su cápsula — flota siempre detrás y a la izquierda.</p>
+    <div class="ch">Aldric · 67 años · Levante</div><div class="cr">Campeón / Antagonista</div>
+    <p>El hombre más controlado del juego. 50 años como Campeón. Lleva 10 años buscando a alguien a quien pasarle la responsabilidad. Diseño: canas plateadas impecables, ropa oscura con detalle dorado, siempre lleva guantes. Su nexo-espada nunca está en su cápsula — flota siempre detrás y a la izquierda.</p>
     <blockquote>«Sí, enterré la verdad. Piélago existe porque tomé esa decisión.»</blockquote>
   </div>
-
   <div class="char-card">
-    <div class="char-header">Dra. Nora Vega · 67 años · Levante</div>
-    <div class="char-role">La Abuela</div>
+    <div class="ch">Dra. Nora Vega · 67 años · Levante</div><div class="cr">La Abuela</div>
     <p>Acto 1: una historia. Acto 2: notas y fragmentos. Acto 3: está viva. 50 años en una isla con nexos Primordiales que eligieron quedarse con ella. Su nexo principal tiene memoria de todo el Evento. Cuando Nix lo conoce, la reconoce de una forma que no puede ser coincidencia.</p>
     <blockquote>«No vine a darte respuestas. Vine a asegurarme de que tenías las preguntas correctas.»</blockquote>
   </div>
 
-  <!-- ESTRUCTURA -->
-  <h2 id="estructura" class="sec">Estructura — 10 Gimnasios en 4 Actos</h2>
+  <h2 id="gimnasios" class="sec">Los 8 Gimnasios — Choque Cultural por Región</h2>
+  <p>8 gimnasios — 2 por cada región fuera del Piélago Central. No son obstáculos: son la historia de cada cultura vista desde sus dos caras. El jugador no elige bando, los vive a ambos.</p>
 
-  <div class="tbl-wrap">
-    <table>
-      <thead>
-        <tr><th>Acto</th><th>Descripción</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Acto 1<br>Piélago Central<br>2 gimnasios</td>
-          <td>El juego parece un juego de nexos normal. Kai ya aparece — se conocen desde siempre. Las señales son sutiles: alguien cambia el tema al mencionar a la abuela de Nix, el líder del primer gimnasio nombra el Pacto de Nora con algo raro en la voz, un nexo nigromante aparece la primera noche y desaparece al amanecer.</td>
-        </tr>
-        <tr>
-          <td>Acto 2<br>Levante + Zenera<br>4 gimnasios</td>
-          <td>Nix sale del Piélago Central. En Levante, el líder del Gimnasio 3 la mira raro: «Eres de aquí, ¿verdad? Aunque no lo sepas.» En Zenera, el Gimnasio 6 revela: «Echonis estuvo aquí. Los nexos de esta zona nunca fueron los mismos.» Kai le pregunta «¿Por qué peleas?» y luego: «Yo tampoco sé.»</td>
-        </tr>
-        <tr>
-          <td>Acto 3<br>Coralia + Nora la Polvosa<br>4 gimnasios</td>
-          <td>En Coralia, el Gimnasio 8 dice: «Hay un nexo en el fondo que lleva décadas esperando.» En Nora la polvosa, la líder del Clan lleva el apellido Vega — no es coincidencia. Nix encuentra a Nora. Kai descubre la verdad de su abuelo por separado. El jugador no ve esa escena. Solo sus consecuencias.</td>
-        </tr>
-        <tr>
-          <td>Acto 4<br>Torre del Campeón<br>0 gimnasios</td>
-          <td>Aldric no se defiende. Cuenta todo. La batalla más difícil: sus nexos son de los más fuertes — no quieren que él pierda. Su nexo-espada desobedece por primera vez en el turno final para protegerlo. Aldric dice «No.» El nexo baja el escudo.</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="region-block">
+    <div class="region-title">Levante</div><div class="region-sub">La muerte como parte del ciclo. Dos formas de entenderla.</div>
+    <div class="gym"><div class="gnum">Gimnasio 1 · Levante</div><div class="gname">El Nigromante del Respeto</div><div class="gtag">«La muerte como acto de amor»</div>
+      <p>En Levante los muertos no desaparecen — permanecen mientras alguien los recuerde. Este líder lleva décadas siendo el puente entre vivos y muertos. Sus nexos fueron de personas que ya no están, y los trata como si esa persona siguiera ahí. La batalla se hace con música de cuerdas y velas encendidas. No es un combate — es una ofrenda.</p>
+      <div class="clash">Choque → ¿Los muertos merecen descanso o presencia? ¿Es el recuerdo un acto de amor o una forma de no dejarlos ir?</div>
+    </div>
+    <div class="gym"><div class="gnum">Gimnasio 2 · Levante</div><div class="gname">El Nigromante del Control</div><div class="gtag">«La muerte como herramienta»</div>
+      <p>Un hombre que pasó años siendo ignorado. Descubrió en la nigromancia un poder que nadie más podía arrebatarle. Sus nexos no lo siguen — lo obedecen. No es cruel: es frío. Silencio absoluto. Sus nexos tienen niveles altísimos. Si Nix lo derrota, no dice nada durante 5 segundos. Luego: «¿Cómo lo hiciste?» — y es una pregunta genuina.</p>
+      <div class="clash">Choque → El poder como respuesta al miedo de ser ignorado. ¿El control sobre los muertos es profanación o simplemente otra forma de honrarlos?</div>
+    </div>
   </div>
 
-  <!-- FINALES -->
+  <div class="region-block">
+    <div class="region-title">Zenera</div><div class="region-sub">El progreso que avanza. La civilización que ya existía y sabía algo que olvidamos.</div>
+    <div class="gym"><div class="gnum">Gimnasio 3 · Zenera</div><div class="gname">La Forja</div><div class="gtag">«La tecnología como evolución del vínculo»</div>
+      <p>Diseñador de cápsulas mejoradas para la Liga. Su gym está en el volcán activo de Zenera. Sus nexos son los más resistentes del juego hasta ese punto. Tiene una teoría que casi nadie escucha: «Las cápsulas no los contienen. Los duermen.»</p>
+      <div class="clash">Choque → ¿El progreso tecnológico mejora la relación con los nexos o la convierte en algo más eficiente pero más vacío?</div>
+    </div>
+    <div class="gym"><div class="gnum">Gimnasio 4 · Zenera</div><div class="gname">Las Ruinas</div><div class="gtag">«Lo que existía antes que la Liga»</div>
+      <p>Arqueóloga que lleva años excavando ruinas de una civilización anterior al Evento Echonis. Su gym es una excavación activa. Después de que Nix gana: «Echonis estuvo aquí. Los nexos de esta zona nunca fueron los mismos.» Le da a Nix un fragmento con marcas que no son del idioma actual.</p>
+      <div class="clash">Choque → ¿El progreso de la Liga reemplazó algo que funcionaba mejor? ¿Avanzar siempre significa mejorar?</div>
+    </div>
+  </div>
+
+  <div class="region-block">
+    <div class="region-title">Coralia</div><div class="region-sub">Lo que vive en la superficie y lo que duerme en el fondo.</div>
+    <div class="gym"><div class="gnum">Gimnasio 5 · Coralia</div><div class="gname">El Arrecife</div><div class="gtag">«El mar que todos pueden ver»</div>
+      <p>Jovial, directo, extremadamente bueno en su trabajo. Lleva años protegiendo los arrecifes de entrenadores que explotan a sus nexos. Su gym parece una excursión — hay luz, color, turistas mirando. Cuando pierde, celebra a Nix con genuino entusiasmo. Representa la cara amable del mar: el intercambio, la convivencia.</p>
+      <div class="clash">Choque → El mar como recurso compartido vs el mar como mundo propio que no nos pertenece.</div>
+    </div>
+    <div class="gym"><div class="gnum">Gimnasio 6 · Coralia</div><div class="gname">El Abismo</div><div class="gtag">«Lo que vive donde nadie llega»</div>
+      <p>Una mujer que lleva décadas buceando a profundidades que ningún humano debería alcanzar. Habla poco. Su gym está en el fondo marino — se llega solo con equipo que ella provee. Tiene un nexo que lleva décadas esperando a alguien. Cuando Nix llega, el nexo la mira diferente.</p>
+      <div class="clash">Choque → ¿Hay nexos que no deberían ser atrapados? ¿El abismo es un mundo o un recurso?</div>
+    </div>
+  </div>
+
+  <div class="region-block">
+    <div class="region-title">Nora «la polvosa»</div><div class="region-sub">El desierto enseña. La pregunta es qué aprendiste.</div>
+    <div class="gym"><div class="gnum">Gimnasio 7 · Nora la Polvosa</div><div class="gname">El Norteño</div><div class="gtag">«El honor que nace de adentro»</div>
+      <p>Un hombre mayor que controla el comercio de nexos en el desierto con un código de honor propio. No roba. No miente. No permite que en su territorio se maltrate a un nexo. Su gym es su casa — la batalla en el patio trasero con toda la familia mirando. Después de perder, ofrece comida.</p>
+      <div class="clash">Choque → ¿El honor es un valor interno o necesita estructura para existir? ¿Puede haber orden sin institución?</div>
+    </div>
+    <div class="gym"><div class="gnum">Gimnasio 8 · Nora la Polvosa</div><div class="gname">La Señora Vega</div><div class="gtag">«El orden cuando las reglas fallan»</div>
+      <p>Lleva el apellido Vega. No es coincidencia. Dirige el clan más poderoso de Nora la Polvosa con una mezcla de respeto, miedo y lealtad genuina. Su gym no parece un gym — parece una negociación. La batalla más larga hasta ese punto, sin música épica, solo el viento del desierto. Cuando Nix gana: «Tienes el apellido correcto para hacer lo que hay que hacer.» Pausa. «Igual que tu abuela.»</p>
+      <div class="clash">Choque → ¿Qué diferencia al norteño del mafioso? Los dos tienen código. Los dos tienen lealtad. Los dos protegen a los suyos. La respuesta no es simple.</div>
+    </div>
+  </div>
+
+  <h2 class="sec">Estructura — 4 Actos</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Acto</th><th>Zona</th><th>Descripción</th></tr></thead>
+    <tbody>
+      <tr><td>Acto 1</td><td>Piélago Central</td><td>El juego parece normal. Kai ya aparece. Señales sutiles: alguien cambia el tema al mencionar a la abuela de Nix, un NPC nombra el Pacto de Nora con algo raro en la voz, un nexo nigromante aparece la primera noche y desaparece al amanecer.</td></tr>
+      <tr><td>Acto 2</td><td>Levante + Zenera (G1–G4)</td><td>Nix sale del Piélago. En Levante: «Eres de aquí, ¿verdad? Aunque no lo sepas.» En Zenera el Gym 4 revela que Echonis estuvo ahí. Kai pregunta «¿Por qué peleas?» — y admite que él tampoco sabe.</td></tr>
+      <tr><td>Acto 3</td><td>Coralia + Nora la Polvosa (G5–G8)</td><td>En el Abismo (Gym 6), un nexo lleva décadas esperando. En Nora la Polvosa, la Señora Vega dice el apellido correcto. Nix encuentra a Nora Vega — está viva. Kai descubre la verdad de su abuelo por separado. El jugador no ve esa escena.</td></tr>
+      <tr><td>Acto 4</td><td>Torre del Campeón (Piélago Central)</td><td>Aldric no se defiende. Cuenta todo. La batalla más difícil: su nexo-espada desobedece por primera vez para protegerlo. Aldric dice «No.» El nexo baja el escudo. El jugador elige.</td></tr>
+    </tbody>
+  </table></div>
+
   <h2 id="finales" class="sec">Los Cinco Finales</h2>
+  <div class="finale"><div class="fin-id">FIN A</div><div><div class="fin-title">La Fractura</div><p>Nix hace pública la información. Crisis, caos, honestidad por primera vez en 50 años. Kai es defensor legal de derechos de nexos. Aldric da declaraciones.</p></div></div>
+  <div class="finale"><div class="fin-id">FIN B</div><div><div class="fin-title">El Muro</div><p>Nix guarda los archivos. Le da a Aldric un año para cambiar el sistema desde adentro. Más lento, podría fallar. Aldric duerme bien por primera vez en 50 años.</p></div></div>
+  <div class="finale"><div class="fin-id">FIN C</div><div><div class="fin-title">El Secreto</div><div class="fin-req">Requiere: arco de Kai completo</div><p>Kai confronta a su abuelo solo. El jugador lo ve desde una ventana sin audio. Aldric abraza a Kai — primera vez en el juego. Solo dice: «Continuará.» Kai gana. Se convierte en el nuevo Campeón con un power up completo y su mejor equipo posible. Ahora Nix debe enfrentarlo a él como el jefe final secreto de este final — la batalla más difícil del juego.</p></div></div>
+  <div class="finale"><div class="fin-id">FIN D</div><div><div class="fin-title">Nigromante Bueno</div><div class="fin-req">Requiere: bond alto en Levante</div><p>Nix revela la verdad a través de la cultura de Levante. Los Primordiales son reconocidos como ancestros del mundo nexo. Levante se convierte en el centro espiritual del Piélago. El único final donde nadie llora en el epílogo.</p></div></div>
+  <div class="finale"><div class="fin-id">FIN E</div><div><div class="fin-title">Nigromante Malo</div><div class="fin-req">Requiere: bond bajo constante</div><p>Nix expone la verdad y toma el control — no para liberar a los Primordiales sino para dominarlos. El final más poderoso en términos de juego. El más vacío. El nexo que siguió a Nix desde el Acto 1 no aparece en el epílogo.</p></div></div>
 
-  <div class="finale">
-    <div class="fin-id">FIN A</div>
-    <div>
-      <div class="fin-title">La Fractura</div>
-      <p>Nix hace pública la información. Crisis, caos, honestidad por primera vez en 50 años. Kai es defensor legal de derechos de nexos. Aldric da declaraciones.</p>
-    </div>
-  </div>
-
-  <div class="finale">
-    <div class="fin-id">FIN B</div>
-    <div>
-      <div class="fin-title">El Muro</div>
-      <p>Nix guarda los archivos. Le da a Aldric un año para cambiar el sistema desde adentro. Más lento, podría fallar. Aldric duerme bien por primera vez en 50 años.</p>
-    </div>
-  </div>
-
-  <div class="finale">
-    <div class="fin-id">FIN C</div>
-    <div>
-      <div class="fin-title">El Secreto</div>
-      <div class="fin-req">Requiere: arco de Kai completo</div>
-      <p>Kai confronta a su abuelo solo. El jugador lo ve desde una ventana sin audio. Aldric abraza a Kai — primera vez en el juego. Solo dice: «Continuará.» Extra: power up a Kai, batalla final con full power.</p>
-    </div>
-  </div>
-
-  <div class="finale">
-    <div class="fin-id">FIN D</div>
-    <div>
-      <div class="fin-title">Nigromante Bueno</div>
-      <div class="fin-req">Requiere: bond alto en Levante</div>
-      <p>Nix revela la verdad a través de la cultura de Levante: los Primordiales son reconocidos como ancestros del mundo nexo. Levante se convierte en el centro espiritual del Piélago. El único final donde nadie llora en el epílogo.</p>
-    </div>
-  </div>
-
-  <div class="finale">
-    <div class="fin-id">FIN E</div>
-    <div>
-      <div class="fin-title">Nigromante Malo</div>
-      <div class="fin-req">Requiere: bond bajo constante</div>
-      <p>Nix expone la verdad y toma el control — no para liberar a los Primordiales sino para dominar los nexos más poderosos. El final más poderoso en términos de juego. El más vacío. El nexo que siguió a Nix desde el Acto 1 no aparece en el epílogo.</p>
-    </div>
-  </div>
-
-  <!-- LO QUE HACE DIFERENTE -->
   <h2 class="sec">Lo Que Este Juego Hace Diferente</h2>
-
-  <ol class="diff-list">
+  <ol class="dlist">
     <li>Un villano con razón en algo. Aldric no está equivocado en todo. Eso hace todo más difícil.</li>
-    <li>Nexos con agencia real. Algunos no quieren ser capturados. Hay un pequeño debuff al inicio si fuerzas la captura. No es gran penalización, pero lo notas.</li>
+    <li>Nexos con agencia real. Algunos no quieren ser capturados. Hay un pequeño debuff al inicio si fuerzas la captura.</li>
     <li>Sistema de vínculo como extra. No rompe el balance. Es una capa más, no un requisito para ganar.</li>
     <li>Rival con arco propio. Kai tiene una historia que no depende de Nix. Su confrontación con Aldric ocurre sin que el jugador la controle.</li>
-    <li>Finales con consecuencias reales. No «todos fueron felices». Cosas mejoraron. Otras costaron algo. Cada final es distinto.</li>
-    <li>Protagonista inteligente. Nix no es un personaje sin pasado. El jugador puede elegir varios de los caminos que podría tomar para su región.</li>
+    <li>Finales con consecuencias reales. No «todos fueron felices». Cosas mejoraron. Otras costaron algo.</li>
+    <li>Protagonista inteligente. Nix no es un personaje sin pasado. El jugador elige varios de los caminos que podría tomar.</li>
     <li>El mundo existe sin ti. NPCs cambian entre actos. El barista del Acto 1 piensa diferente en el Acto 4.</li>
-    <li>Los gimnasios cuentan la cultura. No son obstáculos — son la historia de cada región. Los dos gimnasios de Levante representan dos formas de ver la muerte.</li>
+    <li>Los gimnasios cuentan la cultura. No son obstáculos — son la historia de cada región y su choque interno.</li>
   </ol>
 
+  <blockquote style="max-width:60ch;margin:3rem auto 0;font-size:1.1rem;">«Mi abuela dedicó su vida a demostrar que los nexos podían pensar. El mundo decidió que era más fácil no creerle. Yo no sé si tenía razón. Pero sé que nadie debería ser borrada por hacer una pregunta.»<br><br><span style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);">— Nix, Acto 3</span></blockquote>
+</div>
+
+<div id="guion" class="part-header"><span class="part-label">Parte II</span><h2>Guión de Historia</h2></div>
+
+<div class="container">
+  <p style="color:var(--muted);font-style:italic;">Esqueleto narrativo escena por escena — base para desarrollo en código. Notas en amarillo: ideas a desarrollar. Preguntas en verde: decisiones de diseño sin resolver.</p>
+
+  <div class="act-header"><div class="act-label">Acto 1 · Piélago Central</div><h3>El juego parece un juego normal</h3></div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 1.1 · Apertura · Mercado del Piélago</div>
+    <p>El juego abre sin cutscene larga. Nix ya está en el mercado con control inmediato. Kai aparece antes de que el jugador lo busque — en la misma esquina de siempre, mirando el mar.</p>
+    <div class="speaker">KAI</div><div class="dialogue">«Llegaste tarde. Como siempre.»</div>
+    <p>No es un insulto. Es un saludo entre personas que se conocen demasiado. El jugador elige respuesta — todas son versiones de lo mismo.</p>
+    <div class="note">El tono de esta primera escena define toda la relación Nix-Kai. Tiene que sentirse como dos personas que comparten historia, no como protagonista conociendo al rival.</div>
+    <div class="question">¿Kai sabe ya que es nieto del Campeón, o lo descubrirá durante el juego? ¿Cómo afecta eso a cómo habla de su abuelo en el Acto 1?</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 1.2 · Registro de la Liga</div>
+    <p>El funcionario hace una pausa al ver el apellido de Nix. Cambia el tema. Nadie lo nota. Un NPC nombra el Pacto de Nora con algo raro en la voz.</p>
+    <div class="question">¿Nix nota la pausa del funcionario? ¿Hace un comentario imprudente ahí, o lo guarda para después?</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 1.3 · La primera noche</div>
+    <p>Un nexo nigromante aparece fuera del campamento. No ataca. La mira. Desaparece al amanecer. El juego no lo señala — no hay tutorial, no hay exclamación.</p>
+    <div class="note">Este es el nexo que seguirá a Nix todo el juego. El jugador puede ignorarlo completamente. Si lo hace, no estará en el epílogo del Fin E.</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 1.4 · Conversación de noche · Antes del Gym 1</div>
+    <div class="speaker">KAI</div><div class="dialogue">«¿Por qué peleas? En serio. No el motivo que dices en los registros.»</div>
+    <div class="speaker">NIX</div><div class="dialogue">«¿Tú lo sabes?»</div>
+    <div class="speaker">KAI</div><div class="dialogue">«Yo tampoco sé. Pero tú pareces que sí.»</div>
+    <p>Pausa. Nix no responde. Corte a negro.</p>
+    <div class="note">Esta escena tiene que sentirse como confesión mutua, no como diálogo de exposición.</div>
+  </div>
+
+  <div class="act-header"><div class="act-label">Acto 2 · Levante + Zenera</div><h3>El origen — Nix no sabe de dónde viene</h3></div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 2.1 · Llegada a Levante</div>
+    <div class="speaker">HABITANTE DE LEVANTE</div><div class="dialogue">«Eres de aquí, ¿verdad? Aunque no lo sepas.»</div>
+    <p>Por primera vez en el juego, Nix no tiene respuesta imprudente lista.</p>
+    <div class="question">¿Este NPC la conoce a ella, conoce a su abuela, o simplemente reconoce algo en su forma de moverse/hablar?</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 2.2 · Gym 1 · El Nigromante del Respeto</div>
+    <p>El líder prepara una ofrenda. Le ofrece a Nix hacerlo también. Si el jugador pone la ofrenda:</p>
+    <div class="speaker">LÍDER GYM 1</div><div class="dialogue">«Ya sabía que ibas a hacer eso. Tu abuela hacía lo mismo.»</div>
+    <div class="note">Primera confirmación explícita de que Nora Vega estuvo en Levante. Tiene peso aunque Nix no lo diga en voz alta.</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 2.3 · Las notas de Nora</div>
+    <p>En Levante, Nix encuentra el primer fragmento de investigación de la Dra. Nora Vega. Un fragmento técnico, lleno de borrones. Una frase subrayada:</p>
+    <div class="speaker">FRAGMENTO — DRA. NORA VEGA</div><div class="dialogue">«Si pueden elegir quedarse, no son animales. Esa es la pregunta que nadie quiere hacerse.»</div>
+    <div class="question">¿Cuántos fragmentos hay en total? ¿Uno por región? ¿Se pueden coleccionar todos o solo los que encuentras de forma natural?</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 2.4 · Gym 2 · El Nigromante del Control</div>
+    <p>Vael no da discurso previo. Empieza sin palabras. Si Nix gana:</p>
+    <div class="speaker">VAEL</div><div class="dialogue">«¿Cómo lo hiciste?»</div>
+    <p>No es un cumplido. Es una pregunta genuina.</p>
+    <div class="note">El jugador puede responder con varias opciones — cada respuesta cambia cómo Vael aparece en el epílogo.</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 2.5 · Gym 4 · Las Ruinas — Mira</div>
+    <div class="speaker">MIRA</div><div class="dialogue">«Echonis estuvo aquí. Los nexos de esta zona nunca fueron los mismos.»</div>
+    <p>Le da a Nix un fragmento de piedra con marcas que no son del idioma actual. «No sé leerlo. Quizás tú sí.»</p>
+    <div class="question">¿Este fragmento tiene función mecánica o solo narrativa? ¿Se conecta con los Primordiales de forma específica?</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 2.6 · Kai · Segunda aparición · Zenera</div>
+    <div class="speaker">KAI</div><div class="dialogue">«Mi nexo lleva semanas sin dormir bien. No sé qué ve cuando me mira.»</div>
+    <p>No pide respuesta. Propone una batalla. El nexo de Kai, después del combate, se queda mirando hacia el horizonte.</p>
+    <div class="note">Momento donde el jugador debería empezar a sospechar que el nexo de Kai no es normal — sin que nadie lo diga.</div>
+  </div>
+
+  <div class="act-header"><div class="act-label">Acto 3 · Coralia + Nora la Polvosa</div><h3>La verdad — todo lleva al mismo lugar</h3></div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 3.1 · Gym 6 · El Abismo — Zara</div>
+    <p>En el fondo del Abismo, el nexo que «lleva décadas esperando» mira a Nix directamente. No como un nexo mira a un entrenador. Como una persona mira a alguien que reconoce.</p>
+    <div class="speaker">ZARA</div><div class="dialogue">«¿Lo sientes? Eso. Eso es lo que lleva décadas sintiendo.»</div>
+    <div class="note">Este nexo es un Primordial. Es el primero que Nix ve de cerca. El jugador no lo sabe todavía.</div>
+    <div class="question">¿Este Primordial tiene relación directa con Nora Vega? ¿La conoció? ¿O reconoce el apellido/la energía de Nix?</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 3.2 · Gym 8 · La Señora Vega</div>
+    <div class="speaker">LA SEÑORA VEGA</div><div class="dialogue">«Tienes el apellido correcto para hacer lo que hay que hacer.»</div>
+    <p>Pausa larga.</p>
+    <div class="speaker">LA SEÑORA VEGA</div><div class="dialogue">«Igual que tu abuela.»</div>
+    <p>Sin música épica. Solo el viento del desierto.</p>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 3.3 · La isla · Nix encuentra a Nora Vega</div>
+    <p>Sin fanfarria. Nix llega y Nora está sentada, esperando.</p>
+    <div class="speaker">NORA VEGA</div><div class="dialogue">«Tardaste.»</div>
+    <div class="speaker">NIX</div><div class="dialogue">«Eso me dicen mucho.»</div>
+    <p>Los nexos Primordiales rodean a Nora. Uno se acerca a Nix.</p>
+    <div class="speaker">NORA VEGA</div><div class="dialogue">«No vine a darte respuestas. Vine a asegurarme de que tenías las preguntas correctas.»</div>
+    <div class="note">La escena más importante fuera del Acto 4. Nora cuenta todo — el Evento, Aldric, la decisión, por qué no regresó. El jugador elige cuántas preguntas hace Nix.</div>
+    <div class="question">¿Nora sabe lo del nexo de Kai (que es un eco de Echonis)? Si lo sabe, ¿se lo dice a Nix?</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 3.4 · Kai · Su descubrimiento (fuera de cámara)</div>
+    <p>El jugador no ve esta escena. Solo ve las consecuencias: Kai llega a la Torre antes que Nix. Está sentado afuera.</p>
+    <div class="speaker">KAI</div><div class="dialogue">«Ya sé qué veía mi nexo cuando me miraba.»</div>
+    <p>No dice más.</p>
+    <div class="note">Una de las decisiones más importantes: no mostrar la escena de Kai con Aldric. Solo las consecuencias. Hay que confiar en que el jugador lo entiende.</div>
+  </div>
+
+  <div class="act-header"><div class="act-label">Acto 4 · Torre del Campeón</div><h3>Aldric — La batalla más difícil</h3></div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 4.1 · El ascenso</div>
+    <p>La Torre tiene 4 pisos. Cada piso es un miembro del Consejo. No hay diálogo relevante — es un obstáculo.</p>
+    <div class="question">¿Los miembros del Consejo saben la verdad? ¿Alguno intenta detener a Nix genuinamente o solo por protocolo?</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 4.2 · Aldric — La Confesión</div>
+    <p>Aldric está frente a la ventana. Su nexo-espada flota detrás y a la izquierda.</p>
+    <div class="speaker">ALDRIC</div><div class="dialogue">«Sí, enterré la verdad. Piélago existe porque tomé esa decisión.»</div>
+    <p>No se defiende. Cuenta todo. La investigación de Nora. Los Primordiales. El Pacto.</p>
+    <div class="speaker">ALDRIC</div><div class="dialogue">«Llevo 10 años buscando a alguien a quien pasarle esto. No esperaba que fuera su nieta.»</div>
+    <div class="note">Si el jugador no entiende por qué Aldric lo hizo — aunque sepa que estuvo mal — el juego falla en su promesa central.</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 4.3 · La batalla final</div>
+    <p>En el momento crítico, el nexo-espada desobedece — se pone frente a Aldric para protegerlo.</p>
+    <div class="speaker">ALDRIC</div><div class="dialogue">«No.»</div>
+    <p>El nexo lo mira. Pausa larga. Baja el escudo. Aldric pierde — no porque Nix sea más fuerte, sino porque su nexo decidió que era suficiente.</p>
+    <div class="note">El nexo-espada de Aldric también es un Primordial. Lleva 50 años con él. Conoce la verdad. Ha esperado este momento. Tiene que sentirse sin que nadie lo diga.</div>
+    <div class="question">¿El nexo-espada de Aldric tiene nombre propio? ¿O es mejor que sea siempre «el nexo de Aldric»?</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-label">Escena 4.4 · La Decisión</div>
+    <p>El juego entrega el control final al jugador. No hay opción obvia. Cada elección tiene sentido. Cada elección tiene un costo.</p>
+    <div class="note">Pendiente: definir qué opciones aparecen en pantalla. No pueden nombrar los finales — tienen que ser decisiones naturales de Nix.</div>
+    <div class="question">¿El Fin C requiere que el jugador haya hecho algo específico antes de llegar aquí, o la opción simplemente no aparece si Kai no completó su arco?</div>
+  </div>
+
   <div class="divider"></div>
-
-  <blockquote style="font-size:1.15rem; max-width:60ch; margin:0 auto;">
-    «Mi abuela dedicó su vida a demostrar que los nexos podían pensar. El mundo decidió que era más fácil no creerle. Yo no sé si tenía razón. Pero sé que nadie debería ser borrada por hacer una pregunta.»
-    <br><br>
-    <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--muted);">— Nix, Acto 3</span>
-  </blockquote>
-
+  <p style="color:var(--muted);font-style:italic;text-align:center;font-size:.9rem;">Guión v1.4 — Esqueleto base. Expandir con diálogos completos en la siguiente fase.</p>
 </div>
 
 <footer>
-  <p>NEXOS: FRACTURA · Biblia de Historia v1.4</p>
-  <p style="margin-top:0.4rem;">IndieStudio Brunich · 2026</p>
+  <p>NEXOS: FRACTURA · Narrativa y Jugabilidad v1.5</p>
+  <p style="margin-top:.4rem;">IndieStudio Brunich · 2026</p>
 </footer>
-
 </body>
 </html>
