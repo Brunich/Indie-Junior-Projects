@@ -1,0 +1,28 @@
+{
+  "background": "res://sprites/escenas/region_maps/cinder_village_map.png",
+  "world_size": [1024, 1024],
+  "camera_zoom": [0.6, 0.6],
+  "spawns": {
+    "default": [518, 748],
+    "from_demo": [518, 748]
+  },
+  "walkable_zones": [
+    { "id": "piso_central", "x": 80, "y": 100, "w": 860, "h": 860 }
+  ],
+  "collisions": [
+    { "id": "bloque_cama", "x": 729, "y": 325, "w": 190, "h": 150 },
+    { "id": "bloque_cocina", "x": 330, "y": 144, "w": 420, "h": 124 },
+    { "id": "bloque_escritorio", "x": 98, "y": 475, "w": 196, "h": 122 }
+  ],
+  "warps": [
+    {
+      "id": "salida_demo",
+      "x": 487,
+      "y": 825,
+      "w": 54,
+      "h": 30,
+      "target_scene": "res://escenas/overworld/reynosa_imported_demo.tscn",
+      "target_spawn": "house_exit"
+    }
+  ]
+}

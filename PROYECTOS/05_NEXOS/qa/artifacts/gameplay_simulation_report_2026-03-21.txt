@@ -1,0 +1,260 @@
+SIMULACION GAMEPLAY LOCAL
+Pasadas: 2
+Timeout por escena: 30 s
+
+=== Compilacion ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+=== PASADA 1 ===
+-- Guardado manual --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+SaveSystem: Save file deleted
+SaveSystem: Game saved successfully to user://emberveil_save.json
+SaveSystem: Game loaded successfully from user://emberveil_save.json
+GameManager: Loaded save data
+SaveSystem: Save file deleted
+MANUAL_SAVE_PROBE ok scene=res://escenas/overworld/route1.tscn pos=(448.0, 608.0)
+
+-- Cambio de equipo --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+PARTY_SWITCH_PROBE ok frente=Embral
+
+-- Huida de batalla --
+RESULTADO: ADVERTENCIA
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+BATTLE_RUN_PROBE ok escena=res://escenas/overworld/route1.tscn pos=(160.0, 544.0)
+
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+
+-- Encuentros solo en pasto --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+GRASS_ONLY_PROBE ok
+
+-- Ruta Reynosa-Monterrey --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+WORLD_PATH_PROBE ok area_monterrey=382976
+
+-- Mapa importado --
+RESULTADO: ADVERTENCIA
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+IMPORTED_MAP_PROBE target=res://escenas/overworld/reynosa_imported_house.tscn spawn=from_demo
+
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+
+-- Entrada de casa --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+HOUSE_ENTRY_PROBE scene=res://qa/house_entry_probe.tscn
+
+-- Salida de casa --
+RESULTADO: ADVERTENCIA
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+HOUSE_EXIT_PROBE target=res://escenas/overworld/overworld.tscn spawn=nana_house_exit
+
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+
+-- Dialogo con NPC --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+NPC_DIALOGUE_PROBE ok
+
+-- Movimiento NPC --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+NPC_WANDER_PROBE ok dir=(0.0, 0.0) moved=5.40
+
+-- Captura con catnip --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+InventorySystem: Added 2x Catnip tigre
+InventorySystem: Removed 1x Catnip tigre
+CATNIP_CAPTURE_PROBE in_battle=false party=2 caught=["folimp"]
+
+-- Derrota y respawn --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+SaveSystem: Save file deleted
+DEFEAT_RESPAWN_PROBE ok scene=res://escenas/overworld/reynosa_clinic.tscn spawn=default
+
+-- Clinica y PC --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+CLINIC_PC_PROBE ok party=2 storage=0
+
+-- Objeto dirigido en batalla --
+RESULTADO: FALLA
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+BATTLE_ITEM_TARGET_PROBE ready
+InventorySystem: Removed 1x Suero rojo
+BATTLE_ITEM_TARGET_PROBE ok reserve_hp=22 potions=1
+
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+ERROR: 2 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:795)
+
+-- Olvido de tecnica --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+MOVE_FORGET_PROBE ok level=14 moves=["Fire Punch", "Ember", "Bite", "Slash"]
+
+=== PASADA 2 ===
+-- Guardado manual --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+SaveSystem: Save file deleted
+SaveSystem: Game saved successfully to user://emberveil_save.json
+SaveSystem: Game loaded successfully from user://emberveil_save.json
+GameManager: Loaded save data
+SaveSystem: Save file deleted
+MANUAL_SAVE_PROBE ok scene=res://escenas/overworld/route1.tscn pos=(448.0, 608.0)
+
+-- Cambio de equipo --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+PARTY_SWITCH_PROBE ok frente=Embral
+
+-- Huida de batalla --
+RESULTADO: ADVERTENCIA
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+BATTLE_RUN_PROBE ok escena=res://escenas/overworld/route1.tscn pos=(160.0, 544.0)
+
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+
+-- Encuentros solo en pasto --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+GRASS_ONLY_PROBE ok
+
+-- Ruta Reynosa-Monterrey --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+WORLD_PATH_PROBE ok area_monterrey=382976
+
+-- Mapa importado --
+RESULTADO: ADVERTENCIA
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+IMPORTED_MAP_PROBE target=res://escenas/overworld/reynosa_imported_house.tscn spawn=from_demo
+
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+
+-- Entrada de casa --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+HOUSE_ENTRY_PROBE scene=res://qa/house_entry_probe.tscn
+
+-- Salida de casa --
+RESULTADO: ADVERTENCIA
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+HOUSE_EXIT_PROBE target=res://escenas/overworld/overworld.tscn spawn=nana_house_exit
+
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+
+-- Dialogo con NPC --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+NPC_DIALOGUE_PROBE ok
+
+-- Movimiento NPC --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+NPC_WANDER_PROBE ok dir=(0.0, 0.0) moved=9.00
+
+-- Captura con catnip --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+InventorySystem: Added 2x Catnip tigre
+InventorySystem: Removed 1x Catnip tigre
+CATNIP_CAPTURE_PROBE in_battle=false party=2 caught=["folimp"]
+
+-- Derrota y respawn --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+SaveSystem: Save file deleted
+DEFEAT_RESPAWN_PROBE ok scene=res://escenas/overworld/reynosa_clinic.tscn spawn=default
+
+-- Clinica y PC --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+CLINIC_PC_PROBE ok party=2 storage=0
+
+-- Objeto dirigido en batalla --
+RESULTADO: FALLA
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+BATTLE_ITEM_TARGET_PROBE ready
+InventorySystem: Removed 1x Suero rojo
+BATTLE_ITEM_TARGET_PROBE ok reserve_hp=23 potions=1
+
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+ERROR: 2 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:795)
+
+-- Olvido de tecnica --
+RESULTADO: OK
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+MOVE_FORGET_PROBE ok level=14 moves=["Fire Punch", "Ember", "Bite", "Slash"]
+
+=== RESUMEN ===
+Guardado manual: ok=2 advertencias=0 fallas=0 timeout=0
+Cambio de equipo: ok=2 advertencias=0 fallas=0 timeout=0
+Huida de batalla: ok=0 advertencias=2 fallas=0 timeout=0
+Encuentros solo en pasto: ok=2 advertencias=0 fallas=0 timeout=0
+Ruta Reynosa-Monterrey: ok=2 advertencias=0 fallas=0 timeout=0
+Mapa importado: ok=0 advertencias=2 fallas=0 timeout=0
+Entrada de casa: ok=2 advertencias=0 fallas=0 timeout=0
+Salida de casa: ok=0 advertencias=2 fallas=0 timeout=0
+Dialogo con NPC: ok=2 advertencias=0 fallas=0 timeout=0
+Movimiento NPC: ok=2 advertencias=0 fallas=0 timeout=0
+Captura con catnip: ok=2 advertencias=0 fallas=0 timeout=0
+Derrota y respawn: ok=2 advertencias=0 fallas=0 timeout=0
+Clinica y PC: ok=2 advertencias=0 fallas=0 timeout=0
+Objeto dirigido en batalla: ok=0 advertencias=0 fallas=2 timeout=0
+Sugerencia: Revisar BattleManager.on_player_used_item y el flujo de retorno a Phase.PLAYER_TURN.
+Olvido de tecnica: ok=2 advertencias=0 fallas=0 timeout=0
+
+Criterio:
+- OK: sin errores ni warnings en la pasada.
+- ADVERTENCIA: termino, pero dejo warnings en salida.
+- FALLA: hubo error de script o runtime.
+- TIMEOUT: no termino dentro del tiempo esperado; suele indicar cuelgue o espera no resuelta.

@@ -1,0 +1,139 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://codigo/overworld/image_overworld_map.gd" id="1_map"]
+[ext_resource type="Texture2D" path="res://sprites/escenas/region_maps/village_concept_bg.png" id="2_bg"]
+[ext_resource type="Script" path="res://codigo/overworld/image_map_rect.gd" id="3_rect"]
+[ext_resource type="Script" path="res://codigo/overworld/image_encounter_zone.gd" id="4_enc"]
+[ext_resource type="Script" path="res://codigo/overworld/overworld_controller.gd" id="5_oc"]
+[ext_resource type="Script" path="res://codigo/overworld/warp_zone.gd" id="6_wz"]
+[ext_resource type="Script" path="res://codigo/overworld/dialogue_box.gd" id="7_db"]
+[ext_resource type="PackedScene" path="res://escenas/ui/game_menu.tscn" id="8_gm"]
+[ext_resource type="Script" path="res://codigo/overworld/npc_controller.gd" id="9_npc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_house_warp"]
+size = Vector2(48, 28)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_npc"]
+radius = 7.0
+height = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interact"]
+size = Vector2(28, 28)
+
+[node name="ReynosaStaticDemo" type="Node2D"]
+y_sort_enabled = true
+
+[node name="StaticMap" type="Node2D" parent="."]
+script = ExtResource("1_map")
+background_texture = ExtResource("2_bg")
+world_size = Vector2i(1024, 1024)
+preferred_camera_zoom = Vector2(0.52, 0.52)
+
+[node name="Background" type="Sprite2D" parent="StaticMap"]
+
+[node name="Spawns" type="Node2D" parent="StaticMap"]
+
+[node name="default" type="Marker2D" parent="StaticMap/Spawns"]
+position = Vector2(312, 742)
+
+[node name="house_exit" type="Marker2D" parent="StaticMap/Spawns"]
+position = Vector2(546, 752)
+
+[node name="Collisions" type="Node2D" parent="StaticMap"]
+
+[node name="north_block" type="Node2D" parent="StaticMap/Collisions"]
+position = Vector2(512, 124)
+script = ExtResource("3_rect")
+size = Vector2(820, 180)
+
+[node name="west_bank" type="Node2D" parent="StaticMap/Collisions"]
+position = Vector2(168, 536)
+script = ExtResource("3_rect")
+size = Vector2(180, 660)
+
+[node name="east_bank" type="Node2D" parent="StaticMap/Collisions"]
+position = Vector2(882, 544)
+script = ExtResource("3_rect")
+size = Vector2(180, 672)
+
+[node name="house_mass" type="Node2D" parent="StaticMap/Collisions"]
+position = Vector2(642, 462)
+script = ExtResource("3_rect")
+size = Vector2(158, 126)
+
+[node name="EncounterZones" type="Node2D" parent="StaticMap"]
+
+[node name="river_reeds" type="Node2D" parent="StaticMap/EncounterZones"]
+position = Vector2(384, 610)
+script = ExtResource("4_enc")
+size = Vector2(120, 110)
+
+[node name="OverworldController" type="Node" parent="."]
+script = ExtResource("5_oc")
+zone_name = "reynosa_static_demo"
+
+[node name="npc_border_guard" type="CharacterBody2D" parent="."]
+position = Vector2(458, 650)
+script = ExtResource("9_npc")
+npc_id = "elder_brix"
+npc_display_name = "Brix"
+wander_range = 0.0
+wander_speed = 0.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="npc_border_guard"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_border_guard"]
+shape = SubResource("CapsuleShape2D_npc")
+
+[node name="interact_area" type="Area2D" parent="npc_border_guard"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_border_guard/interact_area"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="exclaim_label" type="Label" parent="npc_border_guard"]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -8.0
+text = "!"
+
+[node name="warp_house" type="Area2D" parent="."]
+script = ExtResource("6_wz")
+target_scene = "res://escenas/overworld/reynosa_static_house.tscn"
+target_spawn = "from_demo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warp_house"]
+position = Vector2(644, 524)
+shape = SubResource("RectangleShape2D_house_warp")
+
+[node name="dialogue_box" type="CanvasLayer" parent="."]
+script = ExtResource("7_db")
+
+[node name="panel" type="PanelContainer" parent="dialogue_box"]
+anchor_top = 0.74
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="margin" type="MarginContainer" parent="dialogue_box/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="label" type="RichTextLabel" parent="dialogue_box/panel/margin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+bbcode_enabled = true
+fit_content = true
+text = ""
+
+[node name="arrow" type="Label" parent="dialogue_box/panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -18.0
+offset_right = -4.0
+offset_bottom = -2.0
+text = "v"
+
+[node name="GameMenu" parent="." instance=ExtResource("8_gm")]

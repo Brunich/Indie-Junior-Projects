@@ -1,0 +1,190 @@
+[gd_scene load_steps=8 format=3 uid="uid://game_menu_ui"]
+
+[ext_resource type="Script" path="res://codigo/ui/game_menu.gd"      id="1_gm"]
+[ext_resource type="Script" path="res://codigo/ui/party_screen.gd"   id="2_ps"]
+[ext_resource type="Script" path="res://codigo/ui/stats_screen.gd"   id="3_ss"]
+[ext_resource type="Script" path="res://codigo/ui/pokedex_screen.gd" id="4_px"]
+[ext_resource type="Script" path="res://codigo/ui/items_screen.gd" id="5_it"]
+[ext_resource type="Script" path="res://codigo/ui/save_screen.gd" id="6_sv"]
+
+[node name="GameMenu" type="CanvasLayer"]
+script = ExtResource("1_gm")
+layer = 5
+
+[node name="root_panel" type="Panel" parent="."]
+anchor_left  = 1.0
+anchor_right = 2.0
+anchor_top   = 0.0
+anchor_bottom = 1.0
+
+[node name="layout" type="VBoxContainer" parent="root_panel"]
+anchor_right  = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 8
+
+[node name="tab_bar" type="HBoxContainer" parent="root_panel/layout"]
+custom_minimum_size = Vector2(0, 42)
+theme_override_constants/separation = 6
+
+[node name="tab_party" type="Button" parent="root_panel/layout/tab_bar"]
+text = "EQUIPO"
+toggle_mode = true
+size_flags_horizontal = 3
+
+[node name="tab_pokedex" type="Button" parent="root_panel/layout/tab_bar"]
+text = "REGISTRO"
+toggle_mode = true
+size_flags_horizontal = 3
+
+[node name="tab_items" type="Button" parent="root_panel/layout/tab_bar"]
+text = "BOLSA"
+toggle_mode = true
+size_flags_horizontal = 3
+
+[node name="tab_save" type="Button" parent="root_panel/layout/tab_bar"]
+text = "GUARDAR"
+toggle_mode = true
+size_flags_horizontal = 3
+
+[node name="screens" type="Control" parent="root_panel/layout"]
+size_flags_vertical = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="party_screen" type="Control" parent="root_panel/layout/screens"]
+script = ExtResource("2_ps")
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="scroll" type="ScrollContainer" parent="root_panel/layout/screens/party_screen"]
+anchor_left   = 0.0
+anchor_top    = 0.0
+anchor_right  = 0.57
+anchor_bottom = 1.0
+
+[node name="slot_container" type="VBoxContainer" parent="root_panel/layout/screens/party_screen/scroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="summary_panel" type="VBoxContainer" parent="root_panel/layout/screens/party_screen"]
+anchor_left   = 0.61
+anchor_top    = 0.0
+anchor_right  = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 8
+
+[node name="sprite" type="TextureRect" parent="root_panel/layout/screens/party_screen/summary_panel"]
+custom_minimum_size = Vector2(0, 120)
+stretch_mode = 2
+expand_mode  = 1
+
+[node name="name_label" type="Label" parent="root_panel/layout/screens/party_screen/summary_panel"]
+text = "Creature"
+
+[node name="nickname_lbl" type="Label" parent="root_panel/layout/screens/party_screen/summary_panel"]
+
+[node name="level_label" type="Label" parent="root_panel/layout/screens/party_screen/summary_panel"]
+text = "Lv. 1"
+
+[node name="hp_bar" type="ProgressBar" parent="root_panel/layout/screens/party_screen/summary_panel"]
+show_percentage = false
+
+[node name="hp_txt" type="Label" parent="root_panel/layout/screens/party_screen/summary_panel"]
+text = "0 / 0 HP"
+
+[node name="status_label" type="Label" parent="root_panel/layout/screens/party_screen/summary_panel"]
+
+[node name="btn_stats" type="Button" parent="root_panel/layout/screens/party_screen/summary_panel"]
+text = "Ver ficha"
+
+[node name="btn_swap" type="Button" parent="root_panel/layout/screens/party_screen/summary_panel"]
+text = "Mover lugar"
+
+[node name="btn_heal" type="Button" parent="root_panel/layout/screens/party_screen/summary_panel"]
+text = "Curar (debug)"
+
+[node name="pokedex_screen" type="Control" parent="root_panel/layout/screens"]
+script = ExtResource("4_px")
+anchor_right  = 1.0
+anchor_bottom = 1.0
+visible = false
+
+[node name="layout" type="HSplitContainer" parent="root_panel/layout/screens/pokedex_screen"]
+anchor_right  = 1.0
+anchor_bottom = 1.0
+
+[node name="grid_view" type="VBoxContainer" parent="root_panel/layout/screens/pokedex_screen/layout"]
+size_flags_horizontal = 3
+
+[node name="filter_bar" type="HBoxContainer" parent="root_panel/layout/screens/pokedex_screen/layout/grid_view"]
+custom_minimum_size = Vector2(0, 32)
+
+[node name="search" type="LineEdit" parent="root_panel/layout/screens/pokedex_screen/layout/grid_view/filter_bar"]
+placeholder_text = "Buscar..."
+size_flags_horizontal = 3
+
+[node name="count_label" type="Label" parent="root_panel/layout/screens/pokedex_screen/layout/grid_view"]
+text = "Vistas: 0  Vinculadas: 0 / 12"
+
+[node name="scroll" type="ScrollContainer" parent="root_panel/layout/screens/pokedex_screen/layout/grid_view"]
+size_flags_vertical = 3
+
+[node name="grid" type="GridContainer" parent="root_panel/layout/screens/pokedex_screen/layout/grid_view/scroll"]
+columns = 4
+
+[node name="detail_view" type="HBoxContainer" parent="root_panel/layout/screens/pokedex_screen/layout"]
+visible = false
+
+[node name="left" type="VBoxContainer" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view"]
+custom_minimum_size = Vector2(130, 0)
+
+[node name="sprite" type="TextureRect" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view/left"]
+custom_minimum_size = Vector2(120, 120)
+stretch_mode = 2
+expand_mode  = 1
+
+[node name="number" type="Label" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view/left"]
+text = "#001"
+
+[node name="name_label" type="Label" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view/left"]
+text = "Name"
+
+[node name="category" type="Label" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view/left"]
+
+[node name="type_row" type="HBoxContainer" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view/left"]
+
+[node name="seen_txt" type="Label" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view/left"]
+text = "SIN REGISTRO"
+
+[node name="flavor" type="HBoxContainer" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view/left"]
+
+[node name="right" type="VBoxContainer" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view"]
+size_flags_horizontal = 3
+
+[node name="desc" type="Label" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view/right"]
+autowrap_mode = 3
+
+[node name="stats" type="VBoxContainer" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view/right"]
+
+[node name="evol_chain" type="HBoxContainer" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view/right"]
+
+[node name="btn_prev" type="Button" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view/right"]
+text = "◀ Antes"
+
+[node name="btn_next_entry" type="Button" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view/right"]
+text = "Sigue ▶"
+
+[node name="btn_back" type="Button" parent="root_panel/layout/screens/pokedex_screen/layout/detail_view/right"]
+text = "← Volver a la lista"
+
+[node name="items_screen" type="Control" parent="root_panel/layout/screens"]
+script = ExtResource("5_it")
+anchor_right  = 1.0
+anchor_bottom = 1.0
+visible = false
+
+[node name="save_screen" type="Control" parent="root_panel/layout/screens"]
+script = ExtResource("6_sv")
+anchor_right  = 1.0
+anchor_bottom = 1.0
+visible = false

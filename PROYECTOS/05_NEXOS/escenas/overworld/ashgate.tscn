@@ -1,0 +1,304 @@
+[gd_scene load_steps=17 format=3 uid="uid://ashgatescene"]
+
+[ext_resource type="Script" path="res://codigo/overworld/ashgate_map.gd" id="1_am"]
+[ext_resource type="Script" path="res://codigo/overworld/overworld_controller.gd" id="2_oc"]
+[ext_resource type="Script" path="res://codigo/overworld/warp_zone.gd" id="3_wz"]
+[ext_resource type="Script" path="res://codigo/overworld/dialogue_box.gd" id="4_db"]
+[ext_resource type="PackedScene" path="res://escenas/ui/game_menu.tscn" id="5_gm"]
+[ext_resource type="Script" path="res://codigo/overworld/npc_controller.gd" id="6_npc"]
+[ext_resource type="Script" path="res://codigo/overworld/interaction_trigger.gd" id="7_it"]
+[ext_resource type="Script" path="res://codigo/overworld/service_trigger.gd" id="8_st"]
+[ext_resource type="PackedScene" path="res://escenas/ui/city_service_menu.tscn" id="9_sm"]
+[ext_resource type="Script" path="res://codigo/overworld/world_prop.gd" id="10_wp"]
+[ext_resource type="Texture2D" path="res://sprites/escenas/region_maps/village_concept_bg.png" id="11_bg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_warp"]
+size = Vector2(112, 24)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_npc"]
+radius = 7.0
+height = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interact"]
+size = Vector2(28, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_service"]
+size = Vector2(36, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_route2_warp"]
+size = Vector2(24, 96)
+
+[node name="Ashgate" type="Node2D"]
+y_sort_enabled = true
+
+[node name="backdrop" type="Sprite2D" parent="."]
+position = Vector2(704, 544)
+scale = Vector2(1.18, 1.18)
+modulate = Color(1, 1, 1, 0.12)
+texture = ExtResource("11_bg")
+
+[node name="RouteMap" type="TileMapLayer" parent="."]
+script = ExtResource("1_am")
+
+[node name="OverworldController" type="Node" parent="."]
+script = ExtResource("2_oc")
+zone_name = "monterrey_city"
+
+[node name="area_title" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="panel" type="PanelContainer" parent="area_title"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 212.0
+offset_bottom = 52.0
+
+[node name="margin" type="MarginContainer" parent="area_title/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = -8.0
+offset_bottom = -6.0
+
+[node name="vbox" type="VBoxContainer" parent="area_title/panel/margin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="label" type="Label" parent="area_title/panel/margin/vbox"]
+text = "Monterrey"
+
+[node name="subtitle" type="Label" parent="area_title/panel/margin/vbox"]
+theme_override_font_sizes/font_size = 11
+text = "Avenida regia del acero, las botas y la arena"
+
+[node name="prop_centro" type="Node2D" parent="."]
+position = Vector2(256, 224)
+script = ExtResource("10_wp")
+label_text = "Clinica"
+
+[node name="prop_tienda" type="Node2D" parent="."]
+position = Vector2(576, 224)
+script = ExtResource("10_wp")
+label_text = "Mercado"
+
+[node name="prop_gimnasio" type="Node2D" parent="."]
+position = Vector2(1056, 720)
+script = ExtResource("10_wp")
+variant = "lookout"
+label_text = "Arena"
+
+[node name="npc_ignar" type="CharacterBody2D" parent="."]
+position = Vector2(1056, 784)
+script = ExtResource("6_npc")
+npc_id = "ignar_gym"
+npc_display_name = "Ignar"
+wander_range = 0.0
+wander_speed = 0.0
+is_trainer = true
+trainer_id = "ignar"
+
+[node name="sprite" type="AnimatedSprite2D" parent="npc_ignar"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_ignar"]
+shape = SubResource("CapsuleShape2D_npc")
+
+[node name="interact_area" type="Area2D" parent="npc_ignar"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_ignar/interact_area"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="exclaim_label" type="Label" parent="npc_ignar"]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -8.0
+text = "!"
+
+[node name="npc_nurse" type="CharacterBody2D" parent="."]
+position = Vector2(256, 240)
+script = ExtResource("6_npc")
+npc_id = "pokecenter_nurse"
+npc_display_name = "Mireya"
+wander_range = 0.0
+wander_speed = 0.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="npc_nurse"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_nurse"]
+shape = SubResource("CapsuleShape2D_npc")
+
+[node name="interact_area" type="Area2D" parent="npc_nurse"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_nurse/interact_area"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="exclaim_label" type="Label" parent="npc_nurse"]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -8.0
+text = "+"
+
+[node name="npc_clerk" type="CharacterBody2D" parent="."]
+position = Vector2(576, 240)
+script = ExtResource("6_npc")
+npc_id = "shop_clerk"
+npc_display_name = "Neto"
+wander_range = 0.0
+wander_speed = 0.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="npc_clerk"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_clerk"]
+shape = SubResource("CapsuleShape2D_npc")
+
+[node name="interact_area" type="Area2D" parent="npc_clerk"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_clerk/interact_area"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="exclaim_label" type="Label" parent="npc_clerk"]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -8.0
+text = "$"
+
+[node name="npc_plaza" type="CharacterBody2D" parent="."]
+position = Vector2(640, 496)
+script = ExtResource("6_npc")
+npc_id = "ashgate_trainer_a"
+npc_display_name = "Yayo"
+wander_range = 10.0
+wander_speed = 20.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="npc_plaza"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_plaza"]
+shape = SubResource("CapsuleShape2D_npc")
+
+[node name="interact_area" type="Area2D" parent="npc_plaza"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_plaza/interact_area"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="exclaim_label" type="Label" parent="npc_plaza"]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -8.0
+text = "?"
+
+[node name="npc_blacksmith" type="CharacterBody2D" parent="."]
+position = Vector2(1248, 752)
+script = ExtResource("6_npc")
+npc_id = "ashgate_blacksmith"
+npc_display_name = "Rulo"
+wander_range = 8.0
+wander_speed = 18.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="npc_blacksmith"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_blacksmith"]
+shape = SubResource("CapsuleShape2D_npc")
+
+[node name="interact_area" type="Area2D" parent="npc_blacksmith"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_blacksmith/interact_area"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="exclaim_label" type="Label" parent="npc_blacksmith"]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -8.0
+text = "!"
+
+[node name="trigger_sign_entrada" type="Area2D" parent="."]
+position = Vector2(704, 952)
+script = ExtResource("7_it")
+dialogue_id = "ashgate_sign_entrada"
+set_flag = "ashgate_intro_seen"
+
+[node name="collision" type="CollisionShape2D" parent="trigger_sign_entrada"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="trigger_gym_gate" type="Area2D" parent="."]
+position = Vector2(1056, 846)
+script = ExtResource("7_it")
+dialogue_id = "ignar_gate"
+required_flag = "ashgate_intro_seen"
+
+[node name="collision" type="CollisionShape2D" parent="trigger_gym_gate"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="warp_route2_east" type="Area2D" parent="."]
+script = ExtResource("3_wz")
+target_scene = "res://escenas/overworld/route2.tscn"
+target_spawn = "from_ashgate"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warp_route2_east"]
+position = Vector2(1400, 512)
+shape = SubResource("RectangleShape2D_route2_warp")
+
+[node name="warp_pokecenter" type="Area2D" parent="."]
+position = Vector2(256, 288)
+script = ExtResource("3_wz")
+target_scene = "res://escenas/overworld/monterrey_clinic.tscn"
+target_spawn = "from_city"
+
+[node name="collision" type="CollisionShape2D" parent="warp_pokecenter"]
+shape = SubResource("RectangleShape2D_service")
+
+[node name="service_shop" type="Area2D" parent="."]
+position = Vector2(576, 288)
+script = ExtResource("8_st")
+service_id = "shop"
+service_title = "Mercado regio"
+greeting_text = "Hay feria, insumos de ruta y cosas finas para la arena."
+
+[node name="collision" type="CollisionShape2D" parent="service_shop"]
+shape = SubResource("RectangleShape2D_service")
+
+[node name="warp_south_route1" type="Area2D" parent="."]
+script = ExtResource("3_wz")
+target_scene = "res://escenas/overworld/route1.tscn"
+target_spawn = "from_ashgate"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warp_south_route1"]
+position = Vector2(704, 1066)
+shape = SubResource("RectangleShape2D_warp")
+
+[node name="dialogue_box" type="CanvasLayer" parent="."]
+script = ExtResource("4_db")
+
+[node name="panel" type="PanelContainer" parent="dialogue_box"]
+anchor_top = 0.74
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="margin" type="MarginContainer" parent="dialogue_box/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="label" type="RichTextLabel" parent="dialogue_box/panel/margin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+bbcode_enabled = true
+fit_content = true
+text = ""
+
+[node name="arrow" type="Label" parent="dialogue_box/panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -18.0
+offset_right = -4.0
+offset_bottom = -2.0
+text = "v"
+
+[node name="GameMenu" parent="." instance=ExtResource("5_gm")]
+[node name="CityServiceMenu" parent="." instance=ExtResource("9_sm")]

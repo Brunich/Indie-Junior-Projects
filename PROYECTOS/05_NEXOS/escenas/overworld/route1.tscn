@@ -1,0 +1,271 @@
+[gd_scene load_steps=16 format=3 uid="uid://route1scene_rebuilt"]
+
+[ext_resource type="Script" path="res://codigo/overworld/route_map.gd" id="1_rm"]
+[ext_resource type="Script" path="res://codigo/overworld/overworld_controller.gd" id="2_oc"]
+[ext_resource type="Script" path="res://codigo/overworld/tall_grass.gd" id="3_tg"]
+[ext_resource type="Script" path="res://codigo/overworld/warp_zone.gd" id="4_wz"]
+[ext_resource type="Script" path="res://codigo/overworld/dialogue_box.gd" id="5_db"]
+[ext_resource type="PackedScene" path="res://escenas/ui/game_menu.tscn" id="6_gm"]
+[ext_resource type="Texture2D" path="res://sprites/escenas/region_maps/title_screen_bg_ai.png" id="7_bg"]
+[ext_resource type="Script" path="res://codigo/overworld/npc_controller.gd" id="8_npc"]
+[ext_resource type="Script" path="res://codigo/overworld/interaction_trigger.gd" id="9_it"]
+[ext_resource type="Script" path="res://codigo/overworld/world_prop.gd" id="10_wp"]
+[ext_resource type="Script" path="res://codigo/overworld/item_pickup.gd" id="11_ip"]
+[ext_resource type="Script" path="res://codigo/overworld/wild_boss.gd" id="12_wb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grass_route"]
+size = Vector2(96, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_warp_route"]
+size = Vector2(96, 24)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_route_npc"]
+radius = 7.0
+height = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_route_interact"]
+size = Vector2(28, 28)
+
+[node name="Route1" type="Node2D"]
+y_sort_enabled = true
+
+[node name="backdrop" type="Sprite2D" parent="."]
+position = Vector2(160, 576)
+scale = Vector2(0.6, 0.6)
+modulate = Color(1, 1, 1, 0.08)
+texture = ExtResource("7_bg")
+
+[node name="RouteMap" type="TileMapLayer" parent="."]
+script = ExtResource("1_rm")
+
+[node name="OverworldController" type="Node" parent="."]
+script = ExtResource("2_oc")
+zone_name = "camino_bordo"
+
+[node name="area_title" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="panel" type="PanelContainer" parent="area_title"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 212.0
+offset_bottom = 52.0
+
+[node name="margin" type="MarginContainer" parent="area_title/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = -8.0
+offset_bottom = -6.0
+
+[node name="vbox" type="VBoxContainer" parent="area_title/panel/margin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="label" type="Label" parent="area_title/panel/margin/vbox"]
+text = "Camino del Bordo"
+
+[node name="subtitle" type="Label" parent="area_title/panel/margin/vbox"]
+theme_override_font_sizes/font_size = 11
+text = "Sube derecho entre maleza y casetas"
+
+[node name="prop_letrero" type="Node2D" parent="."]
+position = Vector2(160, 1056)
+script = ExtResource("10_wp")
+label_text = "Reynosa"
+
+[node name="prop_mirador" type="Node2D" parent="."]
+position = Vector2(160, 112)
+script = ExtResource("10_wp")
+variant = "lookout"
+label_text = "Monterrey"
+
+[node name="prop_ashgate" type="Node2D" parent="."]
+position = Vector2(160, 536)
+script = ExtResource("10_wp")
+label_text = "Puesto"
+
+[node name="npc_beto" type="CharacterBody2D" parent="."]
+position = Vector2(144, 462)
+script = ExtResource("8_npc")
+npc_id = "route1_trainer_beto"
+dialogue_key = "revisit_early"
+npc_display_name = "Beto"
+wander_range = 6.0
+wander_speed = 18.0
+is_trainer = true
+trainer_id = "route1_beto"
+
+[node name="sprite" type="AnimatedSprite2D" parent="npc_beto"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_beto"]
+shape = SubResource("CapsuleShape2D_route_npc")
+
+[node name="interact_area" type="Area2D" parent="npc_beto"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_beto/interact_area"]
+shape = SubResource("RectangleShape2D_route_interact")
+
+[node name="exclaim_label" type="Label" parent="npc_beto"]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -8.0
+text = "!"
+
+[node name="npc_viajero" type="CharacterBody2D" parent="."]
+position = Vector2(176, 748)
+script = ExtResource("8_npc")
+npc_id = "route1_viajero"
+wander_range = 18.0
+wander_speed = 22.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="npc_viajero"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_viajero"]
+shape = SubResource("CapsuleShape2D_route_npc")
+
+[node name="interact_area" type="Area2D" parent="npc_viajero"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_viajero/interact_area"]
+shape = SubResource("RectangleShape2D_route_interact")
+
+[node name="exclaim_label" type="Label" parent="npc_viajero"]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -8.0
+text = "?"
+
+[node name="trigger_entrada" type="Area2D" parent="."]
+position = Vector2(160, 1026)
+script = ExtResource("9_it")
+dialogue_id = "route1_sign_entrada"
+set_flag = "route1_intro_seen"
+
+[node name="collision" type="CollisionShape2D" parent="trigger_entrada"]
+shape = SubResource("RectangleShape2D_route_interact")
+
+[node name="trigger_pasto" type="Area2D" parent="."]
+position = Vector2(160, 540)
+script = ExtResource("9_it")
+dialogue_id = "route1_tutorial_pasto"
+required_flag = "route1_intro_seen"
+set_flag = "route1_tutorial_seen"
+
+[node name="collision" type="CollisionShape2D" parent="trigger_pasto"]
+shape = SubResource("RectangleShape2D_route_interact")
+
+[node name="trigger_mirador" type="Area2D" parent="."]
+position = Vector2(160, 132)
+script = ExtResource("9_it")
+dialogue_id = "route1_mirador_objetivo"
+blocked_dialogue_id = "route1_mirador_bloque"
+required_flag = "trainer_defeated_route1_beto"
+set_flag = "route1_mirador_seen"
+
+[node name="collision" type="CollisionShape2D" parent="trigger_mirador"]
+shape = SubResource("RectangleShape2D_route_interact")
+
+[node name="TallGrassPatch" type="Area2D" parent="."]
+script = ExtResource("3_tg")
+encounter_rate = 0.28
+min_level = 3
+max_level = 6
+encounter_table = {
+"larvox": 24,
+"folimp": 20,
+"cendillo": 18,
+"coylto": 16,
+"shimfin": 12,
+"velillo": 10
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TallGrassPatch"]
+position = Vector2(160, 544)
+shape = SubResource("RectangleShape2D_grass_route")
+
+[node name="pickup_catnip" type="Area2D" parent="."]
+position = Vector2(128, 428)
+script = ExtResource("11_ip")
+item_id = "catnip_field"
+quantity = 1
+once_flag = "pickup_route1_catnip_field"
+pickup_text = "Encontraste Catnip de campo. Sirve mejor para vincular criaturas bravas."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_catnip"]
+shape = SubResource("RectangleShape2D_route_interact")
+
+[node name="pickup_potion" type="Area2D" parent="."]
+position = Vector2(192, 708)
+script = ExtResource("11_ip")
+item_id = "potion"
+quantity = 1
+once_flag = "pickup_route1_potion"
+pickup_text = "Recogiste un suero de ruta que alguien dejo caer."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_potion"]
+shape = SubResource("RectangleShape2D_route_interact")
+
+[node name="wildboss_campanima" type="Area2D" parent="."]
+position = Vector2(160, 208)
+script = ExtResource("12_wb")
+creature_id = "campanima"
+level = 9
+clear_flag = "route1_campanima_cleared"
+intro_text = "Una Campanima alfa se mece frente al mirador. No huye, te invita a medir el pulso."
+label_text = "Campanima alfa"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wildboss_campanima"]
+shape = SubResource("RectangleShape2D_route_interact")
+
+[node name="warp_back_village" type="Area2D" parent="."]
+script = ExtResource("4_wz")
+target_scene = "res://escenas/overworld/overworld.tscn"
+target_spawn = "north_route_entry"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warp_back_village"]
+position = Vector2(160, 1112)
+shape = SubResource("RectangleShape2D_warp_route")
+
+[node name="warp_ashgate" type="Area2D" parent="."]
+script = ExtResource("4_wz")
+target_scene = "res://escenas/overworld/ashgate.tscn"
+target_spawn = "from_route1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warp_ashgate"]
+position = Vector2(160, 42)
+shape = SubResource("RectangleShape2D_warp_route")
+
+[node name="dialogue_box" type="CanvasLayer" parent="."]
+script = ExtResource("5_db")
+
+[node name="panel" type="PanelContainer" parent="dialogue_box"]
+anchor_top = 0.74
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="margin" type="MarginContainer" parent="dialogue_box/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="label" type="RichTextLabel" parent="dialogue_box/panel/margin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+bbcode_enabled = true
+fit_content = true
+text = ""
+
+[node name="arrow" type="Label" parent="dialogue_box/panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -18.0
+offset_right = -4.0
+offset_bottom = -2.0
+text = "v"
+
+[node name="GameMenu" parent="." instance=ExtResource("6_gm")]

@@ -1,0 +1,31 @@
+Seguimiento de validacion 2026-03-21
+===================================
+
+Lote ComfyUI
+------------
+- Batch necromancer completado: 50 PNG
+- Carpeta: design/creature_necromancer_drop_2026-03-21
+
+Correcciones aplicadas
+----------------------
+- BattleManager._award_exp:
+  Se corrigio una carrera de senal al aprender una tecnica nueva.
+  Si la UI responde en el mismo frame, ya no se queda esperando una senal pasada.
+
+- qa/battle_item_target_probe.gd:
+  Se corrigieron tipos explicitos y la espera fija fue reemplazada por espera al estado real del combate.
+
+- qa/npc_wander_probe.gd:
+  Se corrigieron tipos explicitos para Vector2.
+
+Resultados revalidados manualmente
+----------------------------------
+- MOVE_FORGET_PROBE: OK
+- NPC_WANDER_PROBE: OK
+- BATTLE_ITEM_TARGET_PROBE: OK
+  Nota: sigue dejando warnings viejos de recursos al salir, pero la logica del turno ya regresa bien.
+
+Pendientes visibles
+-------------------
+- El reporte largo gameplay_simulation_report_2026-03-20.txt sigue viejo y aun muestra timeouts de probes ya corregidos.
+- Siguen existiendo warnings de fuga de objetos al cerrar algunas escenas de prueba.

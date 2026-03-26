@@ -1,0 +1,2931 @@
+{
+  "generated_on": "2026-03-21",
+  "source_folder": "C:\\Users\\bruni\\OneDrive\\Desktop\\Programming Brunich\\IA TEAM\\PROYECTOS\\05_POKEMON\\design\\FINAL",
+  "species": [
+    {
+      "id": "abueluz",
+      "number": 34,
+      "name": "Abueluz",
+      "type1": "Dark",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 0.9,
+      "weight": 20.0,
+      "description": "Abueluz tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 68,
+        "atk": 68,
+        "def": 61,
+        "sp_atk": 68,
+        "sp_def": 57,
+        "speed": 58
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "abueluz"
+      ],
+      "source_image": "design/FINAL/stagev10_abueluz_stage1_core_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/abueluz_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "equilibrado",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#9b7338",
+        "#f1fde8"
+      ],
+      "bbox_ratio": 0.832,
+      "fill_ratio": 0.289,
+      "coverage": 0.185
+    },
+    {
+      "id": "ajolote_necro",
+      "number": 35,
+      "name": "Ajoluto",
+      "type1": "Water",
+      "type2": "Ghost",
+      "category": "Bestia umbria",
+      "height": 0.9,
+      "weight": 20.0,
+      "description": "Ajoluto aparece donde la memoria pesa y la noche se siente viva. Su presencia no es estridente, pero deja claro que algo oscuro paso por ahi.",
+      "base": {
+        "hp": 70,
+        "atk": 70,
+        "def": 62,
+        "sp_atk": 70,
+        "sp_def": 58,
+        "speed": 58
+      },
+      "ability": "Torrent",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "water_gun"
+        },
+        {
+          "level": 4,
+          "move": "bubble_beam"
+        },
+        {
+          "level": 8,
+          "move": "aqua_jet"
+        },
+        {
+          "level": 12,
+          "move": "scald"
+        },
+        {
+          "level": 18,
+          "move": "surf"
+        },
+        {
+          "level": 24,
+          "move": "hydro_pump"
+        }
+      ],
+      "evolution": [
+        "ajolote_necro"
+      ],
+      "source_image": "design/FINAL/stable_ajolote_necro_05_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/ajolote_necro_base.png",
+      "visual_theme": "animal oscuro",
+      "body_shape": "equilibrado",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#5d6c82"
+      ],
+      "bbox_ratio": 0.844,
+      "fill_ratio": 0.389,
+      "coverage": 0.112
+    },
+    {
+      "id": "animor",
+      "number": 36,
+      "name": "Animor",
+      "type1": "Dark",
+      "type2": "Ghost",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 88.4,
+      "description": "Animor aparece donde la memoria pesa y la noche se siente viva. Su presencia no es estridente, pero deja claro que algo oscuro paso por ahi.",
+      "base": {
+        "hp": 108,
+        "atk": 95,
+        "def": 95,
+        "sp_atk": 54,
+        "sp_def": 63,
+        "speed": 36
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "animor"
+      ],
+      "source_image": "design/FINAL/mega_memory_guardian_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/animor_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "robusto",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#004a08",
+        "#f0eee8",
+        "#3f1b22"
+      ],
+      "bbox_ratio": 1.0,
+      "fill_ratio": 0.999,
+      "coverage": 0.999
+    },
+    {
+      "id": "arania_luto",
+      "number": 37,
+      "name": "Arañuto",
+      "type1": "Bug",
+      "type2": "Ghost",
+      "category": "Bicho maldito",
+      "height": 0.9,
+      "weight": 16.0,
+      "description": "Arañuto aparece donde la memoria pesa y la noche se siente viva. Su presencia no es estridente, pero deja claro que algo oscuro paso por ahi.",
+      "base": {
+        "hp": 56,
+        "atk": 88,
+        "def": 48,
+        "sp_atk": 48,
+        "sp_def": 52,
+        "speed": 110
+      },
+      "ability": "Swarm",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "string_shot"
+        },
+        {
+          "level": 4,
+          "move": "bug_bite"
+        },
+        {
+          "level": 8,
+          "move": "agility"
+        },
+        {
+          "level": 12,
+          "move": "leech_life"
+        },
+        {
+          "level": 18,
+          "move": "bug_buzz"
+        },
+        {
+          "level": 24,
+          "move": "x_scissor"
+        }
+      ],
+      "evolution": [
+        "arania_luto"
+      ],
+      "source_image": "design/FINAL/necro_arania_luto_02_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/arania_luto_base.png",
+      "visual_theme": "insecto maldito",
+      "body_shape": "agil",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#6d676a"
+      ],
+      "bbox_ratio": 1.359,
+      "fill_ratio": 0.314,
+      "coverage": 0.142
+    },
+    {
+      "id": "armadillo_calavera",
+      "number": 38,
+      "name": "Armacal",
+      "type1": "Steel",
+      "type2": "Ghost",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 123.8,
+      "description": "Armacal aparece donde la memoria pesa y la noche se siente viva. Su presencia no es estridente, pero deja claro que algo oscuro paso por ahi.",
+      "base": {
+        "hp": 108,
+        "atk": 95,
+        "def": 95,
+        "sp_atk": 54,
+        "sp_def": 63,
+        "speed": 36
+      },
+      "ability": "Sturdy",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "tackle"
+        },
+        {
+          "level": 4,
+          "move": "iron_defense"
+        },
+        {
+          "level": 8,
+          "move": "fierro_norteno"
+        },
+        {
+          "level": 12,
+          "move": "iron_head"
+        },
+        {
+          "level": 18,
+          "move": "flash_cannon"
+        },
+        {
+          "level": 24,
+          "move": "rock_throw"
+        }
+      ],
+      "evolution": [
+        "armadillo_calavera"
+      ],
+      "source_image": "design/FINAL/stable_armadillo_calavera_02_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/armadillo_calavera_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "robusto",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#494841",
+        "#b5ffa5"
+      ],
+      "bbox_ratio": 1.345,
+      "fill_ratio": 0.449,
+      "coverage": 0.269
+    },
+    {
+      "id": "banderalma",
+      "number": 39,
+      "name": "Banderalma",
+      "type1": "Dark",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 0.9,
+      "weight": 16.0,
+      "description": "Banderalma tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 55,
+        "atk": 87,
+        "def": 47,
+        "sp_atk": 47,
+        "sp_def": 51,
+        "speed": 107
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "banderalma"
+      ],
+      "source_image": "design/FINAL/stagev10_banderalma_stage1_core_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/banderalma_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "agil",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#cb6f63",
+        "#ebfdf7"
+      ],
+      "bbox_ratio": 0.787,
+      "fill_ratio": 0.258,
+      "coverage": 0.113
+    },
+    {
+      "id": "baston_osario",
+      "number": 40,
+      "name": "Osastil",
+      "type1": "Steel",
+      "type2": "Ghost",
+      "category": "Objeto de altar",
+      "height": 0.9,
+      "weight": 18.2,
+      "description": "Osastil aparece donde la memoria pesa y la noche se siente viva. Su presencia no es estridente, pero deja claro que algo oscuro paso por ahi.",
+      "base": {
+        "hp": 60,
+        "atk": 40,
+        "def": 48,
+        "sp_atk": 104,
+        "sp_def": 88,
+        "speed": 60
+      },
+      "ability": "Sturdy",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "tackle"
+        },
+        {
+          "level": 4,
+          "move": "iron_defense"
+        },
+        {
+          "level": 8,
+          "move": "fierro_norteno"
+        },
+        {
+          "level": 12,
+          "move": "iron_head"
+        },
+        {
+          "level": 18,
+          "move": "flash_cannon"
+        },
+        {
+          "level": 24,
+          "move": "rock_throw"
+        }
+      ],
+      "evolution": [
+        "baston_osario"
+      ],
+      "source_image": "design/FINAL/simple_baston_osario_stage1_core_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/baston_osario_base.png",
+      "visual_theme": "objeto ritual",
+      "body_shape": "mistico",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#b5b6d1"
+      ],
+      "bbox_ratio": 1.181,
+      "fill_ratio": 0.457,
+      "coverage": 0.152
+    },
+    {
+      "id": "bell_spirit",
+      "number": 41,
+      "name": "Campanima",
+      "type1": "Dark",
+      "type2": "Ghost",
+      "category": "Objeto de altar",
+      "height": 1.5,
+      "weight": 33.8,
+      "description": "Campanima aparece donde la memoria pesa y la noche se siente viva. Su presencia no es estridente, pero deja claro que algo oscuro paso por ahi.",
+      "base": {
+        "hp": 67,
+        "atk": 44,
+        "def": 53,
+        "sp_atk": 116,
+        "sp_def": 98,
+        "speed": 67
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "bell_spirit"
+      ],
+      "source_image": "design/FINAL/mega_bell_spirit_02_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/bell_spirit_base.png",
+      "visual_theme": "objeto ritual",
+      "body_shape": "mistico",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#d2c4d7"
+      ],
+      "bbox_ratio": 1.293,
+      "fill_ratio": 0.486,
+      "coverage": 0.345
+    },
+    {
+      "id": "buho_rezo",
+      "number": 42,
+      "name": "Buhrezo",
+      "type1": "Dark",
+      "type2": "Ghost",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 33.8,
+      "description": "Buhrezo aparece donde la memoria pesa y la noche se siente viva. Su presencia no es estridente, pero deja claro que algo oscuro paso por ahi.",
+      "base": {
+        "hp": 67,
+        "atk": 44,
+        "def": 53,
+        "sp_atk": 116,
+        "sp_def": 98,
+        "speed": 67
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "buho_rezo"
+      ],
+      "source_image": "design/FINAL/necro_buho_rezo_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/buho_rezo_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "mistico",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#64260f",
+        "#f5f7f9"
+      ],
+      "bbox_ratio": 1.004,
+      "fill_ratio": 0.312,
+      "coverage": 0.31
+    },
+    {
+      "id": "carabronte",
+      "number": 43,
+      "name": "Carabronte",
+      "type1": "Bug",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 0.9,
+      "weight": 34.0,
+      "description": "Carabronte tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 95,
+        "atk": 83,
+        "def": 83,
+        "sp_atk": 47,
+        "sp_def": 55,
+        "speed": 35
+      },
+      "ability": "Swarm",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "string_shot"
+        },
+        {
+          "level": 4,
+          "move": "bug_bite"
+        },
+        {
+          "level": 8,
+          "move": "agility"
+        },
+        {
+          "level": 12,
+          "move": "leech_life"
+        },
+        {
+          "level": 18,
+          "move": "bug_buzz"
+        },
+        {
+          "level": 24,
+          "move": "x_scissor"
+        }
+      ],
+      "evolution": [
+        "carabronte"
+      ],
+      "source_image": "design/FINAL/stagev10_carabronte_stage1_core_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/carabronte_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "robusto",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#987448",
+        "#fafeb8"
+      ],
+      "bbox_ratio": 0.741,
+      "fill_ratio": 0.643,
+      "coverage": 0.116
+    },
+    {
+      "id": "casquilin",
+      "number": 44,
+      "name": "Casquilin",
+      "type1": "Dark",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 52.0,
+      "description": "Casquilin tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 76,
+        "atk": 76,
+        "def": 68,
+        "sp_atk": 76,
+        "sp_def": 64,
+        "speed": 65
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "casquilin"
+      ],
+      "source_image": "design/FINAL/stagev10_casquilin_stage1_core_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/casquilin_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "equilibrado",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#b19986"
+      ],
+      "bbox_ratio": 0.959,
+      "fill_ratio": 0.382,
+      "coverage": 0.213
+    },
+    {
+      "id": "cave_bat",
+      "number": 45,
+      "name": "Murvela",
+      "type1": "Flying",
+      "type2": "",
+      "category": "Bestia umbria",
+      "height": 0.9,
+      "weight": 16.0,
+      "description": "Murvela tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 51,
+        "atk": 55,
+        "def": 43,
+        "sp_atk": 87,
+        "sp_def": 55,
+        "speed": 103
+      },
+      "ability": "Keen Eye",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "quick_attack"
+        },
+        {
+          "level": 4,
+          "move": "agility"
+        },
+        {
+          "level": 8,
+          "move": "air_slash"
+        },
+        {
+          "level": 12,
+          "move": "u_turn"
+        },
+        {
+          "level": 18,
+          "move": "roost"
+        },
+        {
+          "level": 24,
+          "move": "swift"
+        }
+      ],
+      "evolution": [
+        "cave_bat"
+      ],
+      "source_image": "design/FINAL/mega_cave_bat_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/cave_bat_base.png",
+      "visual_theme": "animal oscuro",
+      "body_shape": "agil",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#3f2463"
+      ],
+      "bbox_ratio": 0.714,
+      "fill_ratio": 0.483,
+      "coverage": 0.165
+    },
+    {
+      "id": "copalito",
+      "number": 46,
+      "name": "Copalito",
+      "type1": "Grass",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 88.4,
+      "description": "Copalito crece entre patios, mezquites y flores secas. Bajo su calma hay una energia rara que se siente antigua y respetable.",
+      "base": {
+        "hp": 106,
+        "atk": 93,
+        "def": 93,
+        "sp_atk": 53,
+        "sp_def": 62,
+        "speed": 36
+      },
+      "ability": "Overgrow",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "growl"
+        },
+        {
+          "level": 4,
+          "move": "vine_whip"
+        },
+        {
+          "level": 8,
+          "move": "razor_leaf"
+        },
+        {
+          "level": 12,
+          "move": "synthesis"
+        },
+        {
+          "level": 18,
+          "move": "giga_drain"
+        },
+        {
+          "level": 24,
+          "move": "leaf_storm"
+        }
+      ],
+      "evolution": [
+        "copalito"
+      ],
+      "source_image": "design/FINAL/hq_copalito_local_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/copalito_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "robusto",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#4fb82b",
+        "#285b0b",
+        "#ebfac3"
+      ],
+      "bbox_ratio": 1.064,
+      "fill_ratio": 0.565,
+      "coverage": 0.531
+    },
+    {
+      "id": "copper_ram",
+      "number": 47,
+      "name": "Broncarno",
+      "type1": "Steel",
+      "type2": "Ground",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 123.8,
+      "description": "Broncarno tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 106,
+        "atk": 93,
+        "def": 93,
+        "sp_atk": 53,
+        "sp_def": 62,
+        "speed": 36
+      },
+      "ability": "Sturdy",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "tackle"
+        },
+        {
+          "level": 4,
+          "move": "iron_defense"
+        },
+        {
+          "level": 8,
+          "move": "fierro_norteno"
+        },
+        {
+          "level": 12,
+          "move": "iron_head"
+        },
+        {
+          "level": 18,
+          "move": "flash_cannon"
+        },
+        {
+          "level": 24,
+          "move": "rock_throw"
+        }
+      ],
+      "evolution": [
+        "copper_ram"
+      ],
+      "source_image": "design/FINAL/mega_copper_ram_03_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/copper_ram_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "robusto",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#66493d",
+        "#f9fced"
+      ],
+      "bbox_ratio": 0.788,
+      "fill_ratio": 0.359,
+      "coverage": 0.249
+    },
+    {
+      "id": "coyote_hueso",
+      "number": 48,
+      "name": "Coyueso",
+      "type1": "Dark",
+      "type2": "Ghost",
+      "category": "Bestia umbria",
+      "height": 0.9,
+      "weight": 16.0,
+      "description": "Coyueso aparece donde la memoria pesa y la noche se siente viva. Su presencia no es estridente, pero deja claro que algo oscuro paso por ahi.",
+      "base": {
+        "hp": 56,
+        "atk": 88,
+        "def": 48,
+        "sp_atk": 48,
+        "sp_def": 52,
+        "speed": 110
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "coyote_hueso"
+      ],
+      "source_image": "design/FINAL/necro_coyote_hueso_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/coyote_hueso_base.png",
+      "visual_theme": "animal oscuro",
+      "body_shape": "agil",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#7b6460"
+      ],
+      "bbox_ratio": 0.957,
+      "fill_ratio": 0.291,
+      "coverage": 0.158
+    },
+    {
+      "id": "desert_coyote",
+      "number": 49,
+      "name": "Coyareno",
+      "type1": "Dark",
+      "type2": "Ground",
+      "category": "Bestia umbria",
+      "height": 1.5,
+      "weight": 41.6,
+      "description": "Coyareno tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 61,
+        "atk": 97,
+        "def": 53,
+        "sp_atk": 53,
+        "sp_def": 57,
+        "speed": 118
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "desert_coyote"
+      ],
+      "source_image": "design/FINAL/mega_desert_coyote_02_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/desert_coyote_base.png",
+      "visual_theme": "animal oscuro",
+      "body_shape": "agil",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#714031"
+      ],
+      "bbox_ratio": 0.959,
+      "fill_ratio": 0.396,
+      "coverage": 0.203
+    },
+    {
+      "id": "dust_snake",
+      "number": 50,
+      "name": "Polvibra",
+      "type1": "Dark",
+      "type2": "Ground",
+      "category": "Criatura de sombra",
+      "height": 0.9,
+      "weight": 16.0,
+      "description": "Polvibra tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 55,
+        "atk": 87,
+        "def": 47,
+        "sp_atk": 47,
+        "sp_def": 51,
+        "speed": 107
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "dust_snake"
+      ],
+      "source_image": "design/FINAL/mega_dust_snake_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/dust_snake_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "agil",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#837326",
+        "#fbfef2"
+      ],
+      "bbox_ratio": 1.258,
+      "fill_ratio": 0.631,
+      "coverage": 0.16
+    },
+    {
+      "id": "embral",
+      "number": 51,
+      "name": "Embral",
+      "type1": "Fire",
+      "type2": "",
+      "category": "Inicial oscuro",
+      "height": 1.5,
+      "weight": 52.0,
+      "description": "Embral guarda calor negro en silencio. Su cuerpo prende poco a poco cuando se altera y deja marcas oscuras donde se queda quieto.",
+      "base": {
+        "hp": 77,
+        "atk": 77,
+        "def": 69,
+        "sp_atk": 78,
+        "sp_def": 64,
+        "speed": 65
+      },
+      "ability": "Blaze",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "ember"
+        },
+        {
+          "level": 4,
+          "move": "smokescreen"
+        },
+        {
+          "level": 8,
+          "move": "fire_punch"
+        },
+        {
+          "level": 12,
+          "move": "flamethrower"
+        },
+        {
+          "level": 18,
+          "move": "fire_blast"
+        },
+        {
+          "level": 24,
+          "move": "flare_blitz"
+        }
+      ],
+      "evolution": [
+        "embral"
+      ],
+      "source_image": "design/FINAL/mega_starter_fire_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/embral_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "equilibrado",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#e25913",
+        "#f7fae8"
+      ],
+      "bbox_ratio": 1.004,
+      "fill_ratio": 0.29,
+      "coverage": 0.289
+    },
+    {
+      "id": "escoba_luto",
+      "number": 52,
+      "name": "Escobluto",
+      "type1": "Dark",
+      "type2": "Ghost",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 52.0,
+      "description": "Escobluto aparece donde la memoria pesa y la noche se siente viva. Su presencia no es estridente, pero deja claro que algo oscuro paso por ahi.",
+      "base": {
+        "hp": 78,
+        "atk": 78,
+        "def": 69,
+        "sp_atk": 78,
+        "sp_def": 65,
+        "speed": 65
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "escoba_luto"
+      ],
+      "source_image": "design/FINAL/simple_escoba_luto_stage3_alt_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/escoba_luto_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "equilibrado",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#624a35",
+        "#fbfef0"
+      ],
+      "bbox_ratio": 0.948,
+      "fill_ratio": 0.276,
+      "coverage": 0.24
+    },
+    {
+      "id": "folimp",
+      "number": 53,
+      "name": "Folimp",
+      "type1": "Grass",
+      "type2": "",
+      "category": "Inicial oscuro",
+      "height": 1.5,
+      "weight": 41.6,
+      "description": "Folimp crece entre patios, mezquites y flores secas. Bajo su calma hay una energia rara que se siente antigua y respetable.",
+      "base": {
+        "hp": 61,
+        "atk": 97,
+        "def": 53,
+        "sp_atk": 53,
+        "sp_def": 57,
+        "speed": 118
+      },
+      "ability": "Overgrow",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "growl"
+        },
+        {
+          "level": 4,
+          "move": "vine_whip"
+        },
+        {
+          "level": 8,
+          "move": "razor_leaf"
+        },
+        {
+          "level": 12,
+          "move": "synthesis"
+        },
+        {
+          "level": 18,
+          "move": "giga_drain"
+        },
+        {
+          "level": 24,
+          "move": "leaf_storm"
+        }
+      ],
+      "evolution": [
+        "folimp"
+      ],
+      "source_image": "design/FINAL/mega_starter_grass_02_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/folimp_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "agil",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#6ca945",
+        "#eafbd4",
+        "#f9fcc8"
+      ],
+      "bbox_ratio": 1.0,
+      "fill_ratio": 0.125,
+      "coverage": 0.125
+    },
+    {
+      "id": "luminariax",
+      "number": 54,
+      "name": "Luminariax",
+      "type1": "Dark",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 0.9,
+      "weight": 13.0,
+      "description": "Luminariax tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 59,
+        "atk": 39,
+        "def": 47,
+        "sp_atk": 102,
+        "sp_def": 86,
+        "speed": 59
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "luminariax"
+      ],
+      "source_image": "design/FINAL/stagev10_luminariax_stage1_core_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/luminariax_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "mistico",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#a5a990",
+        "#f1fdf3"
+      ],
+      "bbox_ratio": 1.011,
+      "fill_ratio": 0.236,
+      "coverage": 0.175
+    },
+    {
+      "id": "madrerezo",
+      "number": 55,
+      "name": "Madrerezo",
+      "type1": "Dark",
+      "type2": "Ghost",
+      "category": "Criatura de sombra",
+      "height": 0.9,
+      "weight": 13.0,
+      "description": "Madrerezo aparece donde la memoria pesa y la noche se siente viva. Su presencia no es estridente, pero deja claro que algo oscuro paso por ahi.",
+      "base": {
+        "hp": 60,
+        "atk": 40,
+        "def": 48,
+        "sp_atk": 104,
+        "sp_def": 88,
+        "speed": 60
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "madrerezo"
+      ],
+      "source_image": "design/FINAL/stagev10_madrerezo_stage1_core_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/madrerezo_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "mistico",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#b9ad86",
+        "#f1fef1"
+      ],
+      "bbox_ratio": 0.585,
+      "fill_ratio": 0.496,
+      "coverage": 0.113
+    },
+    {
+      "id": "maguey_toad",
+      "number": 56,
+      "name": "Maguesapo",
+      "type1": "Grass",
+      "type2": "",
+      "category": "Bestia umbria",
+      "height": 0.9,
+      "weight": 34.0,
+      "description": "Maguesapo crece entre patios, mezquites y flores secas. Bajo su calma hay una energia rara que se siente antigua y respetable.",
+      "base": {
+        "hp": 95,
+        "atk": 83,
+        "def": 83,
+        "sp_atk": 47,
+        "sp_def": 55,
+        "speed": 35
+      },
+      "ability": "Overgrow",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "growl"
+        },
+        {
+          "level": 4,
+          "move": "vine_whip"
+        },
+        {
+          "level": 8,
+          "move": "razor_leaf"
+        },
+        {
+          "level": 12,
+          "move": "synthesis"
+        },
+        {
+          "level": 18,
+          "move": "giga_drain"
+        },
+        {
+          "level": 24,
+          "move": "leaf_storm"
+        }
+      ],
+      "evolution": [
+        "maguey_toad"
+      ],
+      "source_image": "design/FINAL/mega_maguey_toad_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/maguey_toad_base.png",
+      "visual_theme": "animal oscuro",
+      "body_shape": "robusto",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#926973"
+      ],
+      "bbox_ratio": 0.944,
+      "fill_ratio": 0.51,
+      "coverage": 0.161
+    },
+    {
+      "id": "marigold_fawn",
+      "number": 57,
+      "name": "Cempacer",
+      "type1": "Grass",
+      "type2": "Fairy",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 52.0,
+      "description": "Cempacer crece entre patios, mezquites y flores secas. Bajo su calma hay una energia rara que se siente antigua y respetable.",
+      "base": {
+        "hp": 78,
+        "atk": 78,
+        "def": 69,
+        "sp_atk": 78,
+        "sp_def": 65,
+        "speed": 65
+      },
+      "ability": "Overgrow",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "growl"
+        },
+        {
+          "level": 4,
+          "move": "vine_whip"
+        },
+        {
+          "level": 8,
+          "move": "razor_leaf"
+        },
+        {
+          "level": 12,
+          "move": "synthesis"
+        },
+        {
+          "level": 18,
+          "move": "giga_drain"
+        },
+        {
+          "level": 24,
+          "move": "leaf_storm"
+        }
+      ],
+      "evolution": [
+        "marigold_fawn"
+      ],
+      "source_image": "design/FINAL/mega_marigold_fawn_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/marigold_fawn_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "equilibrado",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#a7908b",
+        "#cdfed0"
+      ],
+      "bbox_ratio": 0.822,
+      "fill_ratio": 0.308,
+      "coverage": 0.194
+    },
+    {
+      "id": "mascalor",
+      "number": 58,
+      "name": "Mascalor",
+      "type1": "Fire",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 41.6,
+      "description": "Mascalor guarda calor negro en silencio. Su cuerpo prende poco a poco cuando se altera y deja marcas oscuras donde se queda quieto.",
+      "base": {
+        "hp": 61,
+        "atk": 97,
+        "def": 53,
+        "sp_atk": 53,
+        "sp_def": 57,
+        "speed": 118
+      },
+      "ability": "Blaze",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "ember"
+        },
+        {
+          "level": 4,
+          "move": "smokescreen"
+        },
+        {
+          "level": 8,
+          "move": "fire_punch"
+        },
+        {
+          "level": 12,
+          "move": "flamethrower"
+        },
+        {
+          "level": 18,
+          "move": "fire_blast"
+        },
+        {
+          "level": 24,
+          "move": "flare_blitz"
+        }
+      ],
+      "evolution": [
+        "mascalor"
+      ],
+      "source_image": "design/FINAL/storyv2_mascalor_03_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/mascalor_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "agil",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#cc430e",
+        "#f3fbfb",
+        "#f5fbb2"
+      ],
+      "bbox_ratio": 1.75,
+      "fill_ratio": 0.389,
+      "coverage": 0.389
+    },
+    {
+      "id": "mono_mascara_maya",
+      "number": 59,
+      "name": "Monmaya",
+      "type1": "Dark",
+      "type2": "Fairy",
+      "category": "Bestia umbria",
+      "height": 1.5,
+      "weight": 52.0,
+      "description": "Monmaya tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 78,
+        "atk": 78,
+        "def": 69,
+        "sp_atk": 78,
+        "sp_def": 65,
+        "speed": 65
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "mono_mascara_maya"
+      ],
+      "source_image": "design/FINAL/stable_mono_mascara_maya_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/mono_mascara_maya_base.png",
+      "visual_theme": "animal oscuro",
+      "body_shape": "equilibrado",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#82402d",
+        "#f4fcfa"
+      ],
+      "bbox_ratio": 0.912,
+      "fill_ratio": 0.359,
+      "coverage": 0.241
+    },
+    {
+      "id": "murcielago_vela",
+      "number": 60,
+      "name": "Velmurgo",
+      "type1": "Fire",
+      "type2": "Flying",
+      "category": "Objeto de altar",
+      "height": 0.9,
+      "weight": 13.0,
+      "description": "Velmurgo guarda calor negro en silencio. Su cuerpo prende poco a poco cuando se altera y deja marcas oscuras donde se queda quieto.",
+      "base": {
+        "hp": 59,
+        "atk": 39,
+        "def": 47,
+        "sp_atk": 102,
+        "sp_def": 86,
+        "speed": 59
+      },
+      "ability": "Blaze",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "ember"
+        },
+        {
+          "level": 4,
+          "move": "smokescreen"
+        },
+        {
+          "level": 8,
+          "move": "fire_punch"
+        },
+        {
+          "level": 12,
+          "move": "flamethrower"
+        },
+        {
+          "level": 18,
+          "move": "fire_blast"
+        },
+        {
+          "level": 24,
+          "move": "flare_blitz"
+        }
+      ],
+      "evolution": [
+        "murcielago_vela"
+      ],
+      "source_image": "design/FINAL/necro_murcielago_vela_02_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/murcielago_vela_base.png",
+      "visual_theme": "objeto ritual",
+      "body_shape": "mistico",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#693781",
+        "#effef5"
+      ],
+      "bbox_ratio": 1.472,
+      "fill_ratio": 0.394,
+      "coverage": 0.135
+    },
+    {
+      "id": "obsidian_hound",
+      "number": 61,
+      "name": "Obsican",
+      "type1": "Dark",
+      "type2": "Rock",
+      "category": "Bestia umbria",
+      "height": 1.5,
+      "weight": 41.6,
+      "description": "Obsican tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 61,
+        "atk": 97,
+        "def": 53,
+        "sp_atk": 53,
+        "sp_def": 57,
+        "speed": 118
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "obsidian_hound"
+      ],
+      "source_image": "design/FINAL/mega_obsidian_hound_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/obsidian_hound_base.png",
+      "visual_theme": "animal oscuro",
+      "body_shape": "agil",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#f1f4f6",
+        "#9a0001",
+        "#f1f3f3"
+      ],
+      "bbox_ratio": 1.0,
+      "fill_ratio": 0.995,
+      "coverage": 0.995
+    },
+    {
+      "id": "polilla_sudario",
+      "number": 62,
+      "name": "Sudarilla",
+      "type1": "Bug",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 0.9,
+      "weight": 34.0,
+      "description": "Sudarilla tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 95,
+        "atk": 83,
+        "def": 83,
+        "sp_atk": 47,
+        "sp_def": 55,
+        "speed": 35
+      },
+      "ability": "Swarm",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "string_shot"
+        },
+        {
+          "level": 4,
+          "move": "bug_bite"
+        },
+        {
+          "level": 8,
+          "move": "agility"
+        },
+        {
+          "level": 12,
+          "move": "leech_life"
+        },
+        {
+          "level": 18,
+          "move": "bug_buzz"
+        },
+        {
+          "level": 24,
+          "move": "x_scissor"
+        }
+      ],
+      "evolution": [
+        "polilla_sudario"
+      ],
+      "source_image": "design/FINAL/necro_polilla_sudario_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/polilla_sudario_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "robusto",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#927c5e"
+      ],
+      "bbox_ratio": 1.195,
+      "fill_ratio": 0.538,
+      "coverage": 0.149
+    },
+    {
+      "id": "popocardon",
+      "number": 63,
+      "name": "Popocardon",
+      "type1": "Dark",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 52.0,
+      "description": "Popocardon tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 76,
+        "atk": 76,
+        "def": 68,
+        "sp_atk": 76,
+        "sp_def": 64,
+        "speed": 65
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "popocardon"
+      ],
+      "source_image": "design/FINAL/stagev10_popocardon_stage2_core_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/popocardon_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "equilibrado",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#ad3c1f"
+      ],
+      "bbox_ratio": 1.099,
+      "fill_ratio": 0.377,
+      "coverage": 0.343
+    },
+    {
+      "id": "reicinto",
+      "number": 64,
+      "name": "Reicinto",
+      "type1": "Dark",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 0.4,
+      "weight": 4.8,
+      "description": "Reicinto tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 50,
+        "atk": 78,
+        "def": 42,
+        "sp_atk": 42,
+        "sp_def": 46,
+        "speed": 96
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 120,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "reicinto"
+      ],
+      "source_image": "design/FINAL/stagev10_reicinto_stage1_core_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/reicinto_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "agil",
+      "size_class": "pequeno",
+      "dominant_colors": [
+        "#aa787e"
+      ],
+      "bbox_ratio": 0.718,
+      "fill_ratio": 0.183,
+      "coverage": 0.096
+    },
+    {
+      "id": "revolbron",
+      "number": 65,
+      "name": "Revolbron",
+      "type1": "Steel",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 0.9,
+      "weight": 22.4,
+      "description": "Revolbron tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 55,
+        "atk": 87,
+        "def": 47,
+        "sp_atk": 47,
+        "sp_def": 51,
+        "speed": 107
+      },
+      "ability": "Sturdy",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "tackle"
+        },
+        {
+          "level": 4,
+          "move": "iron_defense"
+        },
+        {
+          "level": 8,
+          "move": "fierro_norteno"
+        },
+        {
+          "level": 12,
+          "move": "iron_head"
+        },
+        {
+          "level": 18,
+          "move": "flash_cannon"
+        },
+        {
+          "level": 24,
+          "move": "rock_throw"
+        }
+      ],
+      "evolution": [
+        "revolbron"
+      ],
+      "source_image": "design/FINAL/megastage_revolbron_stage1_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/revolbron_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "agil",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#c1701e",
+        "#f6fc9d"
+      ],
+      "bbox_ratio": 1.209,
+      "fill_ratio": 0.159,
+      "coverage": 0.131
+    },
+    {
+      "id": "river_fish",
+      "number": 66,
+      "name": "Riafin",
+      "type1": "Water",
+      "type2": "",
+      "category": "Bestia umbria",
+      "height": 0.4,
+      "weight": 6.0,
+      "description": "Riafin se mueve con calma por humedad, charcos y acequias. Cuando se inquieta, el aire alrededor se enfria y el brillo de sus ojos sube.",
+      "base": {
+        "hp": 61,
+        "atk": 61,
+        "def": 54,
+        "sp_atk": 61,
+        "sp_def": 51,
+        "speed": 52
+      },
+      "ability": "Torrent",
+      "catch_rate": 120,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "water_gun"
+        },
+        {
+          "level": 4,
+          "move": "bubble_beam"
+        },
+        {
+          "level": 8,
+          "move": "aqua_jet"
+        },
+        {
+          "level": 12,
+          "move": "scald"
+        },
+        {
+          "level": 18,
+          "move": "surf"
+        },
+        {
+          "level": 24,
+          "move": "hydro_pump"
+        }
+      ],
+      "evolution": [
+        "river_fish"
+      ],
+      "source_image": "design/FINAL/mega_river_fish_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/river_fish_base.png",
+      "visual_theme": "animal oscuro",
+      "body_shape": "equilibrado",
+      "size_class": "pequeno",
+      "dominant_colors": [
+        "#77b9a6",
+        "#eafee5",
+        "#fdfee9"
+      ],
+      "bbox_ratio": 1.08,
+      "fill_ratio": 0.33,
+      "coverage": 0.109
+    },
+    {
+      "id": "route_bird",
+      "number": 67,
+      "name": "Veredal",
+      "type1": "Flying",
+      "type2": "",
+      "category": "Bestia umbria",
+      "height": 1.5,
+      "weight": 41.6,
+      "description": "Veredal tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 57,
+        "atk": 61,
+        "def": 48,
+        "sp_atk": 97,
+        "sp_def": 61,
+        "speed": 115
+      },
+      "ability": "Keen Eye",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "quick_attack"
+        },
+        {
+          "level": 4,
+          "move": "agility"
+        },
+        {
+          "level": 8,
+          "move": "air_slash"
+        },
+        {
+          "level": 12,
+          "move": "u_turn"
+        },
+        {
+          "level": 18,
+          "move": "roost"
+        },
+        {
+          "level": 24,
+          "move": "swift"
+        }
+      ],
+      "evolution": [
+        "route_bird"
+      ],
+      "source_image": "design/FINAL/mega_route_bird_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/route_bird_base.png",
+      "visual_theme": "animal oscuro",
+      "body_shape": "agil",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#513e31"
+      ],
+      "bbox_ratio": 1.022,
+      "fill_ratio": 0.301,
+      "coverage": 0.237
+    },
+    {
+      "id": "route_bug",
+      "number": 68,
+      "name": "Brechicho",
+      "type1": "Bug",
+      "type2": "",
+      "category": "Bicho maldito",
+      "height": 1.5,
+      "weight": 52.0,
+      "description": "Brechicho tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 76,
+        "atk": 76,
+        "def": 68,
+        "sp_atk": 76,
+        "sp_def": 64,
+        "speed": 65
+      },
+      "ability": "Swarm",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "string_shot"
+        },
+        {
+          "level": 4,
+          "move": "bug_bite"
+        },
+        {
+          "level": 8,
+          "move": "agility"
+        },
+        {
+          "level": 12,
+          "move": "leech_life"
+        },
+        {
+          "level": 18,
+          "move": "bug_buzz"
+        },
+        {
+          "level": 24,
+          "move": "x_scissor"
+        }
+      ],
+      "evolution": [
+        "route_bug"
+      ],
+      "source_image": "design/FINAL/mega_route_bug_03_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/route_bug_base.png",
+      "visual_theme": "insecto maldito",
+      "body_shape": "equilibrado",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#7f432d",
+        "#fcfcf3"
+      ],
+      "bbox_ratio": 0.893,
+      "fill_ratio": 0.28,
+      "coverage": 0.197
+    },
+    {
+      "id": "route_rodent",
+      "number": 69,
+      "name": "Terratilla",
+      "type1": "Dark",
+      "type2": "Ground",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 52.0,
+      "description": "Terratilla tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 76,
+        "atk": 76,
+        "def": 68,
+        "sp_atk": 76,
+        "sp_def": 64,
+        "speed": 65
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "route_rodent"
+      ],
+      "source_image": "design/FINAL/mega_route_rodent_01_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/route_rodent_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "equilibrado",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#7d512a"
+      ],
+      "bbox_ratio": 0.891,
+      "fill_ratio": 0.461,
+      "coverage": 0.246
+    },
+    {
+      "id": "salt_crab",
+      "number": 70,
+      "name": "Salmujo",
+      "type1": "Water",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 88.4,
+      "description": "Salmujo se mueve con calma por humedad, charcos y acequias. Cuando se inquieta, el aire alrededor se enfria y el brillo de sus ojos sube.",
+      "base": {
+        "hp": 106,
+        "atk": 93,
+        "def": 93,
+        "sp_atk": 53,
+        "sp_def": 62,
+        "speed": 36
+      },
+      "ability": "Torrent",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "water_gun"
+        },
+        {
+          "level": 4,
+          "move": "bubble_beam"
+        },
+        {
+          "level": 8,
+          "move": "aqua_jet"
+        },
+        {
+          "level": 12,
+          "move": "scald"
+        },
+        {
+          "level": 18,
+          "move": "surf"
+        },
+        {
+          "level": 24,
+          "move": "hydro_pump"
+        }
+      ],
+      "evolution": [
+        "salt_crab"
+      ],
+      "source_image": "design/FINAL/mega_salt_crab_03_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/salt_crab_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "robusto",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#9c8578"
+      ],
+      "bbox_ratio": 1.192,
+      "fill_ratio": 0.584,
+      "coverage": 0.248
+    },
+    {
+      "id": "santabizna",
+      "number": 71,
+      "name": "Santabizna",
+      "type1": "Dark",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 88.4,
+      "description": "Santabizna tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 106,
+        "atk": 93,
+        "def": 93,
+        "sp_atk": 53,
+        "sp_def": 62,
+        "speed": 36
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "santabizna"
+      ],
+      "source_image": "design/FINAL/storyv2_santabizna_04_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/santabizna_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "robusto",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#b6b186",
+        "#942a3d",
+        "#e3eecd"
+      ],
+      "bbox_ratio": 1.766,
+      "fill_ratio": 0.748,
+      "coverage": 0.741
+    },
+    {
+      "id": "shimfin",
+      "number": 72,
+      "name": "Shimfin",
+      "type1": "Water",
+      "type2": "",
+      "category": "Inicial oscuro",
+      "height": 1.5,
+      "weight": 88.4,
+      "description": "Shimfin se mueve con calma por humedad, charcos y acequias. Cuando se inquieta, el aire alrededor se enfria y el brillo de sus ojos sube.",
+      "base": {
+        "hp": 106,
+        "atk": 93,
+        "def": 93,
+        "sp_atk": 53,
+        "sp_def": 62,
+        "speed": 36
+      },
+      "ability": "Torrent",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "water_gun"
+        },
+        {
+          "level": 4,
+          "move": "bubble_beam"
+        },
+        {
+          "level": 8,
+          "move": "aqua_jet"
+        },
+        {
+          "level": 12,
+          "move": "scald"
+        },
+        {
+          "level": 18,
+          "move": "surf"
+        },
+        {
+          "level": 24,
+          "move": "hydro_pump"
+        }
+      ],
+      "evolution": [
+        "shimfin"
+      ],
+      "source_image": "design/FINAL/mega_starter_water_02_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/shimfin_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "robusto",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#32afbe",
+        "#fdfeb5",
+        "#f4fee4"
+      ],
+      "bbox_ratio": 1.145,
+      "fill_ratio": 0.508,
+      "coverage": 0.198
+    },
+    {
+      "id": "sierraptor",
+      "number": 73,
+      "name": "Sierraptor",
+      "type1": "Dark",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 41.6,
+      "description": "Sierraptor tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 61,
+        "atk": 97,
+        "def": 53,
+        "sp_atk": 53,
+        "sp_def": 57,
+        "speed": 118
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "sierraptor"
+      ],
+      "source_image": "design/FINAL/stagev10_sierraptor_stage1_core_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/sierraptor_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "agil",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#62531b",
+        "#ecfce1"
+      ],
+      "bbox_ratio": 1.0,
+      "fill_ratio": 0.2,
+      "coverage": 0.116
+    },
+    {
+      "id": "sombrerazo",
+      "number": 74,
+      "name": "Sombrerazo",
+      "type1": "Dark",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 0.9,
+      "weight": 16.0,
+      "description": "Sombrerazo tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 55,
+        "atk": 87,
+        "def": 47,
+        "sp_atk": 47,
+        "sp_def": 51,
+        "speed": 107
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "sombrerazo"
+      ],
+      "source_image": "design/FINAL/stagev10_sombrerazo_stage3_grounded_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/sombrerazo_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "agil",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#bf5732",
+        "#f8fdda"
+      ],
+      "bbox_ratio": 0.924,
+      "fill_ratio": 0.183,
+      "coverage": 0.124
+    },
+    {
+      "id": "storm_owl",
+      "number": 75,
+      "name": "Tormentuz",
+      "type1": "Electric",
+      "type2": "Flying",
+      "category": "Bestia umbria",
+      "height": 1.5,
+      "weight": 41.6,
+      "description": "Tormentuz tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 57,
+        "atk": 61,
+        "def": 48,
+        "sp_atk": 97,
+        "sp_def": 61,
+        "speed": 115
+      },
+      "ability": "Static",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "thundershock"
+        },
+        {
+          "level": 4,
+          "move": "thunder_wave"
+        },
+        {
+          "level": 8,
+          "move": "electroweb"
+        },
+        {
+          "level": 12,
+          "move": "thunderbolt"
+        },
+        {
+          "level": 18,
+          "move": "volt_switch"
+        },
+        {
+          "level": 24,
+          "move": "wild_charge"
+        }
+      ],
+      "evolution": [
+        "storm_owl"
+      ],
+      "source_image": "design/FINAL/mega_storm_owl_02_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/storm_owl_base.png",
+      "visual_theme": "animal oscuro",
+      "body_shape": "agil",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#42675e"
+      ],
+      "bbox_ratio": 1.169,
+      "fill_ratio": 0.293,
+      "coverage": 0.251
+    },
+    {
+      "id": "tiburlava",
+      "number": 76,
+      "name": "Tiburlava",
+      "type1": "Fire",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 41.6,
+      "description": "Tiburlava guarda calor negro en silencio. Su cuerpo prende poco a poco cuando se altera y deja marcas oscuras donde se queda quieto.",
+      "base": {
+        "hp": 61,
+        "atk": 97,
+        "def": 53,
+        "sp_atk": 53,
+        "sp_def": 57,
+        "speed": 118
+      },
+      "ability": "Blaze",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "ember"
+        },
+        {
+          "level": 4,
+          "move": "smokescreen"
+        },
+        {
+          "level": 8,
+          "move": "fire_punch"
+        },
+        {
+          "level": 12,
+          "move": "flamethrower"
+        },
+        {
+          "level": 18,
+          "move": "fire_blast"
+        },
+        {
+          "level": 24,
+          "move": "flare_blitz"
+        }
+      ],
+      "evolution": [
+        "tiburlava"
+      ],
+      "source_image": "design/FINAL/stagev10_tiburlava_stage2_core_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/tiburlava_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "agil",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#d9beb4"
+      ],
+      "bbox_ratio": 1.037,
+      "fill_ratio": 0.231,
+      "coverage": 0.129
+    },
+    {
+      "id": "umbracaliz",
+      "number": 77,
+      "name": "Umbracaliz",
+      "type1": "Dark",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 88.4,
+      "description": "Umbracaliz tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 106,
+        "atk": 93,
+        "def": 93,
+        "sp_atk": 53,
+        "sp_def": 62,
+        "speed": 36
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "umbracaliz"
+      ],
+      "source_image": "design/FINAL/stagev10_umbracaliz_stage2_clarity_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/umbracaliz_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "robusto",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#d43506",
+        "#4c2203",
+        "#f3c75c"
+      ],
+      "bbox_ratio": 1.0,
+      "fill_ratio": 0.813,
+      "coverage": 0.813
+    },
+    {
+      "id": "veil_cat",
+      "number": 78,
+      "name": "Velgato",
+      "type1": "Dark",
+      "type2": "Ghost",
+      "category": "Bestia umbria",
+      "height": 0.9,
+      "weight": 16.0,
+      "description": "Velgato aparece donde la memoria pesa y la noche se siente viva. Su presencia no es estridente, pero deja claro que algo oscuro paso por ahi.",
+      "base": {
+        "hp": 56,
+        "atk": 88,
+        "def": 48,
+        "sp_atk": 48,
+        "sp_def": 52,
+        "speed": 110
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "veil_cat"
+      ],
+      "source_image": "design/FINAL/mega_veil_cat_03_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/veil_cat_base.png",
+      "visual_theme": "animal oscuro",
+      "body_shape": "agil",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#857e7e"
+      ],
+      "bbox_ratio": 0.804,
+      "fill_ratio": 0.511,
+      "coverage": 0.167
+    },
+    {
+      "id": "vela_rezo",
+      "number": 79,
+      "name": "Rezvela",
+      "type1": "Fire",
+      "type2": "Ghost",
+      "category": "Objeto de altar",
+      "height": 0.9,
+      "weight": 13.0,
+      "description": "Rezvela aparece donde la memoria pesa y la noche se siente viva. Su presencia no es estridente, pero deja claro que algo oscuro paso por ahi.",
+      "base": {
+        "hp": 60,
+        "atk": 40,
+        "def": 48,
+        "sp_atk": 104,
+        "sp_def": 88,
+        "speed": 60
+      },
+      "ability": "Blaze",
+      "catch_rate": 90,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "ember"
+        },
+        {
+          "level": 4,
+          "move": "smokescreen"
+        },
+        {
+          "level": 8,
+          "move": "fire_punch"
+        },
+        {
+          "level": 12,
+          "move": "flamethrower"
+        },
+        {
+          "level": 18,
+          "move": "fire_blast"
+        },
+        {
+          "level": 24,
+          "move": "flare_blitz"
+        }
+      ],
+      "evolution": [
+        "vela_rezo"
+      ],
+      "source_image": "design/FINAL/simple_vela_rezo_stage1_core_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/vela_rezo_base.png",
+      "visual_theme": "objeto ritual",
+      "body_shape": "mistico",
+      "size_class": "mediano",
+      "dominant_colors": [
+        "#58362c"
+      ],
+      "bbox_ratio": 1.411,
+      "fill_ratio": 0.307,
+      "coverage": 0.188
+    },
+    {
+      "id": "xolcan",
+      "number": 80,
+      "name": "Xolcan",
+      "type1": "Dark",
+      "type2": "",
+      "category": "Criatura de sombra",
+      "height": 1.5,
+      "weight": 88.4,
+      "description": "Xolcan tiene una silueta facil de reconocer y un aire inquietante. No parece invencible, pero su mirada deja claro que no conviene subestimarla.",
+      "base": {
+        "hp": 106,
+        "atk": 93,
+        "def": 93,
+        "sp_atk": 53,
+        "sp_def": 62,
+        "speed": 36
+      },
+      "ability": "Trail Dust",
+      "catch_rate": 60,
+      "moveset": [
+        {
+          "level": 1,
+          "move": "bite"
+        },
+        {
+          "level": 4,
+          "move": "scary_face"
+        },
+        {
+          "level": 8,
+          "move": "knock_off"
+        },
+        {
+          "level": 12,
+          "move": "crunch"
+        },
+        {
+          "level": 18,
+          "move": "dark_pulse"
+        },
+        {
+          "level": 24,
+          "move": "taunt"
+        }
+      ],
+      "evolution": [
+        "xolcan"
+      ],
+      "source_image": "design/FINAL/storyv2_xolcan_02_00001_.png",
+      "runtime_sprite": "sprites/pokemon/emberveil/xolcan_base.png",
+      "visual_theme": "criatura mistica",
+      "body_shape": "robusto",
+      "size_class": "grande",
+      "dominant_colors": [
+        "#f0f1f1",
+        "#b10202",
+        "#a45f35"
+      ],
+      "bbox_ratio": 1.75,
+      "fill_ratio": 0.995,
+      "coverage": 0.995
+    }
+  ],
+  "skipped_assets": [
+    "cw_battle_bg_field_01_00001_.png",
+    "cw_battle_bg_field_02_00001_.png",
+    "cw_battle_bg_memory_01_00001_.png",
+    "cw_battle_bg_memory_02_00001_.png",
+    "cw_memory_city_topdown_02_00001_.png",
+    "cw_npc_profanador_01_00001_.png",
+    "cw_npc_profanador_02_00001_.png",
+    "cw_npc_rezandera_01_00001_.png",
+    "cw_npc_rezandera_02_00001_.png",
+    "cw_npc_rival_01_00001_.png",
+    "cw_npc_rival_02_00001_.png",
+    "cw_npc_town_elder_02_00001_.png",
+    "cw_ritual_house_interior_01_00001_.png",
+    "cw_ritual_house_interior_02_00001_.png",
+    "cw_route_topdown_01_00001_.png",
+    "cw_route_topdown_02_00001_.png",
+    "cw_town_topdown_01_00001_.png",
+    "cw_town_topdown_02_00001_.png"
+  ]
+}

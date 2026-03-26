@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS — Region Progression & Narrative Skeleton v1.0</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --marigold: #f5a000;
+    --jade:     #3a9970;
+    --gold:     #f5c842;
+    --ash:      #c8b89a;
+    --dark:     #0d0c0a;
+    --panel:    #13120f;
+    --border:   #2c2619;
+    --text:     #ddd0bc;
+    --muted:    #7a6e5f;
+    --fire:     #ff5522;
+    --water:    #3399ee;
+    --spirit:   #cc66ff;
+    --earth:    #aa7733;
+    --wind:     #66ccaa;
+    --shadow:   #554477;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: #0d0c0aee;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 0; margin-bottom: 48px;
+    display: flex; gap: 4px; flex-wrap: wrap;
+  }
+  nav a {
+    color: var(--muted); text-decoration: none;
+    font-family: 'Space Mono', monospace; font-size: 9px;
+    letter-spacing: 1px; padding: 4px 8px; border-radius: 2px;
+    transition: color 0.15s;
+  }
+  nav a:hover { color: var(--gold); }
+
+  .cover {
+    text-align: center; padding: 40px 0 60px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 60px;
+  }
+  .cover-subtitle {
+    font-family: 'Space Mono', monospace; font-size: 10px;
+    letter-spacing: 4px; color: var(--muted); margin-bottom: 16px;
+  }
+  .cover-title {
+    font-family: 'Space Mono', monospace; font-size: 32px; font-weight: 700;
+    color: var(--gold); line-height: 1.2; margin-bottom: 6px;
+  }
+  .cover-sub {
+    font-family: 'Space Mono', monospace; font-size: 14px;
+    color: var(--ash); margin-bottom: 20px;
+  }
+  .cover-meta {
+    font-family: 'Space Mono', monospace; font-size: 10px;
+    color: var(--muted); letter-spacing: 2px;
+  }
+
+  /* ── HOW TO USE ─────────────────────────────────────── */
+  .usage-box {
+    background: #0a100d; border: 1px solid #1a3020;
+    border-radius: 6px; padding: 20px 24px; margin-bottom: 48px;
+  }
+  .usage-title {
+    font-family: 'Space Mono', monospace; font-size: 10px;
+    letter-spacing: 2px; color: var(--jade); margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .usage-box p { font-size: 14px; margin-bottom: 10px; }
+  .usage-box ul { font-size: 14px; margin-left: 20px; }
+  .usage-box ul li { margin-bottom: 4px; }
+
+  /* ── REGION CARD ─────────────────────────────────────── */
+  .region-doc {
+    margin-bottom: 80px;
+    border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
+  }
+  .region-header {
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .region-header.north   { background: #1a1005; border-top: 4px solid var(--earth); }
+  .region-header.spirit  { background: #130a1a; border-top: 4px solid var(--spirit); }
+  .region-header.coastal { background: #080f1a; border-top: 4px solid var(--water); }
+  .region-header.mist    { background: #081510; border-top: 4px solid var(--wind); }
+  .region-header.legend  { background: #1a1508; border-top: 4px solid var(--gold); }
+
+  .region-num {
+    font-family: 'Space Mono', monospace; font-size: 9px;
+    letter-spacing: 3px; color: var(--muted); margin-bottom: 6px;
+  }
+  .region-title {
+    font-family: 'Space Mono', monospace; font-size: 20px;
+    color: var(--gold); margin-bottom: 4px;
+  }
+  .region-tagline {
+    font-style: italic; color: var(--muted); font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .region-meta {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    font-family: 'Space Mono', monospace; font-size: 10px;
+    color: var(--muted);
+  }
+  .region-meta-item strong { color: var(--ash); }
+
+  /* ── SECTION BLOCKS ─────────────────────────────────── */
+  .region-body { padding: 0; }
+
+  .prog-section {
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .prog-section:last-child { border-bottom: none; }
+
+  .prog-label {
+    font-family: 'Space Mono', monospace; font-size: 9px;
+    letter-spacing: 3px; color: var(--marigold);
+    text-transform: uppercase; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .prog-label.jade   { color: var(--jade); }
+  .prog-label.spirit { color: var(--spirit); }
+  .prog-label.fire   { color: var(--fire); }
+  .prog-label.water  { color: var(--water); }
+  .prog-label.wind   { color: var(--wind); }
+  .prog-label.gold   { color: var(--gold); }
+  .prog-label.shadow { color: #aa88cc; }
+
+  .prog-number {
+    background: var(--border); border-radius: 2px;
+    padding: 1px 5px; font-size: 8px; color: var(--muted);
+  }
+
+  .prog-section h3 {
+    font-family: 'Space Mono', monospace; font-size: 13px;
+    color: var(--ash); margin-bottom: 10px;
+  }
+  .prog-section p { font-size: 15px; margin-bottom: 10px; }
+  .prog-section ul { margin-left: 20px; margin-bottom: 10px; }
+  .prog-section ul li { font-size: 15px; margin-bottom: 5px; }
+
+  .hook-list {
+    background: var(--panel); border-radius: 4px;
+    padding: 12px 16px; margin-top: 8px;
+  }
+  .hook-list li {
+    font-size: 13px; color: var(--ash);
+    margin-bottom: 6px;
+    padding-left: 4px;
+  }
+  .hook-list li::marker { color: var(--marigold); }
+
+  .event-box {
+    background: #0e120f; border: 1px solid #1a2a1a;
+    border-left: 3px solid var(--jade);
+    border-radius: 0 4px 4px 0;
+    padding: 14px 18px; margin: 10px 0;
+    font-style: italic; color: var(--ash); font-size: 14px;
+  }
+  .event-label {
+    font-family: 'Space Mono', monospace; font-size: 9px;
+    color: var(--jade); letter-spacing: 2px; margin-bottom: 8px;
+    font-style: normal;
+  }
+
+  .player-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    margin: 10px 0;
+  }
+  @media (max-width:580px) { .player-grid { grid-template-columns: 1fr; } }
+  .player-card {
+    background: var(--panel); border-radius: 4px;
+    padding: 10px 12px; font-size: 13px;
+  }
+  .player-card-label {
+    font-family: 'Space Mono', monospace; font-size: 8px;
+    letter-spacing: 1px; color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .char-row {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 8px 0; border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .char-row:last-child { border-bottom: none; }
+  .char-role {
+    font-family: 'Space Mono', monospace; font-size: 8px;
+    letter-spacing: 1px; color: var(--muted); flex-shrink: 0;
+    width: 100px; padding-top: 3px;
+  }
+
+  .boss-block {
+    background: #1a0808; border: 1px solid #441a12;
+    border-radius: 4px; padding: 14px 18px; margin: 8px 0;
+  }
+  .boss-name {
+    font-family: 'Space Mono', monospace; font-size: 12px;
+    color: var(--fire); margin-bottom: 6px;
+  }
+
+  .outcome-block {
+    background: #0a100d; border: 1px solid #1a3020;
+    border-radius: 4px; padding: 14px 18px; margin: 8px 0;
+    font-size: 14px;
+  }
+
+  .wip {
+    background: #1a0a00; border: 1px solid #3a2010;
+    border-radius: 3px; padding: 5px 10px;
+    font-family: 'Space Mono', monospace; font-size: 9px;
+    color: #cc8844; letter-spacing: 1px; display: inline-block;
+    margin: 4px 0;
+  }
+
+  .tag {
+    display: inline-block; font-family: 'Space Mono', monospace;
+    font-size: 8px; letter-spacing: 1px; padding: 2px 6px;
+    border-radius: 2px; border: 1px solid; margin: 2px;
+  }
+  .tag.fire   { color: var(--fire);   border-color: var(--fire);   background: #2a0f08; }
+  .tag.water  { color: var(--water);  border-color: var(--water);  background: #08152a; }
+  .tag.jade   { color: var(--jade);   border-color: var(--jade);   background: #0a2015; }
+  .tag.spirit { color: var(--spirit); border-color: var(--spirit); background: #180e2a; }
+  .tag.gold   { color: var(--gold);   border-color: var(--gold);   background: #1a1508; }
+  .tag.earth  { color: var(--earth);  border-color: var(--earth);  background: #1a1005; }
+  .tag.wind   { color: var(--wind);   border-color: var(--wind);   background: #081a15; }
+  .tag.shadow { color: #aa88cc;       border-color: var(--shadow); background: #180a20; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#how-to-use">HOW TO USE</a>
+  <a href="#r1-sierra">R1 — SIERRA</a>
+  <a href="#r2-ecos">R2 — ECOS</a>
+  <a href="#r3-coastal">R3 — COSTA/CRÁTER</a>
+  <a href="#r4-bruma">R4 — BRUMA</a>
+  <a href="#r5-corazon">R5 — CORAZÓN</a>
+</nav>
+
+<div class="cover">
+  <div class="cover-subtitle">◈ TEAM DOCUMENT — NARRATIVE SKELETON v1.0 ◈</div>
+  <div class="cover-title">NEXUS</div>
+  <div class="cover-sub">Region Progression &amp; Narrative Skeleton</div>
+  <div class="cover-meta">FOR TEAM COLLABORATION &nbsp;·&nbsp; STRUCTURED · EXPANDABLE · LEAVE SPACE FOR CREATIVITY</div>
+</div>
+
+<!-- HOW TO USE -->
+<div class="usage-box" id="how-to-use">
+  <div class="usage-title">◈ How to Use This Document</div>
+  <p>
+    This document provides the <strong>structural skeleton</strong> for each of NEXUS's five regions.
+    It is designed for team collaboration — every team member should be able to read this and
+    understand where narrative can be added, expanded, or developed without conflicting with
+    the core design.
+  </p>
+  <p><strong style="color:var(--ash)">What this document IS:</strong></p>
+  <ul>
+    <li>A fixed progression structure for each region (sequence, function, outcome)</li>
+    <li>A framework for personalized narrative events</li>
+    <li>Role descriptions for key characters (no deep writing yet)</li>
+    <li>Clear <span style="color:var(--marigold)">HOOKS</span> — marked expansion points where narrative writers can add depth</li>
+  </ul>
+  <p><strong style="color:var(--ash)">What this document is NOT:</strong></p>
+  <ul>
+    <li>A complete script — dialogue will be written separately</li>
+    <li>A final design document — systems may evolve, this skeleton stays stable</li>
+    <li>A constraint on creativity — hooks are invitations, not walls</li>
+  </ul>
+  <p style="color:var(--muted);font-size:13px;">
+    For full world lore, character detail, and system design — see <strong style="color:var(--ash)">WORLD_BIBLE.html</strong>.
+    This document focuses on progression and narrative structure only.
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     REGION 1 — LA SIERRA DEL NORTE
+═══════════════════════════════════════════════════════════ -->
+<div class="region-doc" id="r1-sierra">
+  <div class="region-header north">
+    <div class="region-num">◈ REGION 01</div>
+    <div class="region-title">LA SIERRA DEL NORTE</div>
+    <div class="region-tagline">"Where work is honest and the land remembers the people who built it."</div>
+    <div class="region-meta">
+      <div class="region-meta-item"><strong>AFFINITY</strong> Earth / Fire</div>
+      <div class="region-meta-item"><strong>TONE</strong> Grounded / Warm</div>
+      <div class="region-meta-item"><strong>ACT</strong> Act 1</div>
+      <div class="region-meta-item"><strong>PLAYER LEVEL</strong> New / Early</div>
+      <div class="region-meta-item"><strong>TAGS</strong>
+        <span class="tag earth">EARTH</span>
+        <span class="tag fire">FIRE</span>
+        <span class="tag gold">STARTING REGION</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="region-body">
+
+    <!-- ENTRY CONTEXT -->
+    <div class="prog-section">
+      <div class="prog-label"><span class="prog-number">1</span> ENTRY CONTEXT</div>
+      <p>
+        <strong>How Izel arrives:</strong> She leaves from Villa Brasa — the starting town.
+        No dramatic departure: Nana Remi hands her the research notes, Embral is waiting at
+        the road. The player is already in the region before the game formally begins.
+      </p>
+      <p>
+        <strong>First impression:</strong> The Sierra feels familiar and real. Morning dust.
+        Tinacos on every roof. A route through dry scrubland and maguey toward the first
+        settlement. The first NPC on the road is fixing a fence and will help Izel if asked.
+        Nobody announces the journey. It just begins.
+      </p>
+    </div>
+
+    <!-- MAIN STORY ARC -->
+    <div class="prog-section">
+      <div class="prog-label jade"><span class="prog-number">2</span> MAIN STORY ARC — KEY EVENTS</div>
+      <ol>
+        <li>Izel receives first Nexo bond (Embral) and Vínculo License papers from Nana Remi.</li>
+        <li>First route: encounters Earth-affinity Nexos. The Nexus Safe system triggers naturally at first campsite.</li>
+        <li>Izel meets <strong>Tavo</strong> on the road — he already has his license. Rivalry established without hostility.</li>
+        <li>First town beyond Villa Brasa: she hears Abuela Xochi's name for the first time outside of home. Someone changes the subject.</li>
+        <li>Optional: discovers Arce's workshop. Arce mentions "strange readings" near Consejo equipment lately — early signal.</li>
+        <li>Guardian Trial: Partnership Trial. Tests genuine bond coordination between Izel and Embral (the bond score matters here for the first time).</li>
+        <li>Region cleared: Izel receives the first Vínculo Seal and permission to travel south.</li>
+      </ol>
+    </div>
+
+    <!-- PERSONALIZED EVENT -->
+    <div class="prog-section">
+      <div class="prog-label spirit"><span class="prog-number">3</span> PERSONALIZED NARRATIVE EVENT</div>
+      <p><strong>Scene:</strong> The night before the Guardian Trial. Izel camps alone at a route waypoint.</p>
+      <div class="player-grid">
+        <div class="player-card">
+          <div class="player-card-label">IF EXPLORADOR (talked to everyone, explored side routes)</div>
+          Izel reads Xochi's notes carefully by firelight. She has context from NPCs. The notes feel like a conversation she was already half of. Embral is asleep beside her. The night is quiet and purposeful.
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF BATALLADOR (focused on battles, minimal exploration)</div>
+          Izel opens the notes briefly and puts them away — too tired, too focused on tomorrow. Embral is awake. It moves close to her. She does not notice. The notes stay folded.
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF CUIDADOR (used Nexus Safe, healed proactively)</div>
+          Izel reads the notes slowly. Halfway through, she pauses and checks on Embral — old habit. Embral is already watching her. She shows it a page, as if explaining. The night feels collaborative.
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF ESTRATEGA (rotated team, planned encounters)</div>
+          Izel reads the notes like a tactical document. She highlights specific sections. Embral observes from a distance. She falls asleep with the notes open, having extracted what she needed, having missed something.
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFLICT -->
+    <div class="prog-section">
+      <div class="prog-label fire"><span class="prog-number">4</span> CONFLICT</div>
+      <p><strong>External conflict:</strong> A Consejo field officer is in the Sierra asking about old research archives. He is polite, official, and causes NPCs to go slightly quiet. This is background tension — it doesn't confront Izel directly yet.</p>
+      <p><strong>Internal conflict (Izel):</strong> She left with Nana Remi's version of Xochi's story. Every reference to Xochi she encounters in the Sierra is slightly different from that version. She is not ready to reconcile this yet. The Sierra is where the dissonance begins, not where it resolves.</p>
+    </div>
+
+    <!-- KEY CHARACTERS -->
+    <div class="prog-section">
+      <div class="prog-label"><span class="prog-number">5</span> KEY CHARACTERS — ROLES</div>
+      <div class="char-row">
+        <div class="char-role">ORIGIN / HOME</div>
+        <div><strong>Nana Remi</strong> — Provides emotional baseline. The person Izel mentally returns to throughout the journey. First keeper of the research notes.</div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">RIVAL / MIRROR</div>
+        <div><strong>Tavo</strong> — Establishes the rival dynamic. His confidence is genuine and grounded, not arrogant. He represents what believing in the Consejo looks like when it's been working for you.</div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">LOCAL RESOURCE</div>
+        <div><strong>Arce</strong> — Optional encounter. Provides first technical context on Consejo equipment anomalies. Not a major character here — a seed for later.</div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">GUARDIAN</div>
+        <div><strong>TO BE NAMED</strong> — The Sierra Guardian Keeper. Tests partnership bond. Warm, gruff, respects results over credentials. <span class="wip">NAME + BACKSTORY NEEDED</span></div>
+      </div>
+    </div>
+
+    <!-- BOSS ENCOUNTER -->
+    <div class="prog-section">
+      <div class="prog-label fire"><span class="prog-number">6</span> BOSS ENCOUNTER — GUARDIAN TRIAL: PARTNERSHIP</div>
+      <div class="boss-block">
+        <div class="boss-name">PARTNERSHIP TRIAL — LA SIERRA GUARDIAN</div>
+        <p style="font-size:14px;margin-bottom:8px;">
+          <strong>Theme:</strong> The first test of whether Izel has been paying attention to her Nexo, not just using it. Bond score with Embral directly affects battle performance here — not dramatically, but noticeably.
+        </p>
+        <p style="font-size:14px;margin-bottom:8px;">
+          <strong>Mechanics:</strong> Standard battle, but the Guardian's Nexos use Earth-affinity moves that test both Fire and Earth resistances. The Guardian's opening line is different depending on whether Izel used Nexus Safe before arriving.
+        </p>
+        <p style="font-size:14px;">
+          <strong>Post-battle:</strong> The Guardian does not give a speech. She gives Izel the first Vínculo Seal and says something specific about Embral — she noticed something in how it fought. What she says depends on bond score. Both versions are complimentary. One is more specific.
+        </p>
+      </div>
+    </div>
+
+    <!-- OUTCOME -->
+    <div class="prog-section">
+      <div class="prog-label jade"><span class="prog-number">7</span> OUTCOME — WHAT CHANGES AFTER THIS REGION</div>
+      <div class="outcome-block">
+        <ul>
+          <li>Izel has her first Vínculo Seal and the right to travel to La Tierra de Ecos.</li>
+          <li>Bond with Embral is established — the baseline for all future bond comparisons.</li>
+          <li>Consejo presence in the Sierra is now a background detail the player has noticed without being told to notice.</li>
+          <li>Tavo has been met — the rivalry exists, but the dynamic is not yet defined.</li>
+          <li>If Arce was visited: Izel has the first technical anomaly note (useful in Act 2).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HOOKS -->
+    <div class="prog-section">
+      <div class="prog-label gold"><span class="prog-number">8</span> NARRATIVE HOOKS — EXPANSION POINTS</div>
+      <ul class="hook-list">
+        <li>🔗 <strong>Hook A — Tavo's father:</strong> A Consejo officer in Villa Brasa is Tavo's father. This is established but not dramatized in Region 1. Full reveal of what his father is involved in: later. Seed it here through NPC references.</li>
+        <li>🔗 <strong>Hook B — Xochi's last project:</strong> Two Sierra NPCs remember Xochi differently. One says she was brilliant. One says she was "asking questions that made people uncomfortable." Both are true. Neither expands on it unless the player presses.</li>
+        <li>🔗 <strong>Hook C — Carabronte behavior:</strong> Tavo's Carabronte pauses near the Consejo equipment Arce mentioned. Tavo shrugs it off. First appearance of the behavior that will matter in Region 2.</li>
+        <li>🔗 <strong>Hook D — Nana Remi's letter:</strong> Space for a letter from Nana Remi arriving at the first town's message post. Content and tone adapt to player identity. WRITER NEEDED: tone guide for four identity variants.</li>
+        <li>🔗 <strong>Hook E — The Guardian's Nexo:</strong> The Sierra Guardian's partner Nexo is elderly. It has a Scar from an old battle. If Izel examines it during the post-battle scene, the Guardian will tell a brief story. This is pure flavor — write it when the Guardian is named.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     REGION 2 — LA TIERRA DE ECOS
+═══════════════════════════════════════════════════════════ -->
+<div class="region-doc" id="r2-ecos">
+  <div class="region-header spirit">
+    <div class="region-num">◈ REGION 02</div>
+    <div class="region-title">LA TIERRA DE ECOS</div>
+    <div class="region-tagline">"The Spirit Region. Memory, celebration, the warmth of those who are gone."</div>
+    <div class="region-meta">
+      <div class="region-meta-item"><strong>AFFINITY</strong> Spirit / Shadow</div>
+      <div class="region-meta-item"><strong>TONE</strong> Warm / Celebratory / Deep</div>
+      <div class="region-meta-item"><strong>ACT</strong> Act 2</div>
+      <div class="region-meta-item"><strong>PLAYER LEVEL</strong> Early-Mid</div>
+      <div class="region-meta-item"><strong>TAGS</strong>
+        <span class="tag spirit">SPIRIT</span>
+        <span class="tag shadow">MEMORY</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="region-body">
+
+    <!-- ENTRY CONTEXT -->
+    <div class="prog-section">
+      <div class="prog-label"><span class="prog-number">1</span> ENTRY CONTEXT</div>
+      <p>
+        <strong>How Izel arrives:</strong> Traveling south from the Sierra. The transition from
+        the northern landscape to the Spirit Region is gradual: more color, more candlelight
+        in windows at night, more Nexos visible near human settlements. The border is not marked
+        — it is felt.
+      </p>
+      <p>
+        <strong>First impression:</strong> A cemetery that doesn't feel sad. Marigolds everywhere.
+        An old woman maintaining an altar who greets Izel without surprise, as if she knew
+        someone was coming. The Spirit Region does not hide its relationship with death.
+        It just doesn't treat death the way people from outside expect.
+      </p>
+    </div>
+
+    <!-- MAIN STORY ARC -->
+    <div class="prog-section">
+      <div class="prog-label jade"><span class="prog-number">2</span> MAIN STORY ARC — KEY EVENTS</div>
+      <ol>
+        <li>Izel enters the Spirit Region. First encounter with a Spirit-affinity Nexo (Abueluz) in the wild — it approaches her without prompting.</li>
+        <li><strong>First Atado sighting:</strong> Izel sees a Consejo-bonded Nexo next to a freely bonded one of the same species. No explanation given. The contrast is visible.</li>
+        <li>Izel finds fragments of Xochi's research preserved at Spirit Region altars — kept by elder women specifically. The fragments exist. They are not organized. They are enough to know the Consejo's official story is false.</li>
+        <li>Izel meets <strong>Luzma</strong>. Luzma does not immediately help. She watches first.</li>
+        <li>Tavo arrives. His Carabronte behavior is more pronounced here. First honest conversation between Izel and Tavo — not about the plot, about why they're doing this.</li>
+        <li>The central altar scene: the personalized narrative event. The most emotionally significant scene in the early game.</li>
+        <li>Guardian Trial: Memory Trial. Tests bond depth across the team, not just power.</li>
+        <li>Luzma tells Izel that Xochi is alive. Not where. Just: alive, and where she went was a choice.</li>
+      </ol>
+    </div>
+
+    <!-- PERSONALIZED EVENT -->
+    <div class="prog-section">
+      <div class="prog-label spirit"><span class="prog-number">3</span> PERSONALIZED NARRATIVE EVENT</div>
+      <p><strong>Scene:</strong> The central altar. Izel must decide whether to leave something on it for Xochi.</p>
+      <div class="player-grid">
+        <div class="player-card">
+          <div class="player-card-label">IF EXPLORADOR</div>
+          Izel arrives informed — she has spoken to every elder, found multiple Xochi fragments. The offering is specific and deliberate. She knows what page of the notes to leave. The nearby Abueluz brightens slightly. Luzma is present and says: "She would have known the name of the Abueluz you just spoke to."
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF BATALLADOR</div>
+          Izel arrives with less context. The altar is unfamiliar in its implications. She stands at it for a long time. Nothing about the altar asks anything of her. She leaves nothing — not out of rejection, out of not knowing what to leave. Luzma says, later: "You're not ready to leave something yet. That's honest."
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF CUIDADOR</div>
+          Izel arrives with strong bonds and the Nexus Safe habit. One of her Nexos settles beside the altar without being directed. It seems to know what an altar is for. She leaves the first page of the research notes. The Abueluz nearest to her shows her something — a brief light pattern that Luzma later says is a name.
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF ESTRATEGA</div>
+          Izel arrives having extracted information efficiently. She understands the altar's cultural function intellectually. She makes the correct offering — marigolds, purchased from the market. It is correct. It is not personal. The altar receives it. Luzma watches and says nothing about the offering but asks: "Do you know why she left?"
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFLICT -->
+    <div class="prog-section">
+      <div class="prog-label fire"><span class="prog-number">4</span> CONFLICT</div>
+      <p><strong>External conflict:</strong> A Consejo representative is in the Spirit Region cataloguing Nexos — specifically the ancient ones. The community is politely uncooperative. The Consejo rep is frustrated but professional. The ancient Nexos are simply not where he looks.</p>
+      <p><strong>Internal conflict (Izel):</strong> The Spirit Region is the first place where Izel's story about Xochi starts to dissolve. Everything she was told was not a lie — but it was incomplete in ways that were deliberate. She has to decide whether she is angry about this and how that anger should be directed.</p>
+      <p><strong>Internal conflict (Tavo):</strong> His Carabronte is behaving in ways Tavo cannot explain through training. It is not disobeying. It is hesitating. He does not know how to talk about this and tries to address it mechanically before finally admitting, to Izel, that he does not understand what his Nexo is telling him.</p>
+    </div>
+
+    <!-- KEY CHARACTERS -->
+    <div class="prog-section">
+      <div class="prog-label"><span class="prog-number">5</span> KEY CHARACTERS — ROLES</div>
+      <div class="char-row">
+        <div class="char-role">GUIDE / GATEKEEPER</div>
+        <div><strong>Luzma</strong> — The region's primary human contact. Keeper of memory and altars. She holds the knowledge of Xochi's location. She gives it only when she is certain of who is asking. Her warmth is real; so is her caution.</div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">REVELATION</div>
+        <div><strong>Xochi's research fragments</strong> (not a character, a narrative object) — Preserved at three different altars by three different elder women. Each fragment requires a different approach to find. Together they form an incomplete picture that is enough.</div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">RIVAL / PARALLEL</div>
+        <div><strong>Tavo</strong> — More present in this region than in the Sierra. His confusion mirrors Izel's, but from the opposite starting position. He trusted the Consejo; she was suspicious. They are converging toward the same uncertainty from different directions.</div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">GUARDIAN</div>
+        <div><strong>Luzma (dual role)</strong> — Luzma is both the region's primary NPC and the de facto Guardian. The Memory Trial is conducted through her. She does not fight. She asks questions. <span class="wip">TRIAL FORMAT NEEDS DESIGN — suggest non-battle memory sequence</span></div>
+      </div>
+    </div>
+
+    <!-- BOSS ENCOUNTER -->
+    <div class="prog-section">
+      <div class="prog-label fire"><span class="prog-number">6</span> BOSS ENCOUNTER — GUARDIAN TRIAL: MEMORY</div>
+      <div class="boss-block">
+        <div class="boss-name">MEMORY TRIAL — LUZMA / SPIRIT GUARDIAN NEXO (TO BE NAMED)</div>
+        <p style="font-size:14px;margin-bottom:8px;">
+          <strong>Theme:</strong> The depth of the bond matters more than power. Spirit-affinity Guardian Nexos are sensitive to the bond history between Izel and her team. A team with high average bond score faces a different version of the encounter than a low-bond team.
+        </p>
+        <p style="font-size:14px;margin-bottom:8px;">
+          <strong>Mechanics:</strong> Spirit-affinity Nexos use moves that interact with Scars (if any exist), bond depth (high-bond teams deal more damage with Spirit-type moves), and accumulated battle history. The trial rewards the Cuidador and Explorador identities most heavily.
+        </p>
+        <p style="font-size:14px;">
+          <strong>Post-trial:</strong> Luzma tells Izel that Xochi is alive and that she chose to go where she went. She does not say where yet. She says: "When you are ready to understand why someone would make that choice, come back. I will tell you where."
+        </p>
+      </div>
+    </div>
+
+    <!-- OUTCOME -->
+    <div class="prog-section">
+      <div class="prog-label jade"><span class="prog-number">7</span> OUTCOME</div>
+      <div class="outcome-block">
+        <ul>
+          <li>Second Vínculo Seal. Access to the coastal/volcanic region.</li>
+          <li>Izel knows Xochi is alive. She does not know where.</li>
+          <li>She has fragments of Xochi's research — enough to know the Consejo's story is wrong, not enough to know what the truth is.</li>
+          <li>The Atado has been seen. Its name will come later. Its image stays.</li>
+          <li>Tavo has admitted, for the first time, that something is wrong — not with the Consejo, but with his ability to explain what his Nexo is experiencing.</li>
+          <li>Player identity is now clearly established in the world's memory — the Personalized Event has occurred, the world has begun to respond differently to different players.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HOOKS -->
+    <div class="prog-section">
+      <div class="prog-label gold"><span class="prog-number">8</span> NARRATIVE HOOKS</div>
+      <ul class="hook-list">
+        <li>🔗 <strong>Hook A — The three fragment keepers:</strong> Three elder women, each holding one of Xochi's fragments. Each has a different relationship with why she kept it. WRITER NEEDED: brief character sketches for all three.</li>
+        <li>🔗 <strong>Hook B — The Consejo cataloguer:</strong> A specific Consejo character (not Reyes) who is trying to map the ancient Nexos of the Spirit Region. He is not malicious — he is following orders. He is also failing, and he knows it. What he thinks is causing his failure is wrong. WRITER NEEDED: one scene where Izel observes him from a distance.</li>
+        <li>🔗 <strong>Hook C — Tavo and Carabronte:</strong> The scene where Tavo admits to Izel that his Nexo is hesitating. This is the moment their dynamic shifts from rivalry to parallel journey. WRITER NEEDED: dialogue for four identity variants (Izel responds differently based on who she has been).</li>
+        <li>🔗 <strong>Hook D — The Atado:</strong> The first Atado sighting needs a specific NPC context — who owns it, why it is here, and why no one in the Spirit Region will look at it directly. WRITER NEEDED: the scene setup. The reveal can be silent.</li>
+        <li>🔗 <strong>Hook E — Luminariax first appearance:</strong> The ancient Spirit/Wind Nexo that is bonded with Xochi. It appears briefly in the Spirit Region — seen in peripheral vision by Izel if her bond score is above 50. It does not interact. It is seen. ARTIST NOTE: needs a visual appearance moment.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     REGION 3 — LA COSTA DEL RITMO / EL CRÁTER DORMIDO
+═══════════════════════════════════════════════════════════ -->
+<div class="region-doc" id="r3-coastal">
+  <div class="region-header coastal">
+    <div class="region-num">◈ REGION 03</div>
+    <div class="region-title">LA COSTA DEL RITMO &amp; EL CRÁTER DORMIDO</div>
+    <div class="region-tagline">"Two cultures, one unresolved argument. Flow versus discipline. Community versus precision."</div>
+    <div class="region-meta">
+      <div class="region-meta-item"><strong>AFFINITY</strong> Water vs Fire</div>
+      <div class="region-meta-item"><strong>TONE</strong> Dynamic / Tense / Alive</div>
+      <div class="region-meta-item"><strong>ACT</strong> Act 2–3 transition</div>
+      <div class="region-meta-item"><strong>PLAYER LEVEL</strong> Mid</div>
+      <div class="region-meta-item"><strong>TAGS</strong>
+        <span class="tag water">WATER</span>
+        <span class="tag fire">FIRE</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="region-body">
+
+    <!-- ENTRY CONTEXT -->
+    <div class="prog-section">
+      <div class="prog-label"><span class="prog-number">1</span> ENTRY CONTEXT</div>
+      <p>
+        <strong>How Izel arrives:</strong> Two entry points exist — one through the coast road,
+        one through the volcanic highlands. The player's identity subtly influences which feels
+        more natural, but both are always accessible. The first impression is determined by
+        which side they arrive from.
+      </p>
+      <p>
+        <strong>From the coast:</strong> Sound first. Music, waves, the noise of a working port.
+        Colorful hand-painted boats. Nexos visible in the harbor water. A feeling of easy movement.
+      </p>
+      <p>
+        <strong>From the crater:</strong> Silence and heat shimmer. Perfectly maintained paths.
+        Volcanic rock and the smell of something old and hot. Nexos moving in precise patterns.
+        A feeling of controlled power.
+      </p>
+    </div>
+
+    <!-- MAIN STORY ARC -->
+    <div class="prog-section">
+      <div class="prog-label jade"><span class="prog-number">2</span> MAIN STORY ARC — KEY EVENTS</div>
+      <ol>
+        <li>Izel discovers the Consejo's corridor project — survey stakes in the coastal wetlands. She encounters both communities' reactions simultaneously.</li>
+        <li>She meets <strong>Don Berto</strong> (water authority / dam keeper) who understands the wetland issue from an engineering perspective and sees both sides.</li>
+        <li>She encounters <strong>Tiburlava</strong> in the wetlands — the hybrid Water/Fire Nexo that embodies the region's conflict. It does not choose sides.</li>
+        <li>Investigation of the corridor project reveals Consejo documentation. The project is economically motivated, but the justification used in Consejo filings is a lie about the World Echo readings in the wetland.</li>
+        <li>Izel must navigate both communities' Trials to earn this region's Seal — she cannot skip one for the other.</li>
+        <li>Optional: Tavo arrives here from the crater side. His father's name appears in the Consejo corridor documentation. Tavo finds this himself, alone. The player sees the aftermath, not the moment.</li>
+        <li>Dual Guardian Trial: Harmony Trial. Both coastal and volcanic Guardians present. The trial tests whether Izel can hold both affinities simultaneously.</li>
+      </ol>
+    </div>
+
+    <!-- PERSONALIZED EVENT -->
+    <div class="prog-section">
+      <div class="prog-label spirit"><span class="prog-number">3</span> PERSONALIZED NARRATIVE EVENT</div>
+      <p><strong>Scene:</strong> The wetland border. Izel stands between the coastal family watching the survey team and the volcanic elder watching the coast. The Tiburlava is in the water.</p>
+      <div class="player-grid">
+        <div class="player-card">
+          <div class="player-card-label">IF EXPLORADOR</div>
+          Izel has spoken to both communities at length. She approaches the Tiburlava with context. The Tiburlava turns toward her in a way it hasn't turned toward either community. She becomes the third point in a triangle, and the scene feels like a moment of potential.
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF BATALLADOR</div>
+          Izel has focused on the battles and has less community context. She sees the Tiburlava but doesn't approach. The scene is about the two communities' silence. The Tiburlava watches all three directions. Nobody closes the gap.
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF CUIDADOR</div>
+          One of Izel's Nexos moves toward the Tiburlava before Izel does. The Tiburlava watches the Nexo for a moment. The two communities both notice this. It breaks the silence without Izel saying anything.
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF ESTRATEGA</div>
+          Izel has the Consejo documentation. She presents it to Don Berto at the wetland border, in front of a representative from each community. It reframes the conflict. The Tiburlava in the water is irrelevant to the conversation that follows, and then, unexpectedly, isn't.
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFLICT -->
+    <div class="prog-section">
+      <div class="prog-label fire"><span class="prog-number">4</span> CONFLICT</div>
+      <p><strong>External conflict (regional):</strong> The coastal community and volcanic community are not at war — they are at a standoff, mediated by the Consejo in a way that serves the Consejo's corridor project, not the communities' actual needs.</p>
+      <p><strong>External conflict (Consejo):</strong> The falsified Echo readings in the corridor documentation are the first clear evidence of Consejo institutional deception that Izel can hold in her hands. It is not about Xochi. It is about the Consejo's pattern.</p>
+      <p><strong>Internal conflict (Izel):</strong> She came here looking for information about Xochi. What she finds is something broader — the Consejo is not just hiding one truth, it is hiding a method. Xochi's disappearance may be one instance of something systematic. This is harder to hold than a personal injustice.</p>
+    </div>
+
+    <!-- KEY CHARACTERS -->
+    <div class="prog-section">
+      <div class="prog-label"><span class="prog-number">5</span> KEY CHARACTERS — ROLES</div>
+      <div class="char-row">
+        <div class="char-role">PRAGMATIST</div>
+        <div><strong>Don Berto</strong> — Water authority / dam keeper. Sees the practical reality of both communities. Not aligned with either side — aligned with the infrastructure that serves both. His perspective is the most useful for understanding the corridor project's real impact.</div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">COASTAL VOICE</div>
+        <div><strong>TO BE NAMED</strong> — Coastal community representative. Warm, community-oriented, specific about what the wetlands mean in lived terms. <span class="wip">CHARACTER DESIGN NEEDED</span></div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">VOLCANIC VOICE</div>
+        <div><strong>TO BE NAMED</strong> — Volcanic community elder. Precise, not cold. Has a legitimate economic argument for the corridor. Is not wrong about the economy. <span class="wip">CHARACTER DESIGN NEEDED</span></div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">DUAL GUARDIANS</div>
+        <div><strong>TO BE NAMED × 2</strong> — One coastal Guardian Keeper, one volcanic Guardian Keeper. They have not agreed on anything in fifteen years. They have agreed to conduct the Harmony Trial together for reasons neither will fully explain. <span class="wip">BOTH NEED NAMING + BACKSTORY</span></div>
+      </div>
+    </div>
+
+    <!-- BOSS ENCOUNTER -->
+    <div class="prog-section">
+      <div class="prog-label fire"><span class="prog-number">6</span> BOSS ENCOUNTER — GUARDIAN TRIAL: HARMONY</div>
+      <div class="boss-block">
+        <div class="boss-name">HARMONY TRIAL — DUAL GUARDIAN ENCOUNTER</div>
+        <p style="font-size:14px;margin-bottom:8px;">
+          <strong>Theme:</strong> Can Izel hold two conflicting affinities simultaneously without defaulting to one? The trial uses both Water and Fire Guardian Nexos in sequence, with a combined final encounter featuring the Tiburlava.
+        </p>
+        <p style="font-size:14px;margin-bottom:8px;">
+          <strong>Mechanics:</strong> Two-phase battle. Phase 1: coastal Guardian (Water). Phase 2: volcanic Guardian (Fire). Phase 3: both Guardians observe as Izel faces a wild Tiburlava in the wetlands. This phase is optional — the Seal is granted after Phase 2. But if the player engages the Tiburlava and succeeds, a bonus scene occurs.
+        </p>
+        <p style="font-size:14px;">
+          <strong>Bonus scene:</strong> The Tiburlava chooses to bond. Both Guardians see it. Neither speaks. <span class="wip">DIALOGUE FOR THIS SCENE NEEDED</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- OUTCOME -->
+    <div class="prog-section">
+      <div class="prog-label jade"><span class="prog-number">7</span> OUTCOME</div>
+      <div class="outcome-block">
+        <ul>
+          <li>Third Vínculo Seal. Access to El Valle Bruma.</li>
+          <li>Izel has falsified Consejo documentation — the first concrete evidence of institutional deception.</li>
+          <li>Tavo has found his father's name in the documentation. He has not told Izel. The player does not see this scene directly. It has happened.</li>
+          <li>If Tiburlava bonded: Izel has the Coastal/Volcanic bridge Nexo. Mechanically useful in both Region 4 and Region 5. Narratively significant.</li>
+          <li>The two communities' conflict is not resolved — but it is named, and both communities have a person (Izel) who understands both sides now.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HOOKS -->
+    <div class="prog-section">
+      <div class="prog-label gold"><span class="prog-number">8</span> NARRATIVE HOOKS</div>
+      <ul class="hook-list">
+        <li>🔗 <strong>Hook A — Tavo and the documentation:</strong> The scene where Tavo sees his father's name is crucial but should happen offscreen. What the player sees is Tavo afterward. WRITER NEEDED: Tavo's behavior in the aftermath — what he looks like when he has information he doesn't know what to do with.</li>
+        <li>🔗 <strong>Hook B — Don Berto's history:</strong> Don Berto has been managing the water infrastructure that includes the wetlands for thirty years. He has watched the corridor project be proposed and dismissed twice before. This time feels different to him. WRITER NEEDED: his one expository scene.</li>
+        <li>🔗 <strong>Hook C — The Tiburlava observation:</strong> The Tiburlava is visible in three specific locations in the region before the trial. Each sighting is brief. Together they suggest it has been watching Izel specifically, not just anyone who passes through. DESIGN NEEDED: trigger conditions for each sighting.</li>
+        <li>🔗 <strong>Hook D — Falsified Echo readings:</strong> The corridor documentation includes specific numbers. Someone in the Consejo who understands Echo science falsified them. This person is not Reyes — it is someone who believed they were helping. WRITER NOTE: this person does not appear in this region but their name is in the documents. Seed it here; pay it off in Region 5.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     REGION 4 — EL VALLE BRUMA
+═══════════════════════════════════════════════════════════ -->
+<div class="region-doc" id="r4-bruma">
+  <div class="region-header mist">
+    <div class="region-num">◈ REGION 04</div>
+    <div class="region-title">EL VALLE BRUMA</div>
+    <div class="region-tagline">"The Mist Region. Silence, hidden paths, the discipline of what is not shown."</div>
+    <div class="region-meta">
+      <div class="region-meta-item"><strong>AFFINITY</strong> Wind / Shadow</div>
+      <div class="region-meta-item"><strong>TONE</strong> Quiet / Strategic / Hidden</div>
+      <div class="region-meta-item"><strong>ACT</strong> Act 3 (approach)</div>
+      <div class="region-meta-item"><strong>PLAYER LEVEL</strong> Mid-Late</div>
+      <div class="region-meta-item"><strong>TAGS</strong>
+        <span class="tag wind">WIND</span>
+        <span class="tag shadow">SHADOW</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="region-body">
+
+    <!-- ENTRY CONTEXT -->
+    <div class="prog-section">
+      <div class="prog-label"><span class="prog-number">1</span> ENTRY CONTEXT</div>
+      <p>
+        <strong>How Izel arrives:</strong> The path to the Mist Region is not obvious. There is
+        a road, but it ends before the Valley begins. The transition from normal landscape to the
+        mist-filled valley is gradual enough that the player may not notice the exact moment
+        of crossing.
+      </p>
+      <p>
+        <strong>First impression:</strong> Sound before sight — birds, wind, water somewhere.
+        Then silence where the mist begins. The first settlement is visible only because lights
+        are on inside buildings. The first person Izel encounters is moving through the mist
+        with the confidence of someone who has never needed to see more than three feet ahead.
+        They greet Izel without surprise. Everyone in the Valley seems to have been expecting
+        someone to arrive eventually.
+      </p>
+    </div>
+
+    <!-- MAIN STORY ARC -->
+    <div class="prog-section">
+      <div class="prog-label jade"><span class="prog-number">2</span> MAIN STORY ARC — KEY EVENTS</div>
+      <ol>
+        <li>Izel enters the Valley. Normal navigation skills are less useful. Players who explore earn more than players who rush.</li>
+        <li>First encounter with Sierraptor — seen as movement in the mist, not yet a full encounter. The local elder notes it: "It's deciding whether to know you."</li>
+        <li>The Valley's community provides specific intelligence: a Consejo research team passed through two months ago, asked about the Corazón Profundo, was guided away from it. The Valley kept the records of what they asked.</li>
+        <li>The Consejo team's notes (obtained from the Valley's archives) contain a name: the same person whose falsified Echo readings appeared in the corridor documentation. The pattern is now visible to Izel.</li>
+        <li>Tavo arrives. He and Izel talk honestly for the first time about what they both know. The dynamic of rivalry has been replaced by something more complicated and more useful.</li>
+        <li>The Sierraptor chooses to know Izel — specific conditions depending on player identity.</li>
+        <li>Guardian Trial: Silence Trial. No items. No visible commands. Only bond.</li>
+      </ol>
+    </div>
+
+    <!-- PERSONALIZED EVENT -->
+    <div class="prog-section">
+      <div class="prog-label spirit"><span class="prog-number">3</span> PERSONALIZED NARRATIVE EVENT</div>
+      <p><strong>Scene:</strong> The Sierraptor approach. Izel waiting at the mist-clearing where the elder told her to return. "Do less."</p>
+      <div class="player-grid">
+        <div class="player-card">
+          <div class="player-card-label">IF EXPLORADOR</div>
+          Izel arrives having spoken to enough Valley people to understand what "do less" actually means. She sits. She waits. Her Nexos settle without instruction. The Sierraptor appears after a short time. The approach is quiet and direct. It has already decided.
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF BATALLADOR</div>
+          Izel arrives with battle-ready posture. She waits, but the waiting feels tense. The Sierraptor does not appear on the first day. She returns the next day without her team. On the second day, alone and genuinely unguarded, it comes. The elder says: "You had to leave your armor at home."
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF CUIDADOR</div>
+          Izel arrives with her whole team and the Nexus Safe habit. She performs a Nexus Safe check while waiting — not for the Sierraptor, for her Nexos. The Sierraptor is watching this. When Izel looks up, it's already three feet away. It was watching the check-in. It wanted to see what she does when she thinks nobody is looking.
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF ESTRATEGA</div>
+          Izel has analyzed the Sierraptor's previous sighting patterns. She positions herself at the optimal point. She waits efficiently. The Sierraptor arrives. It looks at her for a long moment and then — instead of approaching — it demonstrates something: a Sierraptor evasion technique, performed slowly in front of her, as if teaching. It leaves. The elder says: "It respects how you think. That's different from trusting you. Come back."
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFLICT -->
+    <div class="prog-section">
+      <div class="prog-label fire"><span class="prog-number">4</span> CONFLICT</div>
+      <p><strong>External conflict:</strong> The Consejo has been trying to access the Corazón Profundo through the Valley's territory. The Valley has been redirecting them. This is not hostile — the Valley is politely, methodically, comprehensively unhelpful to any Consejo request for the interior. It has been doing this for years.</p>
+      <p><strong>Internal conflict (Izel):</strong> The Mist Region is where Izel's personal search converges with the broader pattern. Xochi was not an isolated case. The Consejo has been suppressing knowledge of the Corazón Profundo specifically because of what Xochi's research pointed toward — the old agreement. Izel now has enough information to see the shape of the truth, even if she doesn't yet have the full picture.</p>
+      <p><strong>Internal conflict — Lich path only:</strong> The Valley has knowledge of the Necro transformation line. Players moving toward the Lich ending will find a specific set of texts here that make clear what the path requires. The Valley does not endorse it or prohibit it. It simply provides the information, completely, without comment. The choice remains entirely Izel's.</p>
+    </div>
+
+    <!-- KEY CHARACTERS -->
+    <div class="prog-section">
+      <div class="prog-label"><span class="prog-number">5</span> KEY CHARACTERS — ROLES</div>
+      <div class="char-row">
+        <div class="char-role">GUIDE / ELDER</div>
+        <div><strong>TO BE NAMED</strong> — The Valley elder who told Izel to "do less." Calm, specific, zero nonsense. Does not explain the Valley's philosophy — demonstrates it. <span class="wip">NAME + FULL ROLE NEEDED</span></div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">ARCHIVIST</div>
+        <div><strong>Neri (possible connection)</strong> — The student archivist from the starting region may appear here as a Valley exchange student, having followed the same thread Izel has been following through different means. If Neri was spoken to in the Sierra, she recognizes Izel. <span class="wip">CONFIRM IF NERI TRAVELS OR STAYS IN SIERRA</span></div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">RIVAL / PARTNER</div>
+        <div><strong>Tavo</strong> — His arc crystallizes in the Valley. By the end of this region, Tavo has made a decision about his father and the Consejo. What that decision is depends on whether Izel has been honest with him throughout the journey. <span class="wip">WRITER NEEDED: the decision scene — four identity variants</span></div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">GUARDIAN</div>
+        <div><strong>TO BE NAMED</strong> — Valley Guardian Keeper. The Silence Trial. Does not speak during the trial — communicates entirely through their Nexo's behavior. <span class="wip">TRIAL MECHANICS NEED FULL DESIGN</span></div>
+      </div>
+    </div>
+
+    <!-- BOSS ENCOUNTER -->
+    <div class="prog-section">
+      <div class="prog-label fire"><span class="prog-number">6</span> BOSS ENCOUNTER — GUARDIAN TRIAL: SILENCE</div>
+      <div class="boss-block">
+        <div class="boss-name">SILENCE TRIAL — VALLEY GUARDIAN</div>
+        <p style="font-size:14px;margin-bottom:8px;">
+          <strong>Theme:</strong> The bond between Izel and her Nexos without the scaffolding of items, commands, or external assistance. Pure strategy and pure relationship.
+        </p>
+        <p style="font-size:14px;margin-bottom:8px;">
+          <strong>Special rule:</strong> No items allowed. No switch command is visible to the Guardian (though switching is still allowed mechanically). The Guardian watches the bond, not the moves. This is the only trial where post-battle feedback is about the relationship observed, not the battle result.
+        </p>
+        <p style="font-size:14px;">
+          <strong>Post-trial:</strong> The Guardian Guardian speaks for the first time after the battle. One sentence. It is a different sentence for each player identity. All four sentences are specific and true about who the player has been. <span class="wip">WRITER NEEDED: four identity-variant closing lines</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- OUTCOME -->
+    <div class="prog-section">
+      <div class="prog-label jade"><span class="prog-number">7</span> OUTCOME</div>
+      <div class="outcome-block">
+        <ul>
+          <li>Fourth Vínculo Seal. Access to El Corazón Profundo.</li>
+          <li>Izel has the full pattern: Consejo has been systematically suppressing access to the Corazón Profundo and the knowledge of the old agreement. Xochi was not the first. She was the most recent.</li>
+          <li>Tavo has made his decision about the Consejo. It is not announced publicly. It changes his behavior in Region 5.</li>
+          <li>If Sierraptor bonded: Izel has the Valley's Nexo. It will be important in the Corazón Profundo.</li>
+          <li>Lich path players have found the Necro texts. The path forward is visible. The choice is made or not made here.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HOOKS -->
+    <div class="prog-section">
+      <div class="prog-label gold"><span class="prog-number">8</span> NARRATIVE HOOKS</div>
+      <ul class="hook-list">
+        <li>🔗 <strong>Hook A — The Valley's archives:</strong> The Valley has kept records of every Consejo visit for forty years. The full archive is accessible if Izel earns the Valley's trust (Explorador identity helps). The complete archive is more than the main story requires. WRITER NOTE: the archive contains three additional seeds for a potential DLC or sequel — leave them legible but unexplored.</li>
+        <li>🔗 <strong>Hook B — Tavo's decision scene:</strong> This is one of the most important scenes in the game — the moment Tavo chooses how to hold the knowledge of his father's involvement. It needs four variants based on Izel's identity. It should be written before Region 5 is scripted because it affects Tavo's behavior at the endgame.</li>
+        <li>🔗 <strong>Hook C — The Necro texts:</strong> Their content needs to be written carefully — they should be factual and historical, not ominous. The Lich path should feel like a genuine philosophical choice, not a "dark side" option. The Valley's presentation is neutral. WRITER NEEDED: the text content and framing.</li>
+        <li>🔗 <strong>Hook D — Japanese fusion Nexos:</strong> The Valley-specific Nexo species beyond Sierraptor are not yet designed. DESIGNER NOTE: the Valley Nexos should reflect the shinobi/ma philosophy — evasion-based, precision-based, defined by what they withhold. Species TBD.</li>
+        <li>🔗 <strong>Hook E — The first person who falsified the readings:</strong> Their name appears in the Valley archive. They are not a villain. WRITER NOTE: brief historical note about who they were and why they did it. This is a one-paragraph NPC history — but it changes how the Consejo reads as an institution.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     REGION 5 — EL CORAZÓN PROFUNDO
+═══════════════════════════════════════════════════════════ -->
+<div class="region-doc" id="r5-corazon">
+  <div class="region-header legend">
+    <div class="region-num">◈ REGION 05 — LEGENDARY</div>
+    <div class="region-title">EL CORAZÓN PROFUNDO</div>
+    <div class="region-tagline">"The old agreement. The truth of the Nexos. The choice that defines everything."</div>
+    <div class="region-meta">
+      <div class="region-meta-item"><strong>AFFINITY</strong> All / Ancient</div>
+      <div class="region-meta-item"><strong>TONE</strong> Timeless / Final / True</div>
+      <div class="region-meta-item"><strong>ACT</strong> Act 3–4</div>
+      <div class="region-meta-item"><strong>PLAYER LEVEL</strong> Late / Endgame</div>
+      <div class="region-meta-item"><strong>TAGS</strong>
+        <span class="tag gold">LEGENDARY</span>
+        <span class="tag spirit">ANCIENT ECHO</span>
+        <span class="tag shadow">ENDGAME TRUTH</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="region-body">
+
+    <!-- ENTRY CONTEXT -->
+    <div class="prog-section">
+      <div class="prog-label"><span class="prog-number">1</span> ENTRY CONTEXT</div>
+      <p>
+        <strong>How Izel arrives:</strong> Two paths lead to the Corazón Profundo.
+        The standard path requires four Vínculo Seals and passes through the Valley.
+        The Lich path has a separate entry — a route that does not appear on any Consejo map,
+        accessible only after acquiring the Necro line's third evolution.
+      </p>
+      <p>
+        <strong>First impression:</strong> The World Echo is visible here. Not as a glow —
+        as a subtle double-exposure quality to the light, as if the present and a memory
+        of the present exist in the same space simultaneously. Stone structures that show
+        the influence of multiple civilizations stacked like geology. The silence here is
+        occupied. The ancient Nexos are present. They are not hiding. They are waiting.
+      </p>
+      <p>
+        <strong>Access requirement:</strong> Bond score average across Izel's active team must
+        be above 60 to enter the Xolcan's chamber. Below this, the chamber is present but the
+        encounter does not trigger. The Xolcan waits.
+      </p>
+    </div>
+
+    <!-- MAIN STORY ARC -->
+    <div class="prog-section">
+      <div class="prog-label jade"><span class="prog-number">2</span> MAIN STORY ARC — KEY EVENTS</div>
+      <ol>
+        <li>Izel finds Abuela Xochi. The meeting is not a rescue or a reunion — it is a confrontation followed by understanding. This is the longest single narrative scene in the game.</li>
+        <li>Xochi explains the old agreement in full: what it required, what it was for, and what happened when the Consejo replaced it with institutional management.</li>
+        <li>The Xolcan encounter: Izel approaches the ancient Nexo. It looks at her. This scene's content depends on bond score and player identity — all versions lead to the same functional outcome but feel different.</li>
+        <li>Reyes arrives. He knows Izel is here. He has known since the Spirit Region. He chose to let her come because he cannot explain the Xolcan looking at Orden the way it did, and part of him wants someone else to be in the room when it happens again.</li>
+        <li>The Reyes confrontation. He presents his argument in full. Izel presents hers. The battle happens. Reyes's Atado Xolcan (Orden) has the brief moment of presence — the eyes clearing for one frame.</li>
+        <li>Izel wins. She decides what to do next. This decision determines the ending.</li>
+      </ol>
+    </div>
+
+    <!-- PERSONALIZED EVENT -->
+    <div class="prog-section">
+      <div class="prog-label spirit"><span class="prog-number">3</span> PERSONALIZED NARRATIVE EVENT</div>
+      <p><strong>Scene:</strong> The meeting with Abuela Xochi. The conversation's tone depends on who Izel has been.</p>
+      <div class="player-grid">
+        <div class="player-card">
+          <div class="player-card-label">IF EXPLORADOR</div>
+          Izel arrives with the full context — every elder's fragment, every archived note, the corridor documentation, the Valley's records. The conversation is specific and equal. Xochi is surprised by how much Izel already knows. The meeting becomes less of an explanation and more of a confirmation.
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF BATALLADOR</div>
+          Izel arrives with raw determination and incomplete information. The conversation is rougher — Xochi has to provide more context, which takes longer and costs Izel more to receive. But Izel's directness reaches something in Xochi that more careful approaches might have navigated around.
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF CUIDADOR</div>
+          Luminariax, Xochi's Nexo, has been watching Izel's Nexos since the Spirit Region. It has already decided about Izel before Xochi sees her. The meeting begins with Luminariax's behavior rather than with words. Xochi reads what her Nexo is showing her and says: "Alright. I believe you."
+        </div>
+        <div class="player-card">
+          <div class="player-card-label">IF ESTRATEGA</div>
+          Izel has mapped the path to this meeting with precision. She arrives knowing what she needs and knowing what Xochi needs to hear to provide it. The conversation is efficient and honest. Xochi recognizes the method and says: "You remind me of how I was at your age. I'm sorry that's both a compliment and a warning."
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFLICT -->
+    <div class="prog-section">
+      <div class="prog-label fire"><span class="prog-number">4</span> CONFLICT</div>
+      <p><strong>External conflict:</strong> Reyes and the Consejo vs Izel and the knowledge she carries. The battle is the climax — but the real conflict is the argument before it. Reyes is not wrong that dismantling what he built will cost something. Izel is not wrong that it needs to be dismantled. Both are standing inside a problem that doesn't have a clean solution.</p>
+      <p><strong>Internal conflict (Izel):</strong> She found Xochi. Xochi made choices that cost Izel twelve years of not knowing. Those choices were not entirely wrong. Holding the love and the cost of that simultaneously is the work of Act 4. The ending she chooses reflects which part of that work she has completed.</p>
+      <p><strong>Internal conflict (Reyes):</strong> The moment when Orden's eyes clear. Eight years of a forced bond and one moment of genuine presence. He does not know what to do with that. It is the crack in everything he built. He loses the battle before it happens.</p>
+    </div>
+
+    <!-- KEY CHARACTERS -->
+    <div class="prog-section">
+      <div class="prog-label"><span class="prog-number">5</span> KEY CHARACTERS — ROLES</div>
+      <div class="char-row">
+        <div class="char-role">THE TRUTH</div>
+        <div><strong>Abuela Xochi</strong> — Full appearance here. Her complete backstory is revealed in the conversation with Izel. She is not a passive revelation — she has her own view of what should happen next, and it may not match any of the five endings.</div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">FINAL BOSS</div>
+        <div><strong>Comisionado Reyes</strong> — His full argument is heard here. His Atado Xolcan (Orden). The battle. The moment of presence in Orden's eyes. This is not a villain defeat scene — it is a reckoning between two people who both did everything they thought was right.</div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">ANCIENT WITNESS</div>
+        <div><strong>Xolcan (wild)</strong> — The legendary Nexo. Accessible only if bond average is 60+. Its encounter is not a battle — it is a recognition. No dialogue. Entirely visual and mechanical. ARTIST + DESIGNER NOTE: the Xolcan encounter needs its own design document.</div>
+      </div>
+      <div class="char-row">
+        <div class="char-role">PARTNER / PARALLEL</div>
+        <div><strong>Tavo</strong> — Present here based on what happened in Region 4. His role in the endgame is determined by whether Izel was honest with him throughout the journey. He is either her witness, her ally, her opponent, or her absence.</div>
+      </div>
+    </div>
+
+    <!-- BOSS ENCOUNTER -->
+    <div class="prog-section">
+      <div class="prog-label fire"><span class="prog-number">6</span> BOSS ENCOUNTER — REYES &amp; ORDEN</div>
+      <div class="boss-block">
+        <div class="boss-name">FINAL ENCOUNTER — COMISIONADO REYES &amp; THE ATADO XOLCAN "ORDEN"</div>
+        <p style="font-size:14px;margin-bottom:8px;">
+          <strong>Theme:</strong> A battle that Reyes is not trying to win — he is trying to find out if Izel is ready to carry what comes after. His Nexo Orden is the most powerful Nexo Izel has faced. It fights with mechanical perfection. It does not hesitate. It does not have the tells that bonded Nexos have.
+        </p>
+        <p style="font-size:14px;margin-bottom:8px;">
+          <strong>The moment:</strong> When Izel's winning move is coming — before she executes it — Orden looks at Reyes. Just for one frame. And its eyes are present. Eight years of being switched off. One moment of looking. Reyes says: <em>"No."</em> He gestures Orden to stand down. Izel wins without the final move.
+        </p>
+        <p style="font-size:14px;">
+          <strong>Post-battle:</strong> Reyes does not collapse. He looks at Orden. Orden is already switched off again. He asks: <em>"What are you going to do?"</em> This is the question that opens the five ending branches.
+        </p>
+      </div>
+    </div>
+
+    <!-- OUTCOME -->
+    <div class="prog-section">
+      <div class="prog-label jade"><span class="prog-number">7</span> OUTCOME</div>
+      <div class="outcome-block">
+        <p><strong>The outcome of this region is the ending itself.</strong> Each of the five endings begins immediately after Izel's answer to Reyes's question:</p>
+        <ul>
+          <li><strong>Armonía:</strong> "I'm going to tell everyone. And then I'm going to help rebuild it."</li>
+          <li><strong>Dominación:</strong> "I'm going to take it over. And I'm going to do it right."</li>
+          <li><strong>Equilibrio:</strong> "Nothing yet. You have a year. Start."</li>
+          <li><strong>Caos:</strong> "I'm going to burn it down and let the regions figure out what comes next."</li>
+          <li><strong>Senda Oscura:</strong> (Izel does not answer. She turns toward the deepest chamber. Orden moves to follow. Reyes does not stop it.)</li>
+        </ul>
+        <p style="margin-top:10px;">The epilogue sequences are designed separately for each ending. See World Bible §09 for full epilogue content.</p>
+      </div>
+    </div>
+
+    <!-- HOOKS -->
+    <div class="prog-section">
+      <div class="prog-label gold"><span class="prog-number">8</span> NARRATIVE HOOKS</div>
+      <ul class="hook-list">
+        <li>🔗 <strong>Hook A — Xochi's full conversation:</strong> This is the largest writing task in the game. Needs four identity variants AND five ending variants (Xochi's reaction to each ending choice is different). WRITER NEEDED: start with the common core, then branch. Budget significant time for this scene.</li>
+        <li>🔗 <strong>Hook B — The Xolcan recognition encounter:</strong> No dialogue, no battle — entirely visual and mechanical. Needs a full design document: what triggers it, what the visual tells are, what Izel's team does in response, what the Xolcan does after. DESIGNER + ARTIST NEEDED.</li>
+        <li>🔗 <strong>Hook C — Tavo's endgame role:</strong> Tavo's presence in Region 5 varies based on the decision he made in Region 4. His four possible roles (witness / ally / opponent / absence) each need brief scripting. The absence version — where he simply doesn't arrive — may be the most powerful. WRITER NEEDED.</li>
+        <li>🔗 <strong>Hook D — Orden's moment:</strong> The one frame where Orden's eyes clear. This is the emotional heart of the Reyes encounter. It needs to work as a visual surprise without being announced. ANIMATOR NOTE: the frame needs to be unmistakable but not exaggerated. Trust the player to see it.</li>
+        <li>🔗 <strong>Hook E — The epilogues:</strong> Five epilogues, each set three to five years after the ending choice. Each one should include: what happened to Monterra's Echo, what Izel is doing, what Tavo is doing, what Nana Remi says about it (in a letter, in person, or in absence). FORMAT TBD per ending.</li>
+        <li>🔗 <strong>Hook F — Post-credits seeds:</strong> Each ending except the Lich path contains one quiet image that suggests the world continued. WRITER + ARTIST NOTE: these should be hopeful without being conclusive. The world of Monterra is bigger than any five endings.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<hr>
+
+<div style="text-align:center;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);padding:20px 0;">
+  NEXUS — REGION PROGRESSION &amp; NARRATIVE SKELETON v1.0<br>
+  March 2026 · Bruno Salas · IndieStudio<br>
+  <strong style="color:var(--ash)">For full world lore: WORLD_BIBLE.html</strong>
+</div>
+
+</body>
+</html>

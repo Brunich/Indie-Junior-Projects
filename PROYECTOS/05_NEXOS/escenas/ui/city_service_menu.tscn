@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://codigo/ui/city_service_menu.gd" id="1_csm"]
+
+[node name="CityServiceMenu" type="CanvasLayer"]
+script = ExtResource("1_csm")
+layer = 8
+
+[node name="dimmer" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.03, 0.02, 0.72)
+
+[node name="panel" type="PanelContainer" parent="."]
+anchor_left = 0.08
+anchor_top = 0.08
+anchor_right = 0.92
+anchor_bottom = 0.92
+
+[node name="margin" type="MarginContainer" parent="panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+
+[node name="layout" type="VBoxContainer" parent="panel/margin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="header" type="VBoxContainer" parent="panel/margin/layout"]
+
+[node name="title" type="Label" parent="panel/margin/layout/header"]
+text = "Servicio"
+
+[node name="subtitle" type="Label" parent="panel/margin/layout/header"]
+theme_override_font_sizes/font_size = 11
+autowrap_mode = 3
+text = ""
+
+[node name="money" type="Label" parent="panel/margin/layout/header"]
+theme_override_font_sizes/font_size = 11
+text = "Feria: $0"
+
+[node name="content" type="VBoxContainer" parent="panel/margin/layout"]
+size_flags_vertical = 3
+
+[node name="action_list" type="VBoxContainer" parent="panel/margin/layout/content"]
+size_flags_vertical = 3
+
+[node name="pc_split" type="HBoxContainer" parent="panel/margin/layout/content"]
+size_flags_vertical = 3
+visible = false
+
+[node name="party_panel" type="VBoxContainer" parent="panel/margin/layout/content/pc_split"]
+size_flags_horizontal = 3
+
+[node name="party_title" type="Label" parent="panel/margin/layout/content/pc_split/party_panel"]
+text = "Equipo"
+
+[node name="party_list" type="VBoxContainer" parent="panel/margin/layout/content/pc_split/party_panel"]
+size_flags_vertical = 3
+
+[node name="storage_panel" type="VBoxContainer" parent="panel/margin/layout/content/pc_split"]
+size_flags_horizontal = 3
+
+[node name="storage_title" type="Label" parent="panel/margin/layout/content/pc_split/storage_panel"]
+text = "Resguardo"
+
+[node name="storage_list" type="VBoxContainer" parent="panel/margin/layout/content/pc_split/storage_panel"]
+size_flags_vertical = 3
+
+[node name="status" type="Label" parent="panel/margin/layout"]
+autowrap_mode = 3
+text = ""
+
+[node name="close_button" type="Button" parent="panel/margin/layout"]
+text = "Cerrar"

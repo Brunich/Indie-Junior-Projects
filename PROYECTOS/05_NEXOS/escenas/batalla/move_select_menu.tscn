@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=3 uid="uid://movemenu_emberveil"]
+
+[ext_resource type="Script" path="res://codigo/batalla/move_select_menu.gd" id="1_menu"]
+
+[node name="MoveSelectMenu" type="Control"]
+script = ExtResource("1_menu")
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="grid" type="GridContainer" parent="."]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 480.0
+offset_bottom = 96.0
+columns = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="move_0" type="Button" parent="grid"]
+custom_minimum_size = Vector2(235, 44)
+text = "Tecnica 1"
+text_alignment = 0
+
+[node name="move_1" type="Button" parent="grid"]
+custom_minimum_size = Vector2(235, 44)
+text = "Tecnica 2"
+text_alignment = 0
+
+[node name="move_2" type="Button" parent="grid"]
+custom_minimum_size = Vector2(235, 44)
+text = "Tecnica 3"
+text_alignment = 0
+
+[node name="move_3" type="Button" parent="grid"]
+custom_minimum_size = Vector2(235, 44)
+text = "Tecnica 4"
+text_alignment = 0
+
+[node name="run_btn" type="Button" parent="."]
+offset_left = 0.0
+offset_top = 102.0
+offset_right = 120.0
+offset_bottom = 138.0
+text = "Huir"
+
+[node name="switch_btn" type="Button" parent="."]
+offset_left = 128.0
+offset_top = 102.0
+offset_right = 248.0
+offset_bottom = 138.0
+text = "Cambiar"
+
+[node name="bag_btn" type="Button" parent="."]
+offset_left = 256.0
+offset_top = 102.0
+offset_right = 376.0
+offset_bottom = 138.0
+text = "Bolsa"
+
+[node name="move_info" type="Label" parent="."]
+offset_left = 0.0
+offset_top = 144.0
+offset_right = 480.0
+offset_bottom = 186.0
+text = ""
+theme_override_font_sizes/font_size = 11
+autowrap_mode = 3

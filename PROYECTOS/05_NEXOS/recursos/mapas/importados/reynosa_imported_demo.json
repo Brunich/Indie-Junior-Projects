@@ -1,0 +1,49 @@
+{
+  "background": "res://sprites/escenas/region_maps/village_concept_bg.png",
+  "world_size": [1024, 1024],
+  "camera_zoom": [0.52, 0.52],
+  "encounter_pool": [
+    { "id": "embral", "level": 4, "weight": 1.2 },
+    { "id": "folimp", "level": 4, "weight": 1.0 },
+    { "id": "campanima", "level": 5, "weight": 0.6 }
+  ],
+  "spawns": {
+    "default": [312, 742],
+    "house_exit": [546, 752]
+  },
+  "walkable_zones": [
+    { "id": "plaza_baja", "x": 120, "y": 286, "w": 776, "h": 650 }
+  ],
+  "collisions": [
+    { "id": "norte_cerrado", "x": 102, "y": 34, "w": 820, "h": 180 },
+    { "id": "ribera_oeste", "x": 78, "y": 206, "w": 180, "h": 660 },
+    { "id": "ribera_este", "x": 792, "y": 208, "w": 180, "h": 672 },
+    { "id": "casa_centro", "x": 563, "y": 399, "w": 158, "h": 94 }
+  ],
+  "encounter_zones": [
+    { "id": "juncos_rio", "x": 324, "y": 555, "w": 120, "h": 110 }
+  ],
+  "warps": [
+    {
+      "id": "entrada_casa",
+      "x": 620,
+      "y": 510,
+      "w": 48,
+      "h": 28,
+      "target_scene": "res://escenas/overworld/reynosa_imported_house.tscn",
+      "target_spawn": "from_demo"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "guardia_borde",
+      "npc_id": "elder_brix",
+      "name": "Brix",
+      "x": 458,
+      "y": 650,
+      "wander_range": 0.0,
+      "wander_speed": 0.0,
+      "dialogue_key": "intro"
+    }
+  ]
+}

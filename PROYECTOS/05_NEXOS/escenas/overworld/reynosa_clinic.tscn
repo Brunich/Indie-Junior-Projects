@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://codigo/overworld/village_interior_map.gd" id="1_map"]
+[ext_resource type="Script" path="res://codigo/overworld/overworld_controller.gd" id="2_oc"]
+[ext_resource type="Script" path="res://codigo/overworld/dialogue_box.gd" id="3_db"]
+[ext_resource type="PackedScene" path="res://escenas/ui/game_menu.tscn" id="4_gm"]
+[ext_resource type="Script" path="res://codigo/overworld/warp_zone.gd" id="5_wz"]
+[ext_resource type="Script" path="res://codigo/overworld/service_trigger.gd" id="6_st"]
+[ext_resource type="PackedScene" path="res://escenas/ui/city_service_menu.tscn" id="7_sm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit"]
+size = Vector2(40, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_service"]
+size = Vector2(34, 20)
+
+[node name="ReynosaClinic" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Map" type="TileMapLayer" parent="."]
+script = ExtResource("1_map")
+room_title = "Clinica de Reynosa"
+decor_style = "clinic"
+
+[node name="OverworldController" type="Node" parent="."]
+script = ExtResource("2_oc")
+zone_name = "reynosa_clinic"
+
+[node name="service_heal" type="Area2D" parent="."]
+position = Vector2(112, 80)
+script = ExtResource("6_st")
+service_id = "pokecenter"
+service_title = "Clinica de Reynosa"
+greeting_text = "Aqui te curan el equipo, te acomodan los PP y te registran este punto como resguardo."
+checkpoint_scene = "res://escenas/overworld/reynosa_clinic.tscn"
+checkpoint_spawn = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="service_heal"]
+shape = SubResource("RectangleShape2D_service")
+
+[node name="service_pc" type="Area2D" parent="."]
+position = Vector2(248, 80)
+script = ExtResource("6_st")
+service_id = "pc"
+service_title = "PC local"
+greeting_text = "Mueve criaturas entre tu Clicka y el resguardo de Reynosa."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="service_pc"]
+shape = SubResource("RectangleShape2D_service")
+
+[node name="exit_to_city" type="Area2D" parent="."]
+script = ExtResource("5_wz")
+target_scene = "res://escenas/overworld/overworld.tscn"
+target_spawn = "clinic_exit"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit_to_city"]
+position = Vector2(160, 196)
+shape = SubResource("RectangleShape2D_exit")
+
+[node name="dialogue_box" type="CanvasLayer" parent="."]
+script = ExtResource("3_db")
+
+[node name="panel" type="PanelContainer" parent="dialogue_box"]
+anchor_top = 0.74
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="margin" type="MarginContainer" parent="dialogue_box/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="label" type="RichTextLabel" parent="dialogue_box/panel/margin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+bbcode_enabled = true
+fit_content = true
+text = ""
+
+[node name="arrow" type="Label" parent="dialogue_box/panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -18.0
+offset_right = -4.0
+offset_bottom = -2.0
+text = "v"
+
+[node name="GameMenu" parent="." instance=ExtResource("4_gm")]
+[node name="CityServiceMenu" parent="." instance=ExtResource("7_sm")]

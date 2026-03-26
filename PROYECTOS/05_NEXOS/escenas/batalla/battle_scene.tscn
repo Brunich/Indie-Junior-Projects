@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh3qy5j7gaqftf5k"]
+
+[ext_resource type="Script"   path="res://codigo/batalla/battle_scene.gd"   id="1_8pn8d"]
+[ext_resource type="Script"   path="res://codigo/ui/battle_effects.gd"       id="2_effects"]
+[ext_resource type="PackedScene" path="res://escenas/batalla/hp_bar.tscn"    id="3_hpbar"]
+[ext_resource type="PackedScene" path="res://escenas/batalla/move_select_menu.tscn" id="4_movemenu"]
+[ext_resource type="Script"   path="res://codigo/batalla/battle_manager.gd"  id="5_bm"]
+
+[node name="BattleScene" type="Node"]
+script = ExtResource("1_8pn8d")
+
+[node name="ScreenOverlay" type="ColorRect" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0)
+visible = false
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+
+[node name="enemy_sprite" type="Sprite2D" parent="."]
+position = Vector2(850, 220)
+scale = Vector2(1.0, 1.0)
+
+[node name="player_sprite" type="Sprite2D" parent="."]
+position = Vector2(360, 440)
+scale = Vector2(1.2, 1.2)
+
+[node name="BattleEffects" type="Node" parent="."]
+script = ExtResource("2_effects")
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="enemy_hp_bar" parent="ui" instance=ExtResource("3_hpbar")]
+offset_left = 640.0
+offset_top = 40.0
+offset_right = 880.0
+offset_bottom = 88.0
+
+[node name="player_hp_bar" parent="ui" instance=ExtResource("3_hpbar")]
+offset_left = 40.0
+offset_top = 460.0
+offset_right = 280.0
+offset_bottom = 508.0
+
+[node name="text_box" type="RichTextLabel" parent="ui"]
+anchor_left = 0.0
+anchor_top = 0.78
+anchor_right = 0.48
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -12.0
+offset_bottom = -16.0
+bbcode_enabled = true
+text = "La bronca apenas arranca..."
+theme_override_font_sizes/normal_font_size = 14
+autowrap_mode = 3
+
+[node name="move_menu" parent="ui" instance=ExtResource("4_movemenu")]
+anchor_left = 0.52
+anchor_top = 0.78
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -16.0
+
+[node name="battle_manager" type="Node" parent="."]
+script = ExtResource("5_bm")
+
+[node name="anim_player" type="AnimationPlayer" parent="."]

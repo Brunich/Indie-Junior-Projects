@@ -1,0 +1,91 @@
+VALIDACION GENERAL: OK
+=== Compilacion ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+RESULTADO: OK
+
+=== Guardado manual ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+SaveSystem: Save file deleted
+SaveSystem: Game saved successfully to user://emberveil_save.json
+SaveSystem: Game loaded successfully from user://emberveil_save.json
+GameManager: Loaded save data
+SaveSystem: Save file deleted
+MANUAL_SAVE_PROBE ok scene=res://escenas/overworld/route1.tscn pos=(448.0, 608.0)
+RESULTADO: OK
+
+=== Cambio de equipo ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+PARTY_SWITCH_PROBE ok frente=Embral
+RESULTADO: OK
+
+=== Huida de batalla ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+BATTLE_RUN_PROBE ok escena=res://escenas/overworld/route1.tscn pos=(160.0, 544.0)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+RESULTADO: ADVERTENCIA
+
+=== Encuentros solo en pasto ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+GRASS_ONLY_PROBE ok
+RESULTADO: OK
+
+=== Ruta Reynosa-Monterrey ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+WORLD_PATH_PROBE ok area_base=382976
+RESULTADO: OK
+
+=== Mapa importado ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+IMPORTED_MAP_PROBE target=res://escenas/overworld/reynosa_imported_house.tscn spawn=from_demo
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+RESULTADO: ADVERTENCIA
+
+=== Entrada de casa ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+HOUSE_ENTRY_PROBE scene=res://qa/house_entry_probe.tscn
+RESULTADO: OK
+
+=== Salida de casa ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+HOUSE_EXIT_PROBE target=res://escenas/overworld/overworld.tscn spawn=nana_house_exit
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+RESULTADO: ADVERTENCIA
+
+=== Dialogo con NPC ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+NPC_DIALOGUE_PROBE ok
+RESULTADO: OK
+
+=== Captura con catnip ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+InventorySystem: Added 2x Catnip tigre
+InventorySystem: Removed 1x Catnip tigre
+CATNIP_CAPTURE_PROBE in_battle=false party=2 caught=["folimp"]
+RESULTADO: OK
+
+=== Derrota y respawn ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+SaveSystem: Save file deleted
+DEFEAT_RESPAWN_PROBE ok scene=res://escenas/overworld/reynosa_clinic.tscn spawn=default
+RESULTADO: OK
+
+=== Clinica y PC ===
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+CLINIC_PC_PROBE ok party=2 storage=0
+RESULTADO: OK
+

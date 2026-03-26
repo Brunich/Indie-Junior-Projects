@@ -1,0 +1,8 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+SaveSystem: Save file deleted
+SaveSystem: Game saved successfully to user://emberveil_save.json
+SaveSystem: Game loaded successfully from user://emberveil_save.json
+GameManager: Loaded save data
+SaveSystem: Save file deleted
+MANUAL_SAVE_PROBE ok scene=res://escenas/overworld/route1.tscn pos=(448.0, 608.0)

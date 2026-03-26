@@ -1,0 +1,5 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+InventorySystem: Added 2x Catnip tigre
+InventorySystem: Removed 1x Catnip tigre
+CATNIP_CAPTURE_PROBE in_battle=false party=2 caught=["folimp"]

@@ -1,0 +1,3 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+IMPORTED_MAP_PROBE target=res://escenas/overworld/reynosa_imported_house.tscn spawn=from_demo

@@ -1,0 +1,6 @@
+SCRIPT ERROR: Parse Error: Cannot infer the type of "before" variable because the value doesn't have a set type.
+   at: GDScript::reload (res://qa/npc_wander_probe.gd:24)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "after" variable because the value doesn't have a set type.
+   at: GDScript::reload (res://qa/npc_wander_probe.gd:26)
+ERROR: Failed to load script "res://qa/npc_wander_probe.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript.cpp:3041)

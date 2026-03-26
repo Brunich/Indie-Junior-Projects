@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://codigo/overworld/image_overworld_map.gd" id="1_map"]
+[ext_resource type="Texture2D" path="res://sprites/escenas/region_maps/cinder_village_map.png" id="2_bg"]
+[ext_resource type="Script" path="res://codigo/overworld/image_map_rect.gd" id="3_rect"]
+[ext_resource type="Script" path="res://codigo/overworld/overworld_controller.gd" id="4_oc"]
+[ext_resource type="Script" path="res://codigo/overworld/warp_zone.gd" id="5_wz"]
+[ext_resource type="Script" path="res://codigo/overworld/dialogue_box.gd" id="6_db"]
+[ext_resource type="PackedScene" path="res://escenas/ui/game_menu.tscn" id="7_gm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit"]
+size = Vector2(54, 30)
+
+[node name="ReynosaStaticHouse" type="Node2D"]
+y_sort_enabled = true
+
+[node name="StaticMap" type="Node2D" parent="."]
+script = ExtResource("1_map")
+background_texture = ExtResource("2_bg")
+world_size = Vector2i(1024, 1024)
+preferred_camera_zoom = Vector2(0.6, 0.6)
+
+[node name="Background" type="Sprite2D" parent="StaticMap"]
+
+[node name="Spawns" type="Node2D" parent="StaticMap"]
+
+[node name="default" type="Marker2D" parent="StaticMap/Spawns"]
+position = Vector2(518, 748)
+
+[node name="from_demo" type="Marker2D" parent="StaticMap/Spawns"]
+position = Vector2(518, 748)
+
+[node name="Collisions" type="Node2D" parent="StaticMap"]
+
+[node name="bed" type="Node2D" parent="StaticMap/Collisions"]
+position = Vector2(824, 400)
+script = ExtResource("3_rect")
+size = Vector2(190, 150)
+
+[node name="kitchen" type="Node2D" parent="StaticMap/Collisions"]
+position = Vector2(540, 206)
+script = ExtResource("3_rect")
+size = Vector2(420, 124)
+
+[node name="desk_block" type="Node2D" parent="StaticMap/Collisions"]
+position = Vector2(196, 536)
+script = ExtResource("3_rect")
+size = Vector2(196, 122)
+
+[node name="OverworldController" type="Node" parent="."]
+script = ExtResource("4_oc")
+zone_name = "reynosa_static_house"
+
+[node name="exit_to_demo" type="Area2D" parent="."]
+script = ExtResource("5_wz")
+target_scene = "res://escenas/overworld/reynosa_static_demo.tscn"
+target_spawn = "house_exit"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit_to_demo"]
+position = Vector2(514, 840)
+shape = SubResource("RectangleShape2D_exit")
+
+[node name="dialogue_box" type="CanvasLayer" parent="."]
+script = ExtResource("6_db")
+
+[node name="panel" type="PanelContainer" parent="dialogue_box"]
+anchor_top = 0.74
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="margin" type="MarginContainer" parent="dialogue_box/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="label" type="RichTextLabel" parent="dialogue_box/panel/margin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+bbcode_enabled = true
+fit_content = true
+text = ""
+
+[node name="arrow" type="Label" parent="dialogue_box/panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -18.0
+offset_right = -4.0
+offset_bottom = -2.0
+text = "v"
+
+[node name="GameMenu" parent="." instance=ExtResource("7_gm")]

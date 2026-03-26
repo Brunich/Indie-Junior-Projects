@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://stats_screen_ui"]
+
+[ext_resource type="Script" path="res://codigo/ui/stats_screen.gd" id="1_ss"]
+
+[node name="StatsScreen" type="Control"]
+visible = false
+script = ExtResource("1_ss")
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="backdrop" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.72)
+
+[node name="layout" type="HBoxContainer" parent="."]
+anchor_left = 0.08
+anchor_top = 0.08
+anchor_right = 0.92
+anchor_bottom = 0.92
+
+[node name="left" type="VBoxContainer" parent="layout"]
+custom_minimum_size = Vector2(180, 0)
+
+[node name="sprite_rect" type="TextureRect" parent="layout/left"]
+custom_minimum_size = Vector2(0, 128)
+stretch_mode = 2
+expand_mode = 1
+
+[node name="name_label" type="Label" parent="layout/left"]
+text = "Criatura"
+
+[node name="nickname_lbl" type="Label" parent="layout/left"]
+
+[node name="level_label" type="Label" parent="layout/left"]
+text = "Lv. 1"
+
+[node name="type_row" type="HBoxContainer" parent="layout/left"]
+
+[node name="type1" type="Label" parent="layout/left/type_row"]
+text = "NORMAL"
+
+[node name="type2" type="Label" parent="layout/left/type_row"]
+text = "TIPO2"
+
+[node name="status_badge" type="Label" parent="layout/left"]
+
+[node name="exp_bar" type="ProgressBar" parent="layout/left"]
+show_percentage = false
+
+[node name="exp_label" type="Label" parent="layout/left"]
+text = "EXP"
+
+[node name="flavor" type="HBoxContainer" parent="layout/left"]
+
+[node name="height" type="Label" parent="layout/left/flavor"]
+text = "Altura"
+
+[node name="weight" type="Label" parent="layout/left/flavor"]
+text = "Peso"
+
+[node name="desc_label" type="Label" parent="layout/left"]
+autowrap_mode = 3
+
+[node name="right" type="VBoxContainer" parent="layout"]
+size_flags_horizontal = 3
+
+[node name="stats_panel" type="VBoxContainer" parent="layout/right"]
+size_flags_vertical = 3
+
+[node name="stat_bars" type="VBoxContainer" parent="layout/right/stats_panel"]
+
+[node name="moves_panel" type="VBoxContainer" parent="layout/right"]
+size_flags_vertical = 3
+
+[node name="move_list" type="VBoxContainer" parent="layout/right/moves_panel"]
+
+[node name="move_hint" type="Label" parent="layout/right"]
+text = "Selecciona una tecnica para moverla."
+
+[node name="btn_move_up" type="Button" parent="layout/right"]
+text = "Subir tecnica"
+
+[node name="btn_move_down" type="Button" parent="layout/right"]
+text = "Bajar tecnica"
+
+[node name="btn_next_skin" type="Button" parent="layout/right"]
+text = "Cambiar skin"
+
+[node name="btn_back" type="Button" parent="layout/right"]
+text = "Cerrar"

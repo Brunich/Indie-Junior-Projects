@@ -1,0 +1,160 @@
+{
+  "background": "res://recursos/mapas/importados/world_building_draft/reynosa_route_draft.png",
+  "world_size": [
+    1024,
+    640
+  ],
+  "camera_zoom": [
+    0.72,
+    0.72
+  ],
+  "encounter_pool": [
+    {
+      "id": "coylto",
+      "level": 4,
+      "weight": 1.2
+    },
+    {
+      "id": "velillo",
+      "level": 4,
+      "weight": 0.8
+    },
+    {
+      "id": "fierillo",
+      "level": 5,
+      "weight": 0.6
+    }
+  ],
+  "spawns": {
+    "default": [
+      512,
+      576
+    ],
+    "from_house_a": [
+      248,
+      264
+    ]
+  },
+  "walkable_zones": [
+    {
+      "id": "zona_principal",
+      "x": 32,
+      "y": 32,
+      "w": 960,
+      "h": 576
+    }
+  ],
+  "collisions": [
+    {
+      "id": "borde_norte",
+      "x": 0,
+      "y": 0,
+      "w": 1024,
+      "h": 32
+    },
+    {
+      "id": "borde_sur",
+      "x": 0,
+      "y": 624,
+      "w": 1024,
+      "h": 16
+    },
+    {
+      "id": "borde_oeste",
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 640
+    },
+    {
+      "id": "borde_este",
+      "x": 992,
+      "y": 0,
+      "w": 32,
+      "h": 640
+    },
+    {
+      "id": "casa_a",
+      "x": 192,
+      "y": 208,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "id": "casa_b",
+      "x": 688,
+      "y": 192,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "id": "casa_c",
+      "x": 704,
+      "y": 432,
+      "w": 96,
+      "h": 48
+    }
+  ],
+  "encounter_zones": [
+    {
+      "id": "hierba_oeste",
+      "x": 128,
+      "y": 112,
+      "w": 160,
+      "h": 112
+    },
+    {
+      "id": "hierba_este",
+      "x": 736,
+      "y": 400,
+      "w": 160,
+      "h": 128
+    }
+  ],
+  "warps": [
+    {
+      "id": "salida_norte",
+      "x": 464,
+      "y": 0,
+      "w": 96,
+      "h": 32,
+      "target_scene": "res://escenas/overworld/route1.tscn",
+      "target_spawn": "from_village"
+    },
+    {
+      "id": "entrada_casa_a",
+      "x": 236,
+      "y": 256,
+      "w": 24,
+      "h": 20,
+      "target_scene": "res://escenas/overworld/reynosa_imported_house.tscn",
+      "target_spawn": "from_demo"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "vecina_plaza",
+      "npc_id": "elder_brix",
+      "name": "Tona",
+      "position": [
+        384,
+        320
+      ],
+      "wander_range": 10.0,
+      "wander_speed": 18.0,
+      "dialogue_key": "intro"
+    },
+    {
+      "id": "vendedor_sendero",
+      "npc_id": "shop_clerk",
+      "name": "Neto",
+      "position": [
+        624,
+        304
+      ],
+      "wander_range": 0.0,
+      "wander_speed": 0.0,
+      "dialogue_key": "intro"
+    }
+  ]
+}

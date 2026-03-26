@@ -1,0 +1,3 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+HOUSE_ENTRY_PROBE scene=res://qa/house_entry_probe.tscn

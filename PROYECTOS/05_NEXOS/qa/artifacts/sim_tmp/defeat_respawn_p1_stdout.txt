@@ -1,0 +1,4 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+SaveSystem: No save file to delete
+DEFEAT_RESPAWN_PROBE ok scene=res://escenas/overworld/reynosa_clinic.tscn spawn=default

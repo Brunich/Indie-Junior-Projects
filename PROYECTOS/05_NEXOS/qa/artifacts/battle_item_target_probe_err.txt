@@ -1,0 +1,4 @@
+SCRIPT ERROR: Parse Error: Cannot infer the type of "lead_before" variable because the value doesn't have a set type.
+   at: GDScript::reload (res://qa/battle_item_target_probe.gd:53)
+ERROR: Failed to load script "res://qa/battle_item_target_probe.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript.cpp:3041)

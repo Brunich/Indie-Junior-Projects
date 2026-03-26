@@ -1,0 +1,224 @@
+[gd_scene load_steps=13 format=3 uid="uid://overworld_main_rebuilt"]
+
+[ext_resource type="Script" path="res://codigo/overworld/village_map.gd" id="1_vm"]
+[ext_resource type="Script" path="res://codigo/overworld/overworld_controller.gd" id="2_oc"]
+[ext_resource type="Script" path="res://codigo/overworld/tall_grass.gd" id="3_tg"]
+[ext_resource type="Script" path="res://codigo/overworld/warp_zone.gd" id="4_wz"]
+[ext_resource type="Script" path="res://codigo/overworld/dialogue_box.gd" id="5_db"]
+[ext_resource type="PackedScene" path="res://escenas/ui/game_menu.tscn" id="6_gm"]
+[ext_resource type="Texture2D" path="res://sprites/escenas/region_maps/village_concept_bg.png" id="7_bg"]
+[ext_resource type="Script" path="res://codigo/overworld/npc_controller.gd" id="8_npc"]
+[ext_resource type="PackedScene" path="res://escenas/overworld/nana_house.tscn" id="9_nana"]
+[ext_resource type="PackedScene" path="res://escenas/overworld/warden_post.tscn" id="10_warden"]
+[ext_resource type="PackedScene" path="res://escenas/overworld/east_house.tscn" id="11_east"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grass"]
+size = Vector2(448, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_warp"]
+size = Vector2(160, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_house_warp"]
+size = Vector2(18, 10)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_npc"]
+radius = 7.0
+height = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interact"]
+size = Vector2(28, 28)
+
+[node name="Overworld" type="Node2D"]
+y_sort_enabled = true
+
+[node name="backdrop" type="Sprite2D" parent="."]
+position = Vector2(352, 272)
+scale = Vector2(0.6, 0.6)
+modulate = Color(1, 1, 1, 0.12)
+texture = ExtResource("7_bg")
+
+[node name="VillageMap" type="TileMapLayer" parent="."]
+script = ExtResource("1_vm")
+
+[node name="OverworldController" type="Node" parent="."]
+script = ExtResource("2_oc")
+zone_name = "reynosa_town"
+
+[node name="npc_dona_elva" type="CharacterBody2D" parent="."]
+position = Vector2(230, 266)
+script = ExtResource("8_npc")
+npc_id = "dona_elva"
+wander_range = 0.0
+wander_speed = 0.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="npc_dona_elva"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_dona_elva"]
+shape = SubResource("CapsuleShape2D_npc")
+
+[node name="interact_area" type="Area2D" parent="npc_dona_elva"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_dona_elva/interact_area"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="exclaim_label" type="Label" parent="npc_dona_elva"]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -8.0
+text = "!"
+
+[node name="npc_brix" type="CharacterBody2D" parent="."]
+position = Vector2(486, 258)
+script = ExtResource("8_npc")
+npc_id = "elder_brix"
+wander_range = 8.0
+wander_speed = 18.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="npc_brix"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_brix"]
+shape = SubResource("CapsuleShape2D_npc")
+
+[node name="interact_area" type="Area2D" parent="npc_brix"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_brix/interact_area"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="exclaim_label" type="Label" parent="npc_brix"]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -8.0
+text = "!"
+
+[node name="npc_tomas" type="CharacterBody2D" parent="."]
+position = Vector2(314, 390)
+script = ExtResource("8_npc")
+npc_id = "villager_tomas"
+dialogue_key = "generic_1"
+wander_range = 10.0
+wander_speed = 20.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="npc_tomas"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_tomas"]
+shape = SubResource("CapsuleShape2D_npc")
+
+[node name="interact_area" type="Area2D" parent="npc_tomas"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_tomas/interact_area"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="exclaim_label" type="Label" parent="npc_tomas"]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -8.0
+text = "!"
+
+[node name="area_title" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="panel" type="PanelContainer" parent="area_title"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 184.0
+offset_bottom = 48.0
+
+[node name="margin" type="MarginContainer" parent="area_title/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = -8.0
+offset_bottom = -6.0
+
+[node name="vbox" type="VBoxContainer" parent="area_title/panel/margin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="label" type="Label" parent="area_title/panel/margin/vbox"]
+theme_override_font_sizes/font_size = 18
+text = "Reynosa"
+
+[node name="subtitle" type="Label" parent="area_title/panel/margin/vbox"]
+theme_override_font_sizes/font_size = 9
+text = "Patios del borde y plaza del mezquite"
+
+[node name="warp_south" type="Area2D" parent="."]
+script = ExtResource("4_wz")
+target_scene = "res://escenas/overworld/route1.tscn"
+target_spawn = "from_village"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warp_south"]
+position = Vector2(352, 32)
+shape = SubResource("RectangleShape2D_warp")
+
+[node name="warp_nana_house" type="Area2D" parent="."]
+script = ExtResource("4_wz")
+target_scene = "res://escenas/overworld/nana_house.tscn"
+target_spawn = "from_village"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warp_nana_house"]
+position = Vector2(136, 208)
+shape = SubResource("RectangleShape2D_house_warp")
+
+[node name="warp_warden_post" type="Area2D" parent="."]
+script = ExtResource("4_wz")
+target_scene = "res://escenas/overworld/warden_post.tscn"
+target_spawn = "from_village"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warp_warden_post"]
+position = Vector2(504, 160)
+shape = SubResource("RectangleShape2D_house_warp")
+
+[node name="warp_east_house" type="Area2D" parent="."]
+script = ExtResource("4_wz")
+target_scene = "res://escenas/overworld/east_house.tscn"
+target_spawn = "from_village"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warp_east_house"]
+position = Vector2(584, 256)
+shape = SubResource("RectangleShape2D_house_warp")
+
+[node name="warp_clinic" type="Area2D" parent="."]
+script = ExtResource("4_wz")
+target_scene = "res://escenas/overworld/reynosa_clinic.tscn"
+target_spawn = "from_city"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warp_clinic"]
+position = Vector2(552, 424)
+shape = SubResource("RectangleShape2D_house_warp")
+
+[node name="dialogue_box" type="CanvasLayer" parent="."]
+script = ExtResource("5_db")
+
+[node name="panel" type="PanelContainer" parent="dialogue_box"]
+anchor_top = 0.74
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="margin" type="MarginContainer" parent="dialogue_box/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="label" type="RichTextLabel" parent="dialogue_box/panel/margin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+bbcode_enabled = true
+fit_content = true
+text = ""
+
+[node name="arrow" type="Label" parent="dialogue_box/panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -18.0
+offset_right = -4.0
+offset_bottom = -2.0
+text = "v"
+
+[node name="GameMenu" parent="." instance=ExtResource("6_gm")]

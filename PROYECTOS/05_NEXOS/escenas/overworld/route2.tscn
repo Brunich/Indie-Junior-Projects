@@ -1,0 +1,262 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://codigo/overworld/route2_map.gd" id="1_rm"]
+[ext_resource type="Script" path="res://codigo/overworld/overworld_controller.gd" id="2_oc"]
+[ext_resource type="Script" path="res://codigo/overworld/tall_grass.gd" id="3_tg"]
+[ext_resource type="Script" path="res://codigo/overworld/warp_zone.gd" id="4_wz"]
+[ext_resource type="Script" path="res://codigo/overworld/dialogue_box.gd" id="5_db"]
+[ext_resource type="PackedScene" path="res://escenas/ui/game_menu.tscn" id="6_gm"]
+[ext_resource type="Script" path="res://codigo/overworld/npc_controller.gd" id="7_npc"]
+[ext_resource type="Script" path="res://codigo/overworld/interaction_trigger.gd" id="8_it"]
+[ext_resource type="Script" path="res://codigo/overworld/world_prop.gd" id="9_wp"]
+[ext_resource type="Script" path="res://codigo/overworld/item_pickup.gd" id="10_ip"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grass_a"]
+size = Vector2(176, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grass_b"]
+size = Vector2(160, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_warp"]
+size = Vector2(24, 88)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_npc"]
+radius = 7.0
+height = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interact"]
+size = Vector2(28, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
+radius = 12.0
+
+[node name="Route2" type="Node2D"]
+y_sort_enabled = true
+
+[node name="RouteMap" type="TileMapLayer" parent="."]
+script = ExtResource("1_rm")
+
+[node name="OverworldController" type="Node" parent="."]
+script = ExtResource("2_oc")
+zone_name = "sendero_cempasuchil"
+
+[node name="area_title" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="panel" type="PanelContainer" parent="area_title"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 232.0
+offset_bottom = 52.0
+
+[node name="margin" type="MarginContainer" parent="area_title/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = -8.0
+offset_bottom = -6.0
+
+[node name="vbox" type="VBoxContainer" parent="area_title/panel/margin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="label" type="Label" parent="area_title/panel/margin/vbox"]
+text = "Sendero del Cempasuchil"
+
+[node name="subtitle" type="Label" parent="area_title/panel/margin/vbox"]
+theme_override_font_sizes/font_size = 11
+text = "Corredor de ofrendas entre Monterrey y la ciudad de memoria"
+
+[node name="prop_monterrey" type="Node2D" parent="."]
+position = Vector2(96, 184)
+script = ExtResource("9_wp")
+label_text = "Monterrey"
+
+[node name="prop_altar" type="Node2D" parent="."]
+position = Vector2(448, 192)
+script = ExtResource("9_wp")
+variant = "lookout"
+label_text = "Altar de paso"
+
+[node name="prop_valle" type="Node2D" parent="."]
+position = Vector2(800, 200)
+script = ExtResource("9_wp")
+label_text = "Valle Cempa"
+
+[node name="npc_peregrina" type="CharacterBody2D" parent="."]
+position = Vector2(432, 184)
+script = ExtResource("7_npc")
+npc_id = "route2_peregrina"
+npc_display_name = "Aure"
+wander_range = 12.0
+wander_speed = 20.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="npc_peregrina"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_peregrina"]
+shape = SubResource("CapsuleShape2D_npc")
+
+[node name="interact_area" type="Area2D" parent="npc_peregrina"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_peregrina/interact_area"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="exclaim_label" type="Label" parent="npc_peregrina"]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -8.0
+text = "?"
+
+[node name="npc_florista" type="CharacterBody2D" parent="."]
+position = Vector2(688, 224)
+script = ExtResource("7_npc")
+npc_id = "route2_florista"
+npc_display_name = "Ceci"
+wander_range = 10.0
+wander_speed = 18.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="npc_florista"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_florista"]
+shape = SubResource("CapsuleShape2D_npc")
+
+[node name="interact_area" type="Area2D" parent="npc_florista"]
+
+[node name="collision" type="CollisionShape2D" parent="npc_florista/interact_area"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="exclaim_label" type="Label" parent="npc_florista"]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -8.0
+text = "*"
+
+[node name="trigger_entrada" type="Area2D" parent="."]
+position = Vector2(208, 160)
+script = ExtResource("8_it")
+dialogue_id = "route2_sign_entrada"
+set_flag = "route2_intro_seen"
+
+[node name="collision" type="CollisionShape2D" parent="trigger_entrada"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="trigger_altar" type="Area2D" parent="."]
+position = Vector2(448, 192)
+script = ExtResource("8_it")
+dialogue_id = "route2_altar"
+
+[node name="collision" type="CollisionShape2D" parent="trigger_altar"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="TallGrassPatchNorth" type="Area2D" parent="."]
+position = Vector2(176, 112)
+script = ExtResource("3_tg")
+encounter_rate = 0.24
+min_level = 8
+max_level = 11
+encounter_table = {
+"copalito": 20,
+"velillo": 18,
+"campanima": 16,
+"cendillo": 14,
+"route_bird": 12,
+"larvox": 10,
+"coyote_hueso": 10
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TallGrassPatchNorth"]
+shape = SubResource("RectangleShape2D_grass_a")
+
+[node name="TallGrassPatchSouth" type="Area2D" parent="."]
+position = Vector2(688, 272)
+script = ExtResource("3_tg")
+encounter_rate = 0.24
+min_level = 9
+max_level = 12
+encounter_table = {
+"fierillo": 18,
+"campanima": 16,
+"velillo": 14,
+"copalito": 14,
+"coyote_hueso": 14,
+"route_bug": 12,
+"route_bird": 12
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TallGrassPatchSouth"]
+shape = SubResource("RectangleShape2D_grass_b")
+
+[node name="pickup_catnip" type="Area2D" parent="."]
+position = Vector2(288, 160)
+script = ExtResource("10_ip")
+item_id = "catnip_field"
+quantity = 1
+once_flag = "route2_pickup_catnip"
+pickup_text = "Encontraste catnip de alta calidad entre las flores."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_catnip"]
+shape = SubResource("CircleShape2D_pickup")
+
+[node name="pickup_serum" type="Area2D" parent="."]
+position = Vector2(624, 224)
+script = ExtResource("10_ip")
+item_id = "super_potion"
+quantity = 1
+once_flag = "route2_pickup_serum"
+pickup_text = "Encontraste un suero fuerte junto al altar."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_serum"]
+shape = SubResource("CircleShape2D_pickup")
+
+[node name="warp_west_ashgate" type="Area2D" parent="."]
+script = ExtResource("4_wz")
+target_scene = "res://escenas/overworld/ashgate.tscn"
+target_spawn = "from_route2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warp_west_ashgate"]
+position = Vector2(8, 192)
+shape = SubResource("RectangleShape2D_warp")
+
+[node name="warp_east_valle" type="Area2D" parent="."]
+script = ExtResource("4_wz")
+target_scene = "res://escenas/overworld/valle_cempa.tscn"
+target_spawn = "from_route2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warp_east_valle"]
+position = Vector2(888, 192)
+shape = SubResource("RectangleShape2D_warp")
+
+[node name="dialogue_box" type="CanvasLayer" parent="."]
+script = ExtResource("5_db")
+
+[node name="panel" type="PanelContainer" parent="dialogue_box"]
+anchor_top = 0.74
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="margin" type="MarginContainer" parent="dialogue_box/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="label" type="RichTextLabel" parent="dialogue_box/panel/margin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+bbcode_enabled = true
+fit_content = true
+text = ""
+
+[node name="arrow" type="Label" parent="dialogue_box/panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -18.0
+offset_right = -4.0
+offset_bottom = -2.0
+text = "v"
+
+[node name="GameMenu" parent="." instance=ExtResource("6_gm")]
