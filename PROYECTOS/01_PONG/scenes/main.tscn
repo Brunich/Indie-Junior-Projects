@@ -1,0 +1,125 @@
+[gd_scene load_steps=8 format=3 uid="uid://pong_main_scene"]
+
+[ext_resource type="Script" path="res://codigo/game.gd" id="1"]
+[ext_resource type="Script" path="res://codigo/paddle.gd" id="2"]
+[ext_resource type="Script" path="res://codigo/ball.gd" id="3"]
+
+[sub_resource type="RectangleShape2D" id="wall_shape"]
+size = Vector2(1280, 20)
+
+[sub_resource type="RectangleShape2D" id="paddle_shape"]
+size = Vector2(20, 120)
+
+[sub_resource type="RectangleShape2D" id="ball_shape"]
+size = Vector2(18, 18)
+
+[sub_resource type="RectangleShape2D" id="goal_shape"]
+size = Vector2(30, 720)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.08, 0.09, 0.14, 1)
+
+[node name="CenterLine" type="ColorRect" parent="."]
+offset_left = 638.0
+offset_top = 40.0
+offset_right = 642.0
+offset_bottom = 680.0
+color = Color(0.35, 0.38, 0.5, 0.5)
+
+[node name="WallTop" type="StaticBody2D" parent="." groups=["wall"]]
+position = Vector2(640, 10)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop"]
+shape = SubResource("wall_shape")
+
+[node name="WallBottom" type="StaticBody2D" parent="." groups=["wall"]]
+position = Vector2(640, 710)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom"]
+shape = SubResource("wall_shape")
+
+[node name="GoalLeft" type="StaticBody2D" parent="." groups=["goal"]]
+position = Vector2(-15, 360)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalLeft"]
+shape = SubResource("goal_shape")
+
+[node name="GoalRight" type="StaticBody2D" parent="." groups=["goal"]]
+position = Vector2(1295, 360)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalRight"]
+shape = SubResource("goal_shape")
+
+[node name="PaddleLeft" type="CharacterBody2D" parent="." groups=["paddle"]]
+position = Vector2(80, 360)
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("2")
+control_scheme = "p1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PaddleLeft"]
+shape = SubResource("paddle_shape")
+
+[node name="Visual" type="ColorRect" parent="PaddleLeft"]
+offset_left = -10.0
+offset_top = -60.0
+offset_right = 10.0
+offset_bottom = 60.0
+color = Color(0.45, 0.75, 1, 1)
+
+[node name="PaddleRight" type="CharacterBody2D" parent="." groups=["paddle"]]
+position = Vector2(1200, 360)
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("2")
+control_scheme = "cpu"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PaddleRight"]
+shape = SubResource("paddle_shape")
+
+[node name="Visual" type="ColorRect" parent="PaddleRight"]
+offset_left = -10.0
+offset_top = -60.0
+offset_right = 10.0
+offset_bottom = 60.0
+color = Color(1, 0.55, 0.45, 1)
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+position = Vector2(640, 360)
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("ball_shape")
+
+[node name="Visual" type="ColorRect" parent="Ball"]
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+color = Color(0.95, 0.95, 0.98, 1)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+offset_top = 16.0
+offset_right = 1280.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0.85, 0.88, 0.95, 1)
+theme_override_font_sizes/font_size = 28
+text = "0  —  PONG  —  0"
+horizontal_alignment = 1
