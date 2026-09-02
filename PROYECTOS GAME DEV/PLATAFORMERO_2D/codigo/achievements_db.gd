@@ -627,7 +627,7 @@ const DATA: Dictionary = {
             "valor": 0,
             "exacto": true
         }
-    }
+    },
     # ===== NUEVOS — 2026-03-18 (5 logros) =====
     # Inspiración: PEAK (Aggro Crab, co-op caótico), Hollow Knight: Silksong
     # (dominio del movimiento aéreo), y patrones únicos detectados en indie 2025.

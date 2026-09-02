@@ -16,15 +16,19 @@ La documentación de cada proyecto vive dentro de su carpeta.
 
 ## 🎮 Juegos en Godot 4
 
-De menos a más. Los cuatro son proyectos completos: abre su `project.godot` en
-Godot 4.2+ y pulsa **F5**.
+De menos a más. Abre su `project.godot` en Godot 4.2+ y pulsa **F5**.
+
+> **Son una base, no juegos terminados.** Están aquí para tener un poco de cada
+> cosa —entrada, colisiones, spawners, turnos, FSM, logros, shaders— de donde
+> partir. Los juegos propios los hace Bruno con este estilo: **no se «terminan»
+> estos.**
 
 | Proyecto | Nivel | Qué enseña | Estado |
 |---|---|---|---|
 | **[PONG](PROYECTOS%20GAME%20DEV/PONG/)** | Fácil | Entrada de dos jugadores y colisiones. La raqueta derecha lleva IA básica | ✅ Jugable |
 | **[SPACE_SHOOTER](PROYECTOS%20GAME%20DEV/SPACE_SHOOTER/)** | Fácil | Spawner de enemigos, disparo, bucle arcade | ✅ Jugable |
 | **[ROGUELIKE](PROYECTOS%20GAME%20DEV/ROGUELIKE/)** | Fácil | Movimiento por rejilla, turnos y progresión de pisos | ✅ Jugable |
-| **[PLATAFORMERO_2D](PROYECTOS%20GAME%20DEV/PLATAFORMERO_2D/)** | Medio | FSM del jugador, logros, diálogos, BeatSync, 25 shaders | ⚠️ **No abría**: 4 autoloads rotos. Ver su [`CLAUDE.md`](PROYECTOS%20GAME%20DEV/PLATAFORMERO_2D/CLAUDE.md) |
+| **[PLATAFORMERO_2D](PROYECTOS%20GAME%20DEV/PLATAFORMERO_2D/)** | Medio | FSM del jugador, logros, diálogos, BeatSync, 25 shaders | ✅ **Abre** desde el 02-09. Estuvo medio año sin poder abrirse; las 9 causas y el arreglo, en su [`CLAUDE.md`](PROYECTOS%20GAME%20DEV/PLATAFORMERO_2D/CLAUDE.md) |
 
 ### Los grandes viven en su propio repo
 
@@ -42,7 +46,6 @@ sabe cuál manda.
 | Carpeta | Qué es |
 |---|---|
 | **[WEBMOTION_ENGINE](PROYECTOS%20GAME%20DEV/WEBMOTION_ENGINE/)** | ⛔ **Cerrado el 01-09-2026.** Iba a ser un addon de animación web para Godot; el mercado ya cubre 3 de sus 4 hitos. El porqué, con fuentes, en [`VEREDICTO.md`](PROYECTOS%20GAME%20DEV/WEBMOTION_ENGINE/VEREDICTO.md) |
-| **[AUTOCHART_EDITOR](PROYECTOS%20GAME%20DEV/AUTOCHART_EDITOR/)** | 🟡 No es un proyecto: es una copia de la rama `editor/tocar-y-grabar` con [PR 3 abierto](https://github.com/Brunich/clonehero-autochart/pull/3). Se borra cuando ese PR cierre |
 | **[_SHARED](PROYECTOS%20GAME%20DEV/_SHARED/)** | 📦 Autoloads reutilizables + histórico de QA y standups de marzo |
 
 ---
