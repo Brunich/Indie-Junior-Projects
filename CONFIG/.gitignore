@@ -1,0 +1,36 @@
+# Credenciales (NUNCA subir esto)
+.github_token
+.collab_repo_url
+*.token
+*.env
+.env
+
+# Archivos temporales
+*.tmp
+*.log
+Thumbs.db
+.DS_Store
+
+# Godot
+.godot/
+*.import
+export_presets.cfg
+
+# Unity
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+*.csproj
+*.sln
+*.userprefs
+
+# VS Code
+.vscode/settings.json
+
+# Archivos grandes de sprite sheets (opcionales en git)
+# Descomenta si los PNG son muy pesados:
+# *.png

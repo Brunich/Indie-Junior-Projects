@@ -1,0 +1,5 @@
+O365==2.0.32
+python-dotenv==1.0.1
+google-generativeai==0.8.2
+pdfplumber
+icalendar

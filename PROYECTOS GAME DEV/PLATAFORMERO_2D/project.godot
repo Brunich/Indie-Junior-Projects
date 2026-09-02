@@ -1,0 +1,26 @@
+; Engine configuration file — Godot 4.2
+; Plataformero 2D — IndieStudio
+
+[application]
+config/name="Plataformero 2D"
+run/main_scene="res://nivel_01.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+NetworkManager="*res://../../_SHARED/autoloads/NetworkManager.gd"
+GameManager="*res://../../_SHARED/autoloads/GameManager.gd"
+AudioManager="*res://../../_SHARED/autoloads/AudioManager.gd"
+DialogueManager="*res://../../_SHARED/autoloads/DialogueManager.gd"
+SignalBus="*res://codigo/SignalBus.gd"
+LevelManager="*res://codigo/LevelManager.gd"
+SaveSystem="*res://codigo/SaveSystem.gd"
+AchievementManager="*res://codigo/AchievementManager.gd"
+DialogueTriggers="*res://codigo/DialogueTriggers.gd"
+
+[audio]
+buses/default_bus_layout="res://audio_bus_layout.tres"
+
+[debug]
+gd_script/warnings/unused_variable=1
+gd_script/warnings/unused_argument=1
