@@ -21,9 +21,12 @@ más documentación tenían:
   cargar** — dos por una ruta imposible (`res://../../`), y dos porque el
   fichero no existe. El README documenta con ejemplos de uso un `AudioManager`
   que nunca se escribió.
-- **AUTOCHART**: había **dos carpetas** con el mismo README. La segunda resultó
-  ser una copia de la rama `editor/tocar-y-grabar`, con PR abierto — no un
-  proyecto. **Lo comprobé comparándola contra la rama, no leyendo su README.**
+- **AUTOCHART**: había **dos carpetas** con el mismo README. La segunda no era
+  un proyecto: era un **worktree** de la rama `editor/tocar-y-grabar` cuyo
+  registro se había roto al renombrar la carpeta (`git worktree list` la daba
+  por `prunable`). Comprobados sus 81 ficheros contra la rama antes de borrarla:
+  todos idénticos, y la rama está subida con PR abierto. **Se comprueba contra
+  la rama, no se lee su README.**
 
 **La regla:** antes de construir encima de algo que un documento da por hecho,
 haz `ls`. **Un `✅` en un Markdown no es prueba de que el fichero exista.** Y si
@@ -120,6 +123,20 @@ en GitHub había un juego funcionando**, y el PR salió en conflicto.
 **La regla:** `git fetch` antes de mirar `origin/*`. Un ref de seguimiento sin
 fetch **no es el remoto**, es la última foto que se tomó de él — y no avisa de
 que está vieja.
+
+---
+
+## 🌳 UN `.git` QUE ES UN FICHERO ES UN WORKTREE, NO UN REPO
+
+Si una carpeta tiene `.git` y `git status` dice *«not a git repository»*, no está
+corrupta: es un **worktree** cuyo registro apunta a una ruta que ya no existe
+—típicamente porque alguien renombró la carpeta—. `git worktree list` lo marca
+`prunable`.
+
+**Antes de borrar una carpeta así:** comprueba que su rama esté subida
+(`git rev-list --left-right --count origin/RAMA...RAMA` debe dar `0 0`) y
+compara los ficheros contra la rama. Luego borra y **`git worktree prune`**, o
+el registro fantasma se queda.
 
 ---
 

@@ -151,7 +151,11 @@ func play(event: String, bus: String = "SFX") -> void:
 		player.play()
 		player.finished.connect(player.queue_free)
 		return
-	AudioManager.play_sfx(stream, bus)
+	# AudioManager.play_sfx espera el NOMBRE del evento, no el stream:
+	# se registra una vez y a partir de ahi suena por el pool del manager.
+	if not AudioManager.SFX_LIBRARY.has(event):
+		AudioManager.register_sfx(event, stream)
+	AudioManager.play_sfx(event)
 
 ## Reproduce on-beat usando BeatSync: sólo suena si estamos en ventana rítmica.
 ## Ideal para efectos de golpe con bonus Hi-Fi Rush style.
