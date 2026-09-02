@@ -1,0 +1,3 @@
+This is a dummy file. 
+Please replace this sample.wav file with an actual 10-second .wav audio sample of the voice you want to clone for the business.
+The Coqui TTS library requires a valid .wav file to extract voice characteristics.
