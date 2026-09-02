@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!--
+  CÓMO USAR ESTE ARCHIVO:
+  1. Abre el "Programador de tareas" de Windows (busca "Task Scheduler" en el menú inicio)
+  2. En el panel derecho → "Importar tarea..."
+  3. Selecciona este archivo XML
+  4. Ajusta el usuario si pide confirmación (tu usuario de Windows)
+  5. Guarda → listo, GitHub se actualizará cada noche a las 11 PM
+
+  O por PowerShell (como administrador):
+  Register-ScheduledTask -Xml (Get-Content "TASK_SCHEDULER_SETUP.xml" -Raw) -TaskName "IndieStudio-GitHubSync"
+-->
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Date>2026-03-17T00:00:00</Date>
+    <Author>Bruno Salas — IndieStudio</Author>
+    <Description>Push automático nocturno de commits generados por agentes Cowork a GitHub. Sube indie-studio y godot-modular-arc-demo cada noche.</Description>
+    <URI>\IndieStudio-GitHubSync</URI>
+  </RegistrationInfo>
+  <Triggers>
+    <CalendarTrigger>
+      <StartBoundary>2026-03-18T23:00:00</StartBoundary>
+      <Enabled>true</Enabled>
+      <ScheduleByDay>
+        <DaysInterval>1</DaysInterval>
+      </ScheduleByDay>
+    </CalendarTrigger>
+  </Triggers>
+  <Principals>
+    <Principal id="Author">
+      <LogonType>InteractiveToken</LogonType>
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <AllowHardTerminate>true</AllowHardTerminate>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>true</RunOnlyIfNetworkAvailable>
+    <IdleSettings>
+      <StopOnIdleEnd>false</StopOnIdleEnd>
+      <RestartOnIdle>false</RestartOnIdle>
+    </IdleSettings>
+    <AllowStartOnDemand>true</AllowStartOnDemand>
+    <Enabled>true</Enabled>
+    <Hidden>false</Hidden>
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>
+    <WakeToRun>false</WakeToRun>
+    <ExecutionTimeLimit>PT10M</ExecutionTimeLimit>
+    <Priority>7</Priority>
+  </Settings>
+  <Actions Context="Author">
+    <Exec>
+      <Command>C:\Windows\System32\cmd.exe</Command>
+      <Arguments>/c "C:\Users\bruni\OneDrive\Desktop\Programming Brunich\IA TEAM\CONFIG\PUSH_GITHUB.bat" &gt; "%TEMP%\indiegithub_sync.log" 2&gt;&amp;1</Arguments>
+      <WorkingDirectory>C:\Users\bruni\OneDrive\Desktop\Programming Brunich\IA TEAM\CONFIG</WorkingDirectory>
+    </Exec>
+  </Actions>
+</Task>

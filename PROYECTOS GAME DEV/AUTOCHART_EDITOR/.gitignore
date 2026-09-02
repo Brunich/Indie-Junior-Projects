@@ -1,0 +1,37 @@
+# Audio: nunca. Ni el de la biblioteca ni el que copia el exportador.
+*.ogg
+*.mp3
+*.opus
+*.wav
+*.flac
+*.m4a
+*.mp4
+
+# Charts y portadas generados o copiados
+salida/
+notes.chart
+notes.mid
+album.png
+album.jpg
+label.png
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# El proyecto vive dentro de OneDrive: no dejar que se cuelen los archivos
+# que crea el sincronizador cuando dos maquinas tocan lo mismo.
+*-Copia*
+*(conflicto*
+*.tmp
+~$*

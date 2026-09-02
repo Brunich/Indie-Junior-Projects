@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://../../codigo/2026-03-17_player_state_machine.gd"]
+[ext_resource type="Script" path="res://../../codigo/2026-03-17_camera_smooth.gd"]
+
+[node name="Nivel01" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = null
+format = 2
+
+[node name="SpawnPlayer1" type="Marker2D" parent="."]
+position = Vector2(100, 300)
+
+[node name="SpawnPlayer2" type="Marker2D" parent="."]
+position = Vector2(150, 300)
+
+[node name="Checkpoint1" type="Area2D" parent="."]
+position = Vector2(300, 400)
+script = ExtResource("res://../../codigo/2026-03-17_checkpoint.gd")
+checkpoint_id = 1
+
+[node name="Enemigo1" type="CharacterBody2D" parent="."]
+position = Vector2(400, 300)
+script = ExtResource("res://../../codigo/2026-03-17_enemigo_slime.gd")
+
+[node name="Moneda1" type="Area2D" parent="."]
+position = Vector2(250, 250)
+collision_layer = 4
+collision_mask = 1
+
+[node name="Moneda2" type="Area2D" parent="."]
+position = Vector2(500, 200)
+collision_layer = 4
+collision_mask = 1
+
+[node name="Moneda3" type="Area2D" parent="."]
+position = Vector2(650, 150)
+collision_layer = 4
+collision_mask = 1
+
+[node name="PowerUp_SpeedBoost" type="Area2D" parent="."]
+position = Vector2(550, 300)
+script = ExtResource("res://../../codigo/2026-03-17_powerup.gd")
+power_up_type = 0
+
+[node name="PowerUp_Shield" type="Area2D" parent="."]
+position = Vector2(700, 250)
+script = ExtResource("res://../../codigo/2026-03-17_powerup.gd")
+power_up_type = 1
+
+[node name="SalidaNivel" type="Area2D" parent="."]
+position = Vector2(900, 300)
+collision_layer = 8
+collision_mask = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("res://../../codigo/2026-03-17_camera_smooth.gd")
+follow_speed = 5.0
+zoom_level = 1.5
+
+[node name="Control" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="HUD" type="Control" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("res://../../codigo/2026-03-17_hud.gd")
