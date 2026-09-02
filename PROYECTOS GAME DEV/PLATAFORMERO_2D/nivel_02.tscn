@@ -1,0 +1,111 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6qcm8bnmxq08"]
+
+[sub_resource type="RectangleShape2D" id="RectShape_ground"]
+size = Vector2(800, 40)
+
+[node name="Nivel02" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = null
+format = 2
+
+[node name="SpawnPlayer1" type="Marker2D" parent="."]
+position = Vector2(80, 500)
+
+[node name="SpawnPlayer2" type="Marker2D" parent="."]
+position = Vector2(130, 500)
+
+[node name="Plataforma_Inicio" type="StaticBody2D" parent="."]
+position = Vector2(200, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma_Inicio"]
+shape = SubResource("RectShape_ground")
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma_Inicio"]
+scale = Vector2(12.5, 0.625)
+texture = null
+
+[node name="Plataforma_Float1" type="StaticBody2D" parent="."]
+position = Vector2(400, 420)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma_Float1"]
+shape = SubResource("RectShape_ground")
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma_Float1"]
+scale = Vector2(12.5, 0.625)
+texture = null
+
+[node name="Plataforma_Float2" type="StaticBody2D" parent="."]
+position = Vector2(600, 340)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma_Float2"]
+shape = SubResource("RectShape_ground")
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma_Float2"]
+scale = Vector2(12.5, 0.625)
+texture = null
+
+[node name="Plataforma_Float3" type="StaticBody2D" parent="."]
+position = Vector2(800, 260)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma_Float3"]
+shape = SubResource("RectShape_ground")
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma_Float3"]
+scale = Vector2(12.5, 0.625)
+texture = null
+
+[node name="Checkpoint1" type="Area2D" parent="."]
+position = Vector2(500, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint1"]
+shape = SubResource("RectShape_ground")
+
+[node name="Checkpoint2" type="Area2D" parent="."]
+position = Vector2(900, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint2"]
+shape = SubResource("RectShape_ground")
+
+[node name="ZonaTrampa" type="Area2D" parent="."]
+position = Vector2(700, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaTrampa"]
+shape = SubResource("RectShape_ground")
+
+[node name="EnemySpawner" type="Node" parent="."]
+
+[node name="SpawnEnemy1" type="Marker2D" parent="EnemySpawner"]
+position = Vector2(350, 400)
+
+[node name="SpawnEnemy2" type="Marker2D" parent="EnemySpawner"]
+position = Vector2(650, 320)
+
+[node name="SpawnEnemy3" type="Marker2D" parent="EnemySpawner"]
+position = Vector2(850, 240)
+
+[node name="Moneda1" type="Area2D" parent="."]
+position = Vector2(500, 370)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Moneda1"]
+shape = SubResource("RectShape_ground")
+
+[node name="Moneda2" type="Area2D" parent="."]
+position = Vector2(700, 580)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Moneda2"]
+shape = SubResource("RectShape_ground")
+
+[node name="Moneda3" type="Area2D" parent="."]
+position = Vector2(900, 210)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Moneda3"]
+shape = SubResource("RectShape_ground")
+
+[node name="SalidaNivel" type="Area2D" parent="."]
+position = Vector2(1100, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SalidaNivel"]
+shape = SubResource("RectShape_ground")
+
+[node name="CamaraLimites" type="Node2D" parent="."]

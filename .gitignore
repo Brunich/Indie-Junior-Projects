@@ -1,21 +1,59 @@
-# Credenciales
+# ─── Secretos: NUNCA suben ────────────────────────────────────────────
 .github_token
 *.token
 *.env
+.env
+CONFIG/.collab_repo_url
 
-# Godot
+# ─── Proyectos con REPO PROPIO (no se anidan aqui) ────────────────────
+# Estos dos NO son de este repo. Duplicarlos aqui significa dos copias que se
+# van separando y nadie sabe cual manda; ademas de gitlinks rotos y gigas.
+#
+# AUTOCHART -> https://github.com/Brunich/clonehero-autochart
+#              (su salida/ son 9,9 GB)
+PROYECTOS GAME DEV/AUTOCHART/
+#
+# NEXOS     -> https://github.com/Brunich/Nexos
+#              El repo propio esta COMPLETO y es mas nuevo (jun-2026) que la
+#              copia local (abr-2026): mismos sistemas, mismo LevelArchitect,
+#              mismas 3 escenas de overworld. La carpeta de aqui es una
+#              instantanea vieja; el trabajo va en Brunich/Nexos.
+#              Y su world_building_tiles/ son 442 MB en 126 PNG con duplicados.
+PROYECTOS GAME DEV/NEXOS/
+
+# ─── Salida generada (se rehace con el comando, no se guarda) ─────────
+salida/
+output/
+build/
+dist/
+
+# ─── Python ───────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ─── Godot ────────────────────────────────────────────────────────────
 .godot/
 *.import
 export_presets.cfg
+godot_import.log
 
-# Unity
+# ─── Unity ────────────────────────────────────────────────────────────
 Library/
 Temp/
 Obj/
-Build/
+Builds/
+Logs/
+UserSettings/
+*.csproj
+*.sln
+*.userprefs
 
-# OS
-Thumbs.db
-.DS_Store
+# ─── Temporales y basura del sistema ──────────────────────────────────
 *.tmp
 *.log
+Thumbs.db
+.DS_Store
+desktop.ini
+.vscode/settings.json
