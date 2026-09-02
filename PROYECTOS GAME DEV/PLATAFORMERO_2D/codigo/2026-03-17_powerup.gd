@@ -101,11 +101,13 @@ func _apply_shield(player: Node) -> void:
 
 	player.add_shield()
 
-	# Efecto visual: aura azul
-	var shield_visual = CanvasItem.new()
+	# Efecto visual: aura azul.
+	# OJO: aqui habia `CanvasItem.new()`, y CanvasItem es ABSTRACTA — eso hacia
+	# que el script entero no compilara y el power-up no hiciera nada.
+	# Node2D es el CanvasItem concreto mas simple y ya acepta modulate.
+	var shield_visual := Node2D.new()
 	add_child(shield_visual)
-	shield_visual.modulate = Color.BLUE
-	shield_visual.self_modulate.a = 0.3
+	shield_visual.modulate = Color(Color.BLUE, 0.3)
 
 func _apply_double_jump(player: Node) -> void:
 	## +1 salto en el aire
