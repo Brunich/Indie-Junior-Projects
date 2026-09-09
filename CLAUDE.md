@@ -140,6 +140,24 @@ el registro fantasma se queda.
 
 ---
 
+## ✍️ LOS COMMITS Y LOS PR SE ESCRIBEN PARA QUIEN LOS LEE DE FUERA
+
+Nunca citar el prompt textual de Bruno, nunca narrar el proceso paso a paso,
+nunca firmar con el nombre de ninguna herramienta de IA (Claude, Codex,
+Cursor, Gemini, Antigravity, ChatGPT...) — ni como trailer
+(`Co-Authored-By`, `Made-with`), ni nombrada en el título o el cuerpo, ni con
+un link a un artefacto (`claude.ai/...`). El cuerpo dice en pocas líneas el
+objetivo, qué ficheros y scripts principales se tocaron con su tamaño de
+cambio aproximado, y cierra con 1-2 líneas de cómo se ve o se siente el
+cambio en marcha. Tablas y desgloses largos sólo si el cambio es realmente
+grande. Vale para toda IA que trabaje en este repo, no sólo para Claude.
+
+El 09-09-2026 se reescribió el historial de este repo entero (commits, PRs y
+comentarios) para quitar firmas y citas de tandas anteriores — de aquí en
+adelante se escribe así directamente.
+
+---
+
 ## Antes de cerrar una tanda
 
 1. **Comprobado, no supuesto.** Si dices que algo funciona, es porque lo
